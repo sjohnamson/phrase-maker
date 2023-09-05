@@ -17,8 +17,9 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", cloudinaryUpload.single("video"), async (req, res) => {
-    console.log('upload', cloudinaryUpload)
+
   return res.json({ video: req.file.path });
 });
+
 
 module.exports = router;

@@ -14,8 +14,8 @@ function* addClipSaga(action) {
         yield axios({
             method: 'POST',
             url: '/api/video', 
-            // headers: headers,
-            data: {name: 'fred'}
+            headers: headers,
+            data: videoForm
         })
 
         yield put({

@@ -22,6 +22,7 @@ export default function AddVideoForm() {
         <input
           onChange={e => setNewClip(e.target.files[0])}
           type="file"
+          // accept="video/*"
         />
       </div>
       <div className="form-group">

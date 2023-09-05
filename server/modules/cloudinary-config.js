@@ -13,6 +13,7 @@ cloudinary.config({
     cloudinary: cloudinary,
     params: {
       folder: 'DEV',
+      resource_type: 'auto'
     },
   });
   
