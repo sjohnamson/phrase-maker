@@ -27,14 +27,7 @@ function* addClipSaga(action) {
     }
 }
 
-function* getClips() {
-    const clips = yield axios.get('/api/video')
 
-    yield put ({
-        type: 'SET_CLIPS',
-        payload: clips.data
-    })
-}
 
 function* addVideoSaga() {
     yield takeLatest('ADD_CLIP', addClipSaga);

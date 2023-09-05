@@ -13,7 +13,17 @@ const pool = require('../modules/pool')
 
 
 router.get("/", (req, res) => {
-  res.send('in get!!')
+  const sqlQuery = `SELECT * FROM clip`
+
+  pool.query(sqlQuery)
+  .then(result => {
+    console.log('result in video get', result)
+    res.send(result.rows)
+  })
+  .catch(err => {
+    res.sendStatus(504)
+  })
+ 
   console.log('in res get!)')
 });
 
@@ -21,7 +31,7 @@ router.post("/", cloudinaryUpload.single("video"), async (req, res) => {
   console.log('sent to cloudinary: ', req.file)
 
   const clipPath = [req.file.path];
-  const sqlQuery = `INSERT into clip ("path") VALUES ($1)`
+  const sqlQuery = `INSERT into clip ("path") VALUES ($1);`
 
   pool.query(sqlQuery, clipPath)
     .then(result => {
