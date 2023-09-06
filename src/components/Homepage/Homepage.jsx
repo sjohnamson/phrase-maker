@@ -15,13 +15,15 @@ export default function Homepage() {
         <section className="clips">
             {clips.map(clip => {
                 return (
-
                     <div key={clip.id} >
-                        <video
-                            id="demo-player"
-                            controls
-                            >
-                        </video>
+                        <iframe id="clipIframe"
+                        src={`https://player.cloudinary.com/embed/?cloud_name=dkabdionr&public_id=${clip.public_id}`}
+                            title= {clip.title}
+                            width="250"
+                            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                            frameBorder="0"
+                        />
+
                     </div>
                 );
             })}

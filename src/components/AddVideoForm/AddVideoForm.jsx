@@ -2,17 +2,21 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function AddVideoForm() {
-  const [newClip, setNewClip] = useState('');
+  const [newClipFile, setNewClipFile] = useState('');
+  const [newClipTitle, setNewClipTitle] = useState('');
+  const [newClipDescription, setNewClipDescription] = useState('');
   const dispatch = useDispatch();
   // const [videoDescription, setVideoDescription] = useSelector('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch({
-      type: 'ADD_CLIP', payload: {
-        newClip: newClip
-      }
-    })
+    const newClip = {
+      newClipTitle,
+      newClipDescription,
+      newClipFile,
+    }
+    console.log('newclip in onsubmit:', newClip)
+    dispatch({ type: 'ADD_CLIP', payload: newClip })
   }
 
   return (
@@ -20,9 +24,20 @@ export default function AddVideoForm() {
       <h3>React File Upload</h3>
       <div className="form-group">
         <input
-          onChange={e => setNewClip(e.target.files[0])}
+          required
+          placeholder="Title"
+          value={newClipTitle}
+          onChange={(event) => setNewClipTitle(event.target.value)} />
+        <input
+          required
+          placeholder="Description"
+          value={newClipDescription}
+          onChange={(event) => setNewClipDescription(event.target.value)}
+        />
+        <input
+          onChange={e => setNewClipFile(e.target.files[0])}
           type="file"
-          // accept="video/*"
+          accept="video/*"
         />
       </div>
       <div className="form-group">

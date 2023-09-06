@@ -6,10 +6,13 @@ function* addClipSaga(action) {
         const headers = {
             'content-type': 'multipart/form-data'
         }
-        console.log('in add clip saga', action.payload.newClip)
+        console.log('in add clip saga', action.payload)
         const videoForm = new FormData();
 
-        videoForm.append('video', action.payload.newClip);
+        videoForm.append('video', action.payload.newClipFile);
+        videoForm.append('title', action.payload.newClipTitle);
+        videoForm.append('description', action.payload.newClipDescription);
+
     
         yield axios({
             method: 'POST',
@@ -31,7 +34,6 @@ function* addClipSaga(action) {
 
 function* addVideoSaga() {
     yield takeLatest('ADD_CLIP', addClipSaga);
-    yield takeLatest('GET_CLIPS', getClips)
 }
 
 export default addVideoSaga

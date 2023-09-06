@@ -1,5 +1,6 @@
 import React from 'react';
 import AddVideoForm from '../AddVideoForm/AddVideoForm.jsx';
+import Homepage from '../Homepage/Homepage.jsx';
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -12,6 +13,7 @@ function AboutPage() {
       <div>
         <p>This about page is for anyone to read!</p>
         <AddVideoForm />
+        <Homepage />
       </div>
     </div>
   );
