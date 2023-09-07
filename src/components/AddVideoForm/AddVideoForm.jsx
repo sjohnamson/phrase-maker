@@ -7,12 +7,12 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
 export default function AddVideoForm() {
+  const dispatch = useDispatch();
   const [newClipFile, setNewClipFile] = useState('');
   const [newClipTitle, setNewClipTitle] = useState('');
   const [newClipDescription, setNewClipDescription] = useState('');
   const [newClipTags, setNewClipTags] = useState([])
-  const dispatch = useDispatch();
-  // const [videoDescription, setVideoDescription] = useSelector('');
+
 
   const onSubmit = async (e) => {
     e.preventDefault();

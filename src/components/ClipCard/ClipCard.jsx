@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import UpdateNavButton from '../UpdateNavButton/UpdateNavButton';
 // Material UI imports
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Button, CardActionArea, CardActions } from '@mui/material';
@@ -40,10 +41,9 @@ export default function ClipCard() {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
+                                
                                 <DeleteButton clip={clip}/>
-                                <Button size="small" color="primary">
-                                    Update
-                                </Button>
+                                <UpdateNavButton clip={clip}/>
 
                             </CardActions>
                         </Card>

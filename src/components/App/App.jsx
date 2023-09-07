@@ -19,8 +19,11 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Homepage from '../Homepage/Homepage';
+import UpdatePage from '../UpdatePage/UpdatePage';
 
 import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -55,9 +58,17 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/main"
           >
-            <UserPage />
+            <Homepage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows UpdatePage
+            exact
+            path="/update"
+          >
+            <UpdatePage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -75,7 +86,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -89,7 +100,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -103,7 +114,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the Landing page
               <LandingPage />

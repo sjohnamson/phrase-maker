@@ -1,0 +1,96 @@
+import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector  } from 'react-redux';
+import axios from 'axios';
+
+import { Box, Button, Typography, Modal, Stack, TextField, Autocomplete, Chip } from '@mui/material';
+
+
+export default function UpdatePage() {
+    const updateClip = useSelector((store) => store.updateClip)
+    const dispatch = useDispatch();
+console.log('update clip in update page', updateClip)
+    // create an updatedClip object and dispatch it to a saga to put
+    const handleTitleChange = (e) => {
+        console.log('in handle change', updateClip)
+        dispatch({ 
+            type: 'EDIT_ONCHANGE', 
+            payload: { property: 'title', value: e.target.value }
+        });    }
+
+const handleUpdate = (e) => {
+    e.preventDefault();
+    // PUT REQUEST to /students/:id
+    axios.put(`/api/video${updateClip.id}`, updateClip)
+        .then( response => {
+            // clean up reducer data            
+            dispatch({ type: 'EDIT_CLEAR' });
+
+            // refresh will happen with useEffect on Home
+            history.push('/'); // back to list
+        })
+        .catch(error => {
+            console.log('error on PUT: ', error);
+        })
+    
+}
+
+    return (
+        <div>
+            <form onSubmit={handleUpdate}>
+                <h3>React File Upload</h3>
+                <div className="form-group">
+                    <input
+                        required
+                        placeholder="Title"
+                        value={updateClip.title}
+                        onChange={(event) => handleTitleChange(event)} />
+                    {/* <input
+                        required
+                        placeholder="Description"
+                        value={updateClipDescription}
+                        onChange={(event) => setUpdateClipDescription(event.target.value)}
+                    />
+                </div>
+                <Stack spacing={3} sx={{ width: 500 }}>
+                    <Autocomplete
+                        multiple
+                        id="tags-filled"
+                        value={updateClipTags}
+                        onChange={(event, newValue) => {
+                            setUpdateClipTags(newValue);
+                        }}
+                        options={[clip.tag]}
+                        defaultValue={[clip.tag]}
+                        freeSolo
+                        renderTags={(value, getTagProps) =>
+                            value.map((option, index) => (
+                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                            ))
+                        }
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                variant="filled"
+                                label="Tags"
+                                placeholder="add a new tag"
+                            />
+                        )}
+                    />
+                </Stack>
+                <div className="form-group"> */}
+                    <Button
+                        onClick={handleUpdate}
+                        size="small"
+                        color="primary"
+                        type="submit"
+                    >
+                        Update
+                    </Button>
+                </div>
+            </form>
+        </div>
+
+    );
+
+}

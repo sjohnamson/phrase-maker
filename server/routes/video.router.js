@@ -13,7 +13,13 @@ const pool = require('../modules/pool')
 
 
 router.get("/", (req, res) => {
-  const sqlQuery = `SELECT * FROM clip`
+  const sqlQuery = `
+  SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
+  FROM clip
+  JOIN clip_tag
+  ON clip.id = clip_tag.clip_id
+  JOIN tag
+  ON clip_tag.tag_id = tag.id;`
 
   pool.query(sqlQuery)
     .then(result => {
