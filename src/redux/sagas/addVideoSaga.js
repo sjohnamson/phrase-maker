@@ -12,6 +12,7 @@ function* addClipSaga(action) {
         videoForm.append('video', action.payload.newClipFile);
         videoForm.append('title', action.payload.newClipTitle);
         videoForm.append('description', action.payload.newClipDescription);
+        videoForm.append('tags', action.payload.newClipTags)
 
     
         yield axios({

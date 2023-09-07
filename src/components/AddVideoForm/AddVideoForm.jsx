@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+// material imports
+import Chip from '@mui/material/Chip';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 export default function AddVideoForm() {
   const [newClipFile, setNewClipFile] = useState('');
   const [newClipTitle, setNewClipTitle] = useState('');
   const [newClipDescription, setNewClipDescription] = useState('');
+  const [newClipTags, setNewClipTags] = useState([])
   const dispatch = useDispatch();
   // const [videoDescription, setVideoDescription] = useSelector('');
 
@@ -14,6 +20,7 @@ export default function AddVideoForm() {
       newClipTitle,
       newClipDescription,
       newClipFile,
+      newClipTags,
     }
     console.log('newclip in onsubmit:', newClip)
     dispatch({ type: 'ADD_CLIP', payload: newClip })
@@ -40,10 +47,37 @@ export default function AddVideoForm() {
           accept="video/*"
         />
       </div>
+      <Stack spacing={3} sx={{ width: 500 }}>
+        <Autocomplete
+          multiple
+          id="tags-filled"
+          value={newClipTags}
+          onChange={(event, newValue) => {
+            setNewClipTags(newValue);
+          }}
+          options={[]}
+          defaultValue={[]}
+          freeSolo
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="filled"
+              label="Tags"
+              placeholder="add a new tag"
+            />
+          )}
+        />
+      </Stack>
       <div className="form-group">
         <button className="btn btn-primary" type="submit">Upload</button>
       </div>
     </form>
+
   )
 
 }
