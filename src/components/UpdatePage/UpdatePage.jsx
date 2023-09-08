@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 import axios from 'axios';
 
-import { Box, Button, Typography, Modal, Stack, TextField, Autocomplete, Chip } from '@mui/material';
+import { Box, Button, Stack, TextField, Autocomplete, Chip } from '@mui/material';
 
 
 export default function UpdatePage() {
@@ -12,6 +12,10 @@ export default function UpdatePage() {
     const dispatch = useDispatch();
     const history = useHistory();
    
+    useEffect(() => {
+        dispatch({ type: 'GET_CLIPS' })
+    }, []);
+
     // create an updatedClip object and dispatch it to a saga to put
     const handleTitleChange = (e) => {
         console.log('in handle change', updateClip)
@@ -54,15 +58,15 @@ export default function UpdatePage() {
 
     return (
         <div>
-            <form onSubmit={handleUpdate}>
+            <Box>
                 <h3>React File Upload</h3>
                 <div className="form-group">
-                    <input
+                    <TextField
                         required
                         placeholder="Title"
                         value={updateClip.title}
                         onChange={(event) => handleTitleChange(event)} />
-                    <input
+                    <TextField
                         required
                         placeholder="Description"
                         value={updateClip.description}
@@ -105,7 +109,7 @@ export default function UpdatePage() {
                         Update
                     </Button>
                 </div>
-            </form>
+            </Box>
         </div>
 
     );

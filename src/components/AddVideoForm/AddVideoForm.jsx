@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // material imports
-import Chip from '@mui/material/Chip';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
+import { Button, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material';
 
 export default function AddVideoForm() {
   const dispatch = useDispatch();
@@ -14,8 +11,7 @@ export default function AddVideoForm() {
   const [newClipTags, setNewClipTags] = useState([])
 
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     const newClip = {
       newClipTitle,
       newClipDescription,
@@ -27,27 +23,32 @@ export default function AddVideoForm() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <h3>React File Upload</h3>
+    <Box >
       <div className="form-group">
-        <input
+        <TextField
           required
-          placeholder="Title"
+          label="Title"
+          placeholder="add a title for your clip"
           value={newClipTitle}
-          onChange={(event) => setNewClipTitle(event.target.value)} />
-        <input
+          onChange={(event) => setNewClipTitle(event.target.value)} 
+          variant='filled'
+          />
+        <TextField
           required
-          placeholder="Description"
+          label="Description"
+          placeholder='add a description or notes'
           value={newClipDescription}
           onChange={(event) => setNewClipDescription(event.target.value)}
+          variant='filled'
         />
-        <input
+        <TextField
           onChange={e => setNewClipFile(e.target.files[0])}
           type="file"
           accept="video/*"
+          variant='filled'
         />
       </div>
-      <Stack spacing={3} sx={{ width: 500 }}>
+      <Stack spacing={3} sx={{ width: 300 }}>
         <Autocomplete
           multiple
           id="tags-filled"
@@ -74,9 +75,15 @@ export default function AddVideoForm() {
         />
       </Stack>
       <div className="form-group">
-        <button className="btn btn-primary" type="submit">Upload</button>
+        <Button
+          className="btn btn-primary"
+          type="submit"
+          onClick={onSubmit}
+        >
+          Upload
+        </Button>
       </div>
-    </form>
+    </Box>
 
   )
 

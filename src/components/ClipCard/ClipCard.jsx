@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import UpdateNavButton from '../UpdateNavButton/UpdateNavButton';
+// import cloudinary from "cloudinary-video-player";
+// import "cloudinary-video-player/dist/cld-video-player.min.css";
 // Material UI imports
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 
 
 export default function ClipCard() {
@@ -17,20 +19,20 @@ export default function ClipCard() {
 
     return (
         <section className="clips">
-            {clips.map(clip => {
+            <Grid container spacing={2}>
+                {clips.map(clip => {
                 return (
-                    <div key={clip.id} >
+                    <Grid item key={clip.id} xs={12} sm={6} md={4} >
 
-                        <Card sx={{ maxWidth: 270 }}>
+                        <Card sx={{ maxWidth: 600 }}>
                             <CardActionArea onClick={() => { }}>
 
-                                <iframe id="clipIframe"
+                                <iframe id="clipPlayer"
                                     src={`https://player.cloudinary.com/embed/?cloud_name=dkabdionr&public_id=${clip.public_id}`}
                                     title={clip.title}
-                                    width='100%'
                                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                                     frameBorder="0"
-                                />
+                                    />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
                                         {clip.title}
@@ -41,15 +43,16 @@ export default function ClipCard() {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                
-                                <DeleteButton clip={clip}/>
-                                <UpdateNavButton clip={clip}/>
+
+                                <DeleteButton clip={clip} />
+                                <UpdateNavButton clip={clip} />
 
                             </CardActions>
                         </Card>
-                    </div>
+                    </Grid>
                 );
             })}
+            </Grid>
         </section>
     )
 }

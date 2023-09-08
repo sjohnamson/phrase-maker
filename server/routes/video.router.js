@@ -4,15 +4,6 @@ const cloudinaryUpload = require('../modules/cloudinary-config');
 const pool = require('../modules/pool')
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-// const {
-//   rejectUnauthenticated,
-// } = require('../modules/authentication-middleware');
-// const encryptLib = require('../modules/encryption');
-// const pool = require('../modules/pool');
-// const userStrategy = require('../strategies/user.strategy');
-
-
-
 router.get("/", (req, res) => {
   const sqlQuery = `
   SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
