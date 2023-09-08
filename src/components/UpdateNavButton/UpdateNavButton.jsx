@@ -10,6 +10,7 @@ export default function UpdateNavButton({ clip }) {
     const dispatch = useDispatch();
 
 const handleUpdate = () => {
+    console.log('clip in button', clip)
     dispatch({ type: 'SET_UPDATE_CLIP', payload: clip })
 
     history.push('/update')

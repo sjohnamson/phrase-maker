@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useDispatch, useSelector  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Box, Button, Typography, Modal, Stack, TextField, Autocomplete, Chip } from '@mui/material';
@@ -9,31 +10,47 @@ import { Box, Button, Typography, Modal, Stack, TextField, Autocomplete, Chip } 
 export default function UpdatePage() {
     const updateClip = useSelector((store) => store.updateClip)
     const dispatch = useDispatch();
-console.log('update clip in update page', updateClip)
+    const history = useHistory();
+   
     // create an updatedClip object and dispatch it to a saga to put
     const handleTitleChange = (e) => {
         console.log('in handle change', updateClip)
-        dispatch({ 
-            type: 'EDIT_ONCHANGE', 
+        dispatch({
+            type: 'EDIT_ONCHANGE',
             payload: { property: 'title', value: e.target.value }
-        });    }
+        });
+    };
+    const handleDescriptionChange = (e) => {
+        console.log('in handle change', updateClip)
+        dispatch({
+            type: 'EDIT_ONCHANGE',
+            payload: { property: 'description', value: e.target.value }
+        });
+    };
+    const handleTagChange = (e) => {
+        console.log('in handle change', updateClip)
+        dispatch({
+            type: 'EDIT_ONCHANGE',
+            payload: { property: 'tag', value: e.target.value }
+        });
+    }
 
-const handleUpdate = (e) => {
-    e.preventDefault();
-    // PUT REQUEST to /students/:id
-    axios.put(`/api/video${updateClip.id}`, updateClip)
-        .then( response => {
-            // clean up reducer data            
-            dispatch({ type: 'EDIT_CLEAR' });
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        // PUT REQUEST to /api/video/:id
+        axios.put(`/api/video/${updateClip.id}`, updateClip)
+            .then(response => {
+                // clean up reducer data            
+                dispatch({ type: 'EDIT_CLEAR' });
 
-            // refresh will happen with useEffect on Home
-            history.push('/'); // back to list
-        })
-        .catch(error => {
-            console.log('error on PUT: ', error);
-        })
-    
-}
+                // refresh will happen with useEffect on Homepage
+                history.push('/main'); // back to list
+            })
+            .catch(error => {
+                console.log('error on PUT: ', error);
+            })
+
+    }
 
     return (
         <div>
@@ -45,23 +62,23 @@ const handleUpdate = (e) => {
                         placeholder="Title"
                         value={updateClip.title}
                         onChange={(event) => handleTitleChange(event)} />
-                    {/* <input
+                    <input
                         required
                         placeholder="Description"
-                        value={updateClipDescription}
-                        onChange={(event) => setUpdateClipDescription(event.target.value)}
+                        value={updateClip.description}
+                        onChange={(event) => handleDescriptionChange(event)}
                     />
                 </div>
                 <Stack spacing={3} sx={{ width: 500 }}>
                     <Autocomplete
                         multiple
                         id="tags-filled"
-                        value={updateClipTags}
-                        onChange={(event, newValue) => {
-                            setUpdateClipTags(newValue);
+                        value={[updateClip.tag]}
+                        onChange={(event) => {
+                            handleTagChange(event);
                         }}
-                        options={[clip.tag]}
-                        defaultValue={[clip.tag]}
+                        options={[updateClip.tag]}
+                        defaultValue={[updateClip.tag]}
                         freeSolo
                         renderTags={(value, getTagProps) =>
                             value.map((option, index) => (
@@ -78,7 +95,7 @@ const handleUpdate = (e) => {
                         )}
                     />
                 </Stack>
-                <div className="form-group"> */}
+                <div className="form-group">
                     <Button
                         onClick={handleUpdate}
                         size="small"

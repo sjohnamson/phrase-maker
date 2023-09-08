@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cloudinaryUpload = require('../modules/cloudinary-config');
 const pool = require('../modules/pool')
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 // const {
 //   rejectUnauthenticated,
@@ -34,7 +35,7 @@ router.get("/", (req, res) => {
 });
 
 // Posts clips from AddVideoForm into cloudinary and the database
-router.post("/", cloudinaryUpload.single("video"), async (req, res) => {
+router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
   console.log('sent to cloudinary: ', req.file)
   console.log('in clip post req.body:', req.body)
 
@@ -76,7 +77,7 @@ router.post("/", cloudinaryUpload.single("video"), async (req, res) => {
 
 });
 
-router.delete("/:id", cloudinaryUpload.single("video"), async (req, res) => {
+router.delete("/:id", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
   console.log('sent to cloudinary to delete: ', req.file)
   console.log('in clip post req.params:', req.params)
 
@@ -94,9 +95,41 @@ router.delete("/:id", cloudinaryUpload.single("video"), async (req, res) => {
     // Get the id from the result - will have 1 row with the id 
     const sqlDeleteTags = `
       DELETE FROM clip_tag 
-      WHERE clip_id = $1`
+      WHERE clip_id = $1
+      `
     // Save the result so we can get the returned value
     await connection.query(sqlDeleteTags, clipId);
+    await connection.query('COMMIT');
+    res.sendStatus(200);
+  } catch (error) {
+    await connection.query('ROLLBACK');
+    console.log(`Transaction Error - Rolling back new account`, error);
+    res.sendStatus(500);
+  } finally {
+    connection.release()
+
+  }
+});
+
+// PUT route to make changes to title, descripotion and tags of clip
+router.put("/:id", rejectUnauthenticated, async (req, res) => {
+  const clipInfo = [req.params.id, req.body.title, req.body.description]
+
+  const connection = await pool.connect()
+  try {
+    await connection.query('BEGIN');
+    const sqlUpdate = `
+      UPDATE clip
+      SET title = $2, description = $3
+      WHERE id = $1
+      `
+    await connection.query(sqlUpdate, clipInfo)
+    // const sqlDeleteTags = `
+    //   DELETE FROM clip_tag 
+    //   WHERE clip_id = $1
+    //   `
+    // // Save the result so we can get the returned value
+    // await connection.query(sqlDeleteTags, clipId);
     await connection.query('COMMIT');
     res.sendStatus(200);
   } catch (error) {

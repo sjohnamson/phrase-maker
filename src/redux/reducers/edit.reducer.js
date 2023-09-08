@@ -1,4 +1,5 @@
 const updateClip = (state = {}, action) => {
+    console.log('action.payload in reducer', action.payload)
     switch (action.type) {
         case 'SET_UPDATE_CLIP':
             return action.payload;
