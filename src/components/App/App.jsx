@@ -21,8 +21,13 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Homepage from '../Homepage/Homepage';
 import UpdatePage from '../UpdatePage/UpdatePage';
 import AddClipPage from '../AddClipPage/AddClipPage';
+import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
+import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
+import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
 
 import './App.css';
+
+
 
 
 function App() {
@@ -85,6 +90,22 @@ function App() {
             path="/addclip"
           >
             <AddClipPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows JoinProject else shows LoginPage
+            exact
+            path="/joinproject"
+          >
+            <JoinProjectPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows MakeProject else shows LoginPage
+            exact
+            path="/makeproject"
+          >
+            <MakeProjectPage/>
           </ProtectedRoute>
 
           <Route
