@@ -15,18 +15,26 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
     try {
         await connection.query('BEGIN');
         const sqlAddProject = `
-        INSERT INTO project ("title") 
-        VALUES ($1) RETURNING id;`
+            INSERT INTO project ("title") 
+            VALUES ($1) RETURNING id;
+            `
         // Save the result so we can get the returned value
         const result = await connection.query(sqlAddProject, [newProject]);
         // Get the id from the result - will have 1 row with the id 
         const projectId = result.rows[0].id;
+        // create new row in user_project connecting user to project
         const sqlProjectUser = `
-        INSERT INTO user_project ("user_id", "project_id")
-        VALUES ($1, $2)
-        `
-        // Save the result so we can get the returned value
-        const response = await connection.query(sqlProjectUser, [userId, projectId]);
+            INSERT INTO user_project ("user_id", "project_id")
+            VALUES ($1, $2)
+            `
+        await connection.query(sqlProjectUser, [userId, projectId]);
+
+        const sqlCurrentProject = `
+            UPDATE "user" 
+            SET current_project = $2
+            WHERE id = $1
+            `
+        await connection.query(sqlCurrentProject, [userId, newProject]);
         // Get the id from the result - will have 1 row with the id 
         await connection.query('COMMIT');
         res.sendStatus(200);
