@@ -132,7 +132,7 @@ export default function ProjectDropdown() {
                                 {projectList.map(project => {
                                     return (
                                         < ListItemButton
-                                            onClick={() => setCurrentProject(project.title)}
+                                            onClick={() => setCurrentProject(project)}
                                             sx={{ pl: 4 }}
                                             key={project.title}
                                         >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
@@ -33,7 +33,7 @@ function Nav() {
               Info Page
             </Link>
 
-            <LogOutButton className="navLink" />
+         
           </>
         )}
 

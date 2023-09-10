@@ -24,8 +24,10 @@ import AddClipPage from '../AddClipPage/AddClipPage';
 import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
 import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
 import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
+import ModifyClipPage from '../ModifyClipPage/ModifyClipPage';
 
 import './App.css';
+import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
 
 
 
@@ -69,7 +71,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows UpdatePage
+            // logged in shows UpdatePage else shows LoginPage
             exact
             path="/update"
           >
@@ -93,6 +95,22 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows ModifyClipPage else shows LoginPage
+            exact
+            path="/modifyclip"
+          >
+            <ModifyClipPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows MakePhrasePage else shows LoginPage
+            exact
+            path="/makephrase"
+          >
+            <MakePhrasePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows JoinProject else shows LoginPage
             exact
             path="/joinproject"
@@ -105,7 +123,7 @@ function App() {
             exact
             path="/makeproject"
           >
-            <MakeProjectPage/>
+            <MakeProjectPage />
           </ProtectedRoute>
 
           <Route

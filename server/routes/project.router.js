@@ -99,7 +99,7 @@ router.get("/", rejectUnauthenticated, async (req, res) => {
 
 // updates users current project
 router.put("/", rejectUnauthenticated, async (req, res) => {
-    console.log('in project put')
+    console.log('in project put', req.body)
 
     const userId = req.user.id;
     const currentProject = req.body
