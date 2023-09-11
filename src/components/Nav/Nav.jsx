@@ -39,9 +39,7 @@ function Nav() {
 
         <Link className="navLink" to="/about">
           About
-        </Link>
-        
-          <ProjectDropdown/>     
+        </Link> 
 
       </div>
     </div>

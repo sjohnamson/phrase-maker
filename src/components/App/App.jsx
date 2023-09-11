@@ -23,8 +23,8 @@ import UpdatePage from '../UpdatePage/UpdatePage';
 import AddClipPage from '../AddClipPage/AddClipPage';
 import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
 import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
-import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
 import ModifyClipPage from '../ModifyClipPage/ModifyClipPage';
+import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
 
 import './App.css';
 import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
@@ -45,6 +45,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <BottomNavigationBar />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

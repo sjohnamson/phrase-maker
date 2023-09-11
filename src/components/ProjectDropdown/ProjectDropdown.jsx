@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 // material imports
-import { List, ListItemButton, Collapse, ListItemText, Avatar, Box, Drawer, Divider, Button, Menu, MenuItem, ListItemIcon, Link, IconButton, Typography, Tooltip } from '@mui/material';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+
+import { List, BottomNavigationAction, ListItemButton, Collapse, ListItemText, Avatar, Box, Drawer, Divider, Button, Menu, MenuItem, ListItemIcon, Link, IconButton, Typography, Tooltip } from '@mui/material';
 import { StarBorder, ExpandMore, ExpandLess, SendIcon, DraftsIcon, InboxIcon, Logout, Settings, PersonAdd } from '@mui/icons-material';
 // import { Link } from "react-router-dom";
 
@@ -54,20 +56,16 @@ export default function ProjectDropdown() {
 
     return (
         <>
-            <Box sx={{ display: 'flex', alignItems: 'right', textAlign: 'center', justifyContent: 'flex-end' }}>
-                <Tooltip title="Project settings">
-                    <IconButton
-                        onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                    >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-                    </IconButton>
-                </Tooltip>
-            </Box>
+            <BottomNavigationAction
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 0 }}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                icon={<GroupWorkIcon />}
+            >
+            </BottomNavigationAction>
 
             <Menu
                 anchorEl={anchorEl}
@@ -81,12 +79,11 @@ export default function ProjectDropdown() {
                     sx: {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
                         '& .MuiAvatar-root': {
                             width: 32,
                             height: 32,
-                            ml: -0.5,
-                            mr: 3,
+                            ml: -0,
+                            mr: 0,
                         },
                         '&:before': {
                             content: '""',
