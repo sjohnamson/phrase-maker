@@ -23,7 +23,7 @@ export default function BottomNavigationBar() {
     <Box sx={{ width: '100%' }}>
       <BottomNavigation
         showLabels={true}
-        sx={{ width: '100%', position: 'absolute', bottom: 0 }}
+        sx={{ width: '100%', position: 'fixed', bottom: 0, backgroundColor: '#eae4d9'}}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}

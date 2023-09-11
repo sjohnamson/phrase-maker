@@ -23,7 +23,7 @@ import UpdatePage from '../UpdatePage/UpdatePage';
 import AddClipPage from '../AddClipPage/AddClipPage';
 import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
 import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
-import ModifyClipPage from '../ModifyClipPage/ModifyClipPage';
+import ModifyClipPage from '../ModifyClipPage/ModifyClipPage.jsx';
 import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
 
 import './App.css';
@@ -125,6 +125,14 @@ function App() {
             path="/makeproject"
           >
             <MakeProjectPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ModifyClipPage else shows LoginPage
+            exact
+            path="/modifyclip"
+          >
+            <ModifyClipPage />
           </ProtectedRoute>
 
           <Route

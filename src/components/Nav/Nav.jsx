@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
+    
     <div className="nav">
+
       <Link to="/home">
-        <h2 className="nav-title">Phrasemaker</h2>
+        <img src='../../../public/images/PhraseLogo.jpeg'/>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
