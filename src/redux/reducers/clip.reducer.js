@@ -1,6 +1,6 @@
-const clips = (state = [], action) => {
+const currentClip = (state = [], action) => {
     switch (action.type) {
-      case 'SET_CLIPS':
+      case 'SET_CURRENT':
         return action.payload;
       default:
         return state;
@@ -9,4 +9,4 @@ const clips = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default clips;
+  export default currentClip;

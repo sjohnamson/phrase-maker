@@ -17,16 +17,16 @@ export default function ClipCard({xs, sm, md}) {
     }, []);
 
     return (
-        <section className="clips">
+
             <Grid container spacing={2}>
-                {clips.map(clip => {
+                {clips.map((clip, index) => {
 
                     return (<>
-                        <Grid item key={clip.id} xs={xs} sm={sm} md={md} >
+                        <Grid item key={index} xs={xs} sm={sm} md={md} >
 
-                            <Card sx={{ maxWidth: 600 }}>
-                                <CardActionArea onClick={() => { }}>
-                                    <VideoPlayer public_id={clip.public_id} width={400} height={225} />
+                            <Card  sx={{ width: '100%', }}>
+                                <CardActionArea onClick={() => { }} sx={{}}>
+                                    <VideoPlayer public_id={clip.public_id}  width={400} height={300}/>
                                     <MainPageCardContent clip={clip} />
                                 </CardActionArea>
                                 <MainPageCardActions clip={clip} />
@@ -36,6 +36,6 @@ export default function ClipCard({xs, sm, md}) {
                 }
                 )}
             </Grid>
-        </section>
+
     )
 }
