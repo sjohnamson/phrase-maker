@@ -13,7 +13,7 @@ export default function Homepage() {
 
     return (
         <>
-            <section className="clips">
+            <section className="clips" style={{width: '95%', margin: 'auto'}}>
                 <ClipCard xs={12} sm={6} md={4}/>
             </section>
             <Button onClick={() => goToAddClip()}>Add Clip</Button>

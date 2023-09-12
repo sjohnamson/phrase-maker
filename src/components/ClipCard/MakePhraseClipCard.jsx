@@ -8,7 +8,7 @@ import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typo
 import Grid from '@mui/material/Unstable_Grid2';
 
 
-export default function ClipCard({xs, sm, md}) {
+export default function ClipCard({ xs, sm, md }) {
     const dispatch = useDispatch();
     const clips = useSelector(store => store.clips)
 
@@ -17,25 +17,23 @@ export default function ClipCard({xs, sm, md}) {
     }, []);
 
     return (
-        <section className="clips">
-            <Grid container spacing={2}>
-                {clips.map(clip => {
+        <Grid container spacing={2}>
+            {clips.map((clip, index) => {
 
-                    return (<>
-                        <Grid item key={clip.id} xs={xs} sm={sm} md={md} >
+                return (
+                    <Grid item key={index} xs={xs} sm={sm} md={md} >
 
-                            <Card sx={{ maxWidth: 600 }}>
-                                <CardActionArea onClick={() => { }}>
-                                    <VideoPlayer public_id={clip.public_id} width={500} height={300} />
-                                    <MakePhraseCardContent clip={clip} />
-                                </CardActionArea>
-                                <MakePhraseCardActions clip={clip} />
-                            </Card>
-                        </Grid>
-                    </>);
+                        <Card sx={{ maxWidth: 600 }}>
+                            <CardActionArea onClick={() => { }}>
+                                <VideoPlayer public_id={clip.public_id} width={500} height={300} />
+                                <MakePhraseCardContent clip={clip} />
+                            </CardActionArea>
+                            <MakePhraseCardActions clip={clip} />
+                        </Card>
+                    </Grid>
+                )
                 }
-                )}
-            </Grid>
-        </section>
+            )}
+        </Grid>
     )
 }

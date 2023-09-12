@@ -69,12 +69,6 @@ export default function ModifyClipPage() {
         console.log('url:', phraseURL)
 
         setNewPhraseURL(phraseURL);
-
-     
-
-
-
-
     }
 
     const savePhrase = () => {

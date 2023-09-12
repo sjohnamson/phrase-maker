@@ -18,7 +18,7 @@ export default function VideoPlayer({ width, height, public_id }) {
         <video
             ref={videoRef}
             controls
-            fullscreen
+            fullscreen='true'
             data-cld-public-id={public_id}
             height={height}
             width={width}

@@ -14,7 +14,7 @@ function Nav() {
     <div className="nav">
 
       <Link to="/home">
-        <img src={PhraseLogo} alt="Phrase Maker" style={{height: 50}}/>
+        <img src={PhraseLogo} alt="Phrase Maker" style={{height: 75}}/>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
