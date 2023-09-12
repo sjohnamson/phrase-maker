@@ -6,8 +6,8 @@ import axios from 'axios';
 // material imports
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 
-import { List, BottomNavigationAction, ListItemButton, Collapse, ListItemText, Avatar, Box, Drawer, Divider, Button, Menu, MenuItem, ListItemIcon, Link, IconButton, Typography, Tooltip } from '@mui/material';
-import { StarBorder, ExpandMore, ExpandLess, SendIcon, DraftsIcon, InboxIcon, Logout, Settings, PersonAdd } from '@mui/icons-material';
+import { List, BottomNavigationAction, ListItemButton, Collapse, ListItemText, Avatar,Divider, Menu, MenuItem, ListItemIcon, Link} from '@mui/material';
+import {ExpandMore, ExpandLess, Logout, Settings} from '@mui/icons-material';
 // import { Link } from "react-router-dom";
 
 export default function ProjectDropdown() {
@@ -59,11 +59,12 @@ export default function ProjectDropdown() {
             <BottomNavigationAction
                 onClick={handleClick}
                 size="small"
-                sx={{ ml: 0 }}
+                sx={{ ml: 0, mb: 2}}
                 aria-controls={open ? 'account-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 icon={<GroupWorkIcon />}
+                label="Projects"
             >
             </BottomNavigationAction>
 

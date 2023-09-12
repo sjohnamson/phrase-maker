@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PhraseLogo from '../../images/PMLogo.png'
 
 
 import './Nav.css';
@@ -13,7 +14,7 @@ function Nav() {
     <div className="nav">
 
       <Link to="/home">
-        <img src='../../../public/images/PhraseLogo.jpeg'/>
+        <img src={PhraseLogo} alt="Phrase Maker" style={{height: 50}}/>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}

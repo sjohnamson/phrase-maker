@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import TheatersIcon from '@mui/icons-material/Theaters';
+import zIndex from '@mui/material/styles/zIndex';
 
 export default function BottomNavigationBar() {
   const [value, setValue] = useState(0);
@@ -20,10 +21,10 @@ export default function BottomNavigationBar() {
     history.push(link)
   }
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', }}>
       <BottomNavigation
         showLabels={true}
-        sx={{ width: '100%', position: 'fixed', bottom: 0, backgroundColor: '#eae4d9'}}
+        sx={{height: 80, width: '100%', position: 'fixed', bottom: 0, backgroundColor: '#eae4d9', zIndex: 2,}}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
@@ -52,11 +53,12 @@ export default function BottomNavigationBar() {
           onClick={() => navigate('/phrases')}
           icon={<TheatersIcon />}
         />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           label="Projects"
           value={value}
           icon={<ProjectDropdown />}
-        />
+        /> */}
+        <ProjectDropdown />
 
       </BottomNavigation>
     </Box>

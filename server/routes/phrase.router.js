@@ -9,7 +9,7 @@ router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async 
     console.log('sent to cloudinary: ', req.file)
     console.log('in phase post req.body:', req.body)
 
-    const phraseInfo = [req.file.filename, req.body.title, req.body.description];
+    const phraseInfo = [ req.body.title, req.body.description];
 
     const connection = await pool.connect()
     try {
