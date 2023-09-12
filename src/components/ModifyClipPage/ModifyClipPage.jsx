@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { AdvancedVideo } from '@cloudinary/react';
-import axios from "axios";
-import { CloudinaryVideo } from "@cloudinary/url-gen";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { concatenate } from "@cloudinary/url-gen/actions/videoEdit";
@@ -18,17 +16,13 @@ import { Button, TextField, Box } from '@mui/material';
 export default function ModifyClipPage() {
     const currentClip = useSelector(store => store.currentClip)
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const processPhrase = useSelector(store => store.processPhrase)
 
-    const [newPhraseFile, setNewPhraseFile] = useState('');
     const [newPhraseTitle, setNewPhraseTitle] = useState('');
     const [newPhraseDescription, setNewPhraseDescription] = useState('');
-    const [newPhraseURL, setNewPhraseURL] = useState('');
     const [concatenatedPhrase, setConcatenatedPhrase] = useState()
 
-    const [newPhraseClips, setNewPhraseClips] = useState([])
     const [newPhrase, setNewPhrase] = useState()
 
     useEffect(() => {
@@ -39,23 +33,12 @@ export default function ModifyClipPage() {
         })
     }, [currentClip])
 
-
-    //   cloudinary.config({
-    //     cloud_name: 'dkabdionr',
-    //   })
-
     const cld = new Cloudinary({
         cloud: {
             cloudName: 'dkabdionr'
         }
     });
 
-
-
-    //     processPhrase.map((clip) => {
-    //         return  myVideo.resize(fill().width(400).height(250)).videoEdit(
-    //             concatenate(Concatenate.videoSource(clip.currentClip.public_id).transformation(new Transformation().resize(fill().width(400).height(250)))));
-    // });
     const myVideo = cld.video("DEV/cbtcvktirdg0p8vwsh0h");
 
 
@@ -65,9 +48,15 @@ export default function ModifyClipPage() {
             console.log('clip.currentClip.public_id', clip.currentClip.public_id)
 
             concatenatingPhrase = concatenatingPhrase.videoEdit(
-                concatenate(Concatenate.videoSource(clip.currentClip.public_id).transformation(new Transformation().resize(fill().width(400).height(250)))));
+                concatenate(
+                    Concatenate.videoSource(clip.currentClip.public_id)
+                        .transformation(new Transformation()
+                        .resize(fill().width(400).height(250)
+                        )
+                        )
+                        )
+                        );
         }
-        console.log('concat phrase', concatenatingPhrase)
         setConcatenatedPhrase(concatenatingPhrase)
     }
 
@@ -83,9 +72,7 @@ export default function ModifyClipPage() {
 
     }
 
-
     return (
-
         <Box >
             <div>
                 {concatenatedPhrase &&
