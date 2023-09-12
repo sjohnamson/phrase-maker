@@ -70,39 +70,6 @@ export default function ModifyClipPage() {
         console.log('concat phrase', concatenatingPhrase)
         setConcatenatedPhrase(concatenatingPhrase)
     }
-    //     cloudinary.video("kitten_fighting", {transformation: [
-    //         {height: 200, width: 300, crop: "fill"},
-    //         {flags: "splice", overlay: "video:dog"},
-    //         {height: 200, width: 300, crop: "fill"},
-    //         {flags: "layer_apply", start_offset: "0"}
-    //         ]})
-
-
-    //    let phraseURL = `https://res.cloudinary.com/demo/video/upload/c_fill,h_200,w_300/fl_splice,l_video:`+
-    //     `${currentClip.public_id}`
-    //     +`/c_fill,h_200,w_300/fl_layer_apply/${processPhrase[0].currentClip.public_id}.mp4`
-
-    //     console.log('url???', phraseURL)
-
-
-
-
-    // let myVideo = new cld.CloudinaryVideo(currentClip.public_id)
-    // .resize(fill().width(300).height(200))
-    // .videoEdit(
-    //   concatenate(
-    //     videoSource(processPhrase[0].currentClip.public_id).transformation(
-    //       new Transformation().resize(fill().width(300).height(200))
-    //     )
-    //   )
-    // );
-
-    //         ;
-    //     const phraseURL = myVideo.toURL();
-    //     console.log('url:', phraseURL)
-
-    //     setNewPhraseURL(phraseURL);
-
 
     const savePhrase = () => {
         const phraseToAdd = {
@@ -155,7 +122,7 @@ export default function ModifyClipPage() {
                     type="submit"
                     onClick={() => savePhrase()}
                 >
-                    Watch phrase
+                    savePhrase
                 </Button>
 
             </div>
