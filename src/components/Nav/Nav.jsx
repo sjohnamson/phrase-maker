@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import PhraseLogo from '../../images/PMLogo.png'
+
+
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
@@ -8,9 +10,11 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
+    
     <div className="nav">
+
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <img src={PhraseLogo} alt="Phrase Maker" style={{height: 75}}/>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -24,7 +28,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/home">
               Home
             </Link>
 
@@ -32,13 +36,14 @@ function Nav() {
               Info Page
             </Link>
 
-            <LogOutButton className="navLink" />
+         
           </>
         )}
 
         <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> 
+
       </div>
     </div>
   );

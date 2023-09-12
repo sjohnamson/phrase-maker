@@ -1,4 +1,6 @@
 import React from 'react';
+import AddVideoForm from '../AddVideoForm/AddVideoForm.jsx';
+import Homepage from '../Homepage/Homepage.jsx';
 
 // This is one of our simplest components
 // It doesn't have local state,

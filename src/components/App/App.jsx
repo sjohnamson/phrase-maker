@@ -14,13 +14,23 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Homepage from '../Homepage/Homepage';
+import UpdatePage from '../UpdatePage/UpdatePage';
+import AddClipPage from '../AddClipPage/AddClipPage';
+import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
+import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
+import ModifyClipPage from '../ModifyClipPage/ModifyClipPage.jsx';
+import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
 
 import './App.css';
+import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +45,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <BottomNavigationBar />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -55,9 +66,17 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/main"
           >
-            <UserPage />
+            <Homepage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UpdatePage else shows LoginPage
+            exact
+            path="/update"
+          >
+            <UpdatePage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -68,6 +87,54 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows AddClipPage else shows LoginPage
+            exact
+            path="/addclip"
+          >
+            <AddClipPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ModifyClipPage else shows LoginPage
+            exact
+            path="/modifyclip"
+          >
+            <ModifyClipPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows MakePhrasePage else shows LoginPage
+            exact
+            path="/makephrase"
+          >
+            <MakePhrasePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows JoinProject else shows LoginPage
+            exact
+            path="/joinproject"
+          >
+            <JoinProjectPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows MakeProject else shows LoginPage
+            exact
+            path="/makeproject"
+          >
+            <MakeProjectPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ModifyClipPage else shows LoginPage
+            exact
+            path="/modifyclip"
+          >
+            <ModifyClipPage />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -75,7 +142,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -89,7 +156,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -103,7 +170,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/main" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
