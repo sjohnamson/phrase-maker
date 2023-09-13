@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PhraseLogo from '../../images/PMLogo.png'
+import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
 
 
 import './Nav.css';
@@ -43,6 +44,8 @@ function Nav() {
         <Link className="navLink" to="/about">
           About
         </Link> 
+
+        <ProjectDropdown />
 
       </div>
     </div>
