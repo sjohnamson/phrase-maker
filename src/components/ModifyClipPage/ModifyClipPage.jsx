@@ -26,12 +26,24 @@ export default function ModifyClipPage() {
     const [newPhrase, setNewPhrase] = useState()
 
     useEffect(() => {
-        console.log('current clip in effect', currentClip)
-        dispatch({
-            type: 'ADD_CLIP_TO_PHRASE',
-            payload: { currentClip }
-        })
-    }, [currentClip])
+        let clipsToAdd = processPhrase.splice(1);
+        console.log('clips to add', clipsToAdd)
+        let concatenatingPhrase = myVideo.resize(fill().width(400).height(250))
+        for (let vid of clipsToAdd) {
+            console.log('clip.clip.public_id', vid.clip.public_id)
+
+            concatenatingPhrase = concatenatingPhrase.videoEdit(
+                concatenate(
+                    Concatenate.videoSource(vid.clip.public_id)
+                        .transformation(new Transformation()
+                            .resize(fill().width(400).height(250)
+                            )
+                        )
+                )
+            );
+        }
+        setConcatenatedPhrase(concatenatingPhrase)
+    }, [])
 
     const cld = new Cloudinary({
         cloud: {
@@ -39,38 +51,19 @@ export default function ModifyClipPage() {
         }
     });
 
-    const myVideo = cld.video("DEV/cbtcvktirdg0p8vwsh0h");
+    const myVideo = cld.video(processPhrase[0].clip.public_id);
 
+    // const savePhrase = () => {
+    //     const phraseToAdd = {
+    //         newPhraseTitle,
+    //         newPhraseDescription,
+    //         newPhrase,
+    //     }
+    //     console.log('phrase to add', phraseToAdd)
 
-    const handleModify = async () => {
-        let concatenatingPhrase = myVideo.resize(fill().width(400).height(250))
-        for (let clip of processPhrase) {
-            console.log('clip.currentClip.public_id', clip.currentClip.public_id)
+    //     dispatch({ type: 'ADD_PHRASE', payload: phraseToAdd })
 
-            concatenatingPhrase = concatenatingPhrase.videoEdit(
-                concatenate(
-                    Concatenate.videoSource(clip.currentClip.public_id)
-                        .transformation(new Transformation()
-                        .resize(fill().width(400).height(250)
-                        )
-                        )
-                        )
-                        );
-        }
-        setConcatenatedPhrase(concatenatingPhrase)
-    }
-
-    const savePhrase = () => {
-        const phraseToAdd = {
-            newPhraseTitle,
-            newPhraseDescription,
-            newPhrase,
-        }
-        console.log('phrase to add', phraseToAdd)
-
-        dispatch({ type: 'ADD_PHRASE', payload: phraseToAdd })
-
-    }
+    // }
 
     return (
         <Box >
@@ -100,14 +93,7 @@ export default function ModifyClipPage() {
                 <Button
                     className="btn btn-primary"
                     type="submit"
-                    onClick={() => handleModify()}
-                >
-                    Add clip to phrase
-                </Button>
-                <Button
-                    className="btn btn-primary"
-                    type="submit"
-                    onClick={() => savePhrase()}
+                    // onClick={() => savePhrase()}
                 >
                     savePhrase
                 </Button>

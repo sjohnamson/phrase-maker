@@ -5,13 +5,15 @@ import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 // material imports
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import ListItem from '@mui/material/ListItem';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { List, BottomNavigationAction, ListItemButton, Collapse, ListItemText, Avatar, Divider, Menu, MenuItem, ListItemIcon, Link } from '@mui/material';
+import JoinFullIcon from '@mui/icons-material/JoinFull';
+import InfoIcon from '@mui/icons-material/Info';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
+import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon} from '@mui/material';
 import { ExpandMore, ExpandLess, Logout, Settings } from '@mui/icons-material';
 // import { Link } from "react-router-dom";
 
@@ -31,21 +33,7 @@ export default function ProjectDropdown() {
             })
     }, [])
 
-
-    // handles the menu navigation features
-    // const [anchorEl, setAnchorEl] = useState(null);
-    // const open = Boolean(anchorEl);
-    // const handleClick = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-    // const handleClose = () => {
-    //     setAnchorEl(null);
-    // };
-
     const [state, setState] = useState({
-        //   top: false,
-        //   left: false,
-        //   bottom: false,
         right: false,
     });
 
@@ -78,20 +66,22 @@ export default function ProjectDropdown() {
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
-            // onClick={toggleDrawer(anchor, false)}
-            // onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-
-                <ListItem disablePadding             onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}>
+            <ListItemButton>
+                <ListItem
+                    disablePadding
+                    onClick={toggleDrawer(anchor, false)}
+                    onKeyDown={toggleDrawer(anchor, false)}
+                >
 
                     <ListItemIcon>
-
+                        <Diversity3Icon />
                     </ListItemIcon>
                     <ListItemText primary={userInfo.current_project} />
 
                 </ListItem>
+                </ListItemButton>
             </List>
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -112,7 +102,12 @@ export default function ProjectDropdown() {
 
             <Collapse in={listOpen} timeout="auto" unmountOnExit>
 
-                <List component="div" disablePadding>
+                <List
+                    component="div"
+                    disablePadding
+                    onClick={toggleDrawer(anchor, false)}
+                    onKeyDown={toggleDrawer(anchor, false)}
+                >
 
                     {projectList.map(project => {
                         return (
@@ -120,7 +115,7 @@ export default function ProjectDropdown() {
                                 onClick={() => setCurrentProject(project)}
                                 sx={{ pl: 4 }}
                                 key={project.title}
-   
+
                             >
                                 {/* <ListItemIcon>
 
@@ -131,26 +126,56 @@ export default function ProjectDropdown() {
                     })}
                 </List>
             </Collapse>
-  
-            <Divider />
-            <List>
-                <ListItem disablePadding>
-                    <Link component={RouterLink} to="/joinproject" color="inherit" underline="none">
-                        <ListItemIcon>
 
+            <Divider />
+            <List
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
+            >
+                <ListItem disablePadding>
+                    <ListItemButton
+                        component={RouterLink}
+                        to="/joinproject"
+                        color="inherit"
+                        underline="none"
+                    >
+                        <ListItemIcon>
+                            <JoinFullIcon />
                         </ListItemIcon>
                         <ListItemText primary='Join project' />
-                    </Link>
+                    </ListItemButton>
                 </ListItem>
 
                 <ListItem disablePadding>
-                    <Link component={RouterLink} to="/makeproject" color="inherit" underline="none">
+                    <ListItemButton
+                        component={RouterLink}
+                        to="/makeproject"
+                        color="inherit"
+                        underline="none"
+                    >
 
                         <ListItemIcon>
-
+                            <AddIcon />
                         </ListItemIcon>
                         <ListItemText primary='Create new project' />
-                    </Link>
+                    </ListItemButton>
+
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton
+                        component={RouterLink}
+                        to="/about"
+                        color="inherit"
+                        underline="none"
+                    >
+
+                        <ListItemIcon>
+                            <InfoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary='About Phrase Maker' />
+                    </ListItemButton>
+                    
                 </ListItem>
 
             </List>
@@ -164,7 +189,9 @@ export default function ProjectDropdown() {
         <div>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <Button onClick={toggleDrawer(anchor, true)}>
+                        <Diversity3Icon fontSize='large'/>
+                    </Button>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}
@@ -175,124 +202,5 @@ export default function ProjectDropdown() {
                 </React.Fragment>
             ))}
         </div>
-
-        // <>
-        //     <BottomNavigationAction
-        //         onClick={handleClick}
-        //         size="small"
-        //         sx={{ ml: 0, mb: 2}}
-        //         aria-controls={open ? 'account-menu' : undefined}
-        //         aria-haspopup="true"
-        //         aria-expanded={open ? 'true' : undefined}
-        //         icon={<GroupWorkIcon />}
-        //         label="Projects"
-        //     >
-        //     </BottomNavigationAction>
-
-        //     <Menu
-        //         anchorEl={anchorEl}
-        //         id="project-menu"
-        //         open={open}
-        //         onClose={handleClose}
-
-
-        //         PaperProps={{
-        //             elevation: 0,
-        //             sx: {
-        //                 overflow: 'visible',
-        //                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-        //                 '& .MuiAvatar-root': {
-        //                     width: 32,
-        //                     height: 32,
-        //                     ml: -0,
-        //                     mr: 0,
-        //                 },
-        //                 '&:before': {
-        //                     content: '""',
-        //                     display: 'block',
-        //                     position: 'absolute',
-        //                     top: 0,
-        //                     right: 14,
-        //                     width: 10,
-        //                     height: 10,
-        //                     bgcolor: 'background.paper',
-        //                     transform: 'translateY(-50%) rotate(45deg)',
-        //                     zIndex: 0,
-        //                 },
-        //             },
-        //         }}
-        //         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        //         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        //     >
-        //         <MenuItem onClick={handleClose}>
-        //             <Avatar /> {userInfo.current_project}
-        //         </MenuItem>
-
-        //         <MenuItem>
-        //             <List
-        //                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-        //                 component="nav"
-        //                 aria-labelledby="nested-list-subheader"
-
-        //             >
-        //                 <ListItemButton onClick={handleListClick}>
-        //                     <ListItemIcon>
-
-        //                     </ListItemIcon>
-        //                     <ListItemText primary="Change project" />
-        //                     {listOpen ? <ExpandLess /> : <ExpandMore />}
-        //                 </ListItemButton>
-
-
-        //                 <Collapse in={listOpen} timeout="auto" unmountOnExit>
-
-        //                     <List component="div" disablePadding>
-
-        //                         {projectList.map(project => {
-        //                             return (
-        //                                 < ListItemButton
-        //                                     onClick={() => setCurrentProject(project)}
-        //                                     sx={{ pl: 4 }}
-        //                                     key={project.title}
-        //                                 >
-        //                                     {/* <ListItemIcon>
-
-        //                                 </ListItemIcon> */}
-        //                                     <ListItemText primary={project.title} />
-        //                                 </ListItemButton>
-        //                             )
-        //                         })}
-        //                     </List>
-
-        //                 </Collapse>
-        //             </List>
-        //         </MenuItem >
-        //         <Divider />
-        //         <MenuItem onClick={handleClose}>
-        //             <Link component={RouterLink} to="/joinproject" color="inherit" underline="none">
-        //                 <ListItemIcon>
-        //                     <Settings fontSize="small" />
-        //                 </ListItemIcon>
-        //                 Join project
-        //             </Link>
-        //         </MenuItem>
-        //         <MenuItem onClick={handleClose}>
-        //             <Link component={RouterLink} to="/makeproject" color="inherit" underline="none">
-        //                 <ListItemIcon>
-        //                     <Settings fontSize="small" />
-        //                 </ListItemIcon>
-        //                 Create new project
-        //             </Link>
-        //         </MenuItem>
-        //         <MenuItem onClick={handleClose}>
-        //             <Link href="#" color="inherit" underline="none">
-        //                 <ListItemIcon>
-        //                     <Logout fontSize="small" />
-        //                 </ListItemIcon>
-        //                 Logout
-        //             </Link>
-        //         </MenuItem>
-        //     </Menu >
-        // </>
     )
 }

@@ -11,41 +11,36 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    
+
     <div className="nav">
 
       <Link to="/home">
-        <img src={PhraseLogo} alt="Phrase Maker" style={{height: 75}}/>
+        <img src={PhraseLogo} alt="Phrase Maker" style={{ height: 75 }} />
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
+          <><Link className="navLink" to="/login">
             Login / Register
           </Link>
+            <Link className="navLink" to="/about">
+              About
+            </Link>
+          </>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/home">
-              Home
-            </Link>
+            <ProjectDropdown />
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-         
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link> 
 
-        <ProjectDropdown />
+
+
 
       </div>
     </div>

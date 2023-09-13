@@ -1,5 +1,5 @@
 const processPhrase = (state = [], action) => {
-    console.log('action.payload in reducer', action.payload)
+    // console.log('action.payload in reducer', action.payload)
     switch (action.type) {
       case 'ADD_CLIP_TO_PHRASE':
         return[

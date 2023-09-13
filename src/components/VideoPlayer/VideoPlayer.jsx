@@ -1,5 +1,8 @@
 
 import { useEffect, useRef } from 'react';
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { AdvancedVideo } from '@cloudinary/react';
+
 
 export default function VideoPlayer({ width, height, public_id, title }) {
     const cloudinaryRef = useRef();
@@ -15,15 +18,15 @@ export default function VideoPlayer({ width, height, public_id, title }) {
     }, []);
 
     return (
-        <video 
+        <AdvancedVideo
             className="cld-video-player cld-video-player-skin-light"
             ref={videoRef}
-            // controls='true'
+            controls
             data-cld-public-id={public_id}
             height={height}
             width={width}
             title={title}
             >
-        </video>
+        </AdvancedVideo>
     );
 }
