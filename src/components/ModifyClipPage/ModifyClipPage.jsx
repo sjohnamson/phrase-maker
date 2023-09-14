@@ -54,17 +54,19 @@ export default function ModifyClipPage() {
 
     const myVideo = cld.video(processPhrase[0].clip.public_id);
 
-    // const savePhrase = () => {
-    //     const phraseToAdd = {
-    //         newPhraseTitle,
-    //         newPhraseDescription,
-    //         newPhrase,
-    //     }
-    //     console.log('phrase to add', phraseToAdd)
+    const savePhrase = () => {
+        const phraseURL = concatenatedPhrase.toURL();
+        console.log('url:', phraseURL)
+        const phraseToAdd = {
+            newPhraseTitle,
+            newPhraseDescription,
+            phraseURL,
+        }
+        console.log('phrase to add', phraseToAdd)
 
-    //     dispatch({ type: 'ADD_PHRASE', payload: phraseToAdd })
+        dispatch({ type: 'ADD_PHRASE', payload: phraseToAdd })
 
-    // }
+    }
 
     return (
         <Box >
@@ -94,7 +96,7 @@ export default function ModifyClipPage() {
                 <Button
                     className="btn btn-primary"
                     type="submit"
-                    // onClick={() => savePhrase()}
+                    onClick={() => savePhrase()}
                 >
                     savePhrase
                 </Button>

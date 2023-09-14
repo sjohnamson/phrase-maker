@@ -102,7 +102,7 @@ router.put("/", rejectUnauthenticated, async (req, res) => {
     console.log('in project put', req.body)
 
     const userId = req.user.id;
-    const currentProject = req.body
+    const currentProject = req.body.title
 
     const sqlCurrentProject = `
         UPDATE "user" 

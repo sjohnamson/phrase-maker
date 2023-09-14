@@ -1,23 +1,40 @@
 const express = require("express");
 const router = express.Router();
-const cloudinaryUpload = require('../modules/cloudinary-config');
+const cloudinary = require('cloudinary').v2;
 const pool = require('../modules/pool')
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// posts new projects into the database and adds project and user ids to the user_project database
-router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
-    console.log('sent to cloudinary: ', req.file)
-    console.log('in phase post req.body:', req.body)
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
-    const phraseInfo = [ req.body.title, req.body.description];
+// posts new phrases into cloudinary and the database 
+router.post("/", rejectUnauthenticated, async (req, res) => {
+// assign variables to phrase and user info from post
+    const phraseTitle = req.body.title; 
+    const phraseDescription = req.body.description;
+    const userID = req.user.id
 
     const connection = await pool.connect()
     try {
         await connection.query('BEGIN');
+// send phrase URL to cloudinary
+        const result = await cloudinary.uploader.upload(req.body.phraseURL, {
+            resource_type: 'video', 
+        })
+// set phraseID with result from cloudinary
+        const phraseID = result.public_id;
+// select user's current project
+const sqlCurrentProject = `
+SELECT current_project
+WHERE id = $1
+`
         const sqlAddPhrase = `
         INSERT INTO phrase ("public_id", "title", "description") 
         VALUES ($1, $2, $3);`
-        await connection.query(sqlAddPhrase, phraseInfo);
+        await connection.query(sqlAddPhrase, [phraseID, phraseTitle, phraseDescription]);
 
         await connection.query('COMMIT');
         res.sendStatus(200);

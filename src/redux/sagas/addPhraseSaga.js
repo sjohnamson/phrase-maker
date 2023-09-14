@@ -3,22 +3,23 @@ import axios from 'axios';
 
 function* addNewPhraseSaga(action) {
     try {
-        const headers = {
-            'content-type': 'multipart/form-data'
-        }
+        // const headers = {
+        //     'content-type': 'multipart/form-data'
+        // }
         console.log('in add phrase saga', action.payload)
-        const phraseData = new FormData();
+        // const phraseData = new FormData();
 
-        phraseData.append('video', action.payload.newPhrase.CloudinaryVideo);
-        phraseData.append('title', action.payload.newPhraseTitle);
-        phraseData.append('description', action.payload.newPhraseDescription);
+        // phraseData.append('phrase', action.payload.concatenatedPhrase);
+        // phraseData.append('title', action.payload.newPhraseTitle);
+        // phraseData.append('description', action.payload.newPhraseDescription);
 
-    
+    const phraseToAdd = action.payload;
+
         yield axios({
             method: 'POST',
             url: '/api/phrase', 
-            headers: headers,
-            data: phraseData
+            // headers: headers,
+            data: phraseToAdd
         })
 
         yield put({

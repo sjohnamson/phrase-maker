@@ -54,10 +54,12 @@ export default function ProjectDropdown() {
     };
 
     // changes user's current project to clicked project
-    const setCurrentProject = (newCurrent) => {
+    const setCurrentProject = (newCurrent, anchor) => {
+        console.log('current set in dropdown:', newCurrent)
         axios.put('/api/project', newCurrent)
             .then(response => {
-                // handleClose();
+                console.log('current set in dropdown:', response)
+                toggleDrawer(anchor, false);
             })
             .catch(err => {
                 console.error('error in dropdown put:', err)
@@ -81,7 +83,7 @@ export default function ProjectDropdown() {
                     <ListItemIcon >
                         <Diversity3Icon color='info'/>
                     </ListItemIcon>
-                    <ListItemText primary={userInfo.current_project.title} />
+                    <ListItemText primary={userInfo.current_project} sx={{color: 'info'}}/>
 
                 </ListItem>
                 </ListItemButton>
@@ -115,7 +117,7 @@ export default function ProjectDropdown() {
                     {projectList.map(project => {
                         return (
                             < ListItemButton
-                                onClick={() => setCurrentProject(project)}
+                                onClick={() => setCurrentProject(project, anchor)}
                                 sx={{ pl: 4 }}
                                 key={project.title}
 
