@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
+import LogOutButton from '../BtnLogOut/LogOutButton';
 // material imports
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import AddIcon from '@mui/icons-material/Add';
@@ -13,6 +14,7 @@ import ListItem from '@mui/material/ListItem';
 import JoinFullIcon from '@mui/icons-material/JoinFull';
 import InfoIcon from '@mui/icons-material/Info';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon} from '@mui/material';
 import { ExpandMore, ExpandLess, Logout, Settings } from '@mui/icons-material';
 // import { Link } from "react-router-dom";
@@ -79,7 +81,7 @@ export default function ProjectDropdown() {
                     <ListItemIcon >
                         <Diversity3Icon color='info'/>
                     </ListItemIcon>
-                    <ListItemText primary={userInfo.current_project} />
+                    <ListItemText primary={userInfo.current_project.title} />
 
                 </ListItem>
                 </ListItemButton>
@@ -154,15 +156,13 @@ export default function ProjectDropdown() {
                         color="inherit"
                         underline="none"
                     >
-
                         <ListItemIcon>
                             <AddIcon />
                         </ListItemIcon>
                         <ListItemText primary='Create new project' />
                     </ListItemButton>
-
                 </ListItem>
-
+                <Divider />
                 <ListItem disablePadding>
                     <ListItemButton
                         component={RouterLink}
@@ -170,13 +170,25 @@ export default function ProjectDropdown() {
                         color="inherit"
                         underline="none"
                     >
-
                         <ListItemIcon>
                             <InfoIcon />
                         </ListItemIcon>
                         <ListItemText primary='About Phrase Maker' />
                     </ListItemButton>
-                    
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton
+                        // component={RouterLink}
+                        // to="/about"
+                        color="inherit"
+                        underline="none"
+                    >
+                        <ListItemIcon>
+                            <LogoutIcon />
+                        </ListItemIcon>
+                        <LogOutButton/>
+                    </ListItemButton>
                 </ListItem>
 
             </List>

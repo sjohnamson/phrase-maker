@@ -21,10 +21,10 @@ export default function BottomNavigationBar() {
     history.push(link)
   }
   return (
-    <Box sx={{ width: '100%', }}>
+    <Box sx={{ width: '100%'}}>
       <BottomNavigation
         showLabels={true}
-        sx={{height: 80, width: '100%', position: 'fixed', bottom: 0, backgroundColor: '#ebebe5', zIndex: 2,}}
+        sx={{height: 80, width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'pink.light', zIndex: 2,}}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}

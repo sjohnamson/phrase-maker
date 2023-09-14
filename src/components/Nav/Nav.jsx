@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import PhraseLogo from '../../images/PMLogo.png'
+import PhraseLogo from '../../images/PMLogoNoSq.png'
 import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Link } from '@mui/material';
 
 
 import './Nav.css';
@@ -20,20 +19,20 @@ function Nav() {
       >
 
         <Link to="/home">
-          <img src={PhraseLogo} alt="Phrase Maker" style={{ height: 75, marginLeft: 11, marginTop: 3 }} />
+          <img src={PhraseLogo} alt="Phrase Maker" style={{ height: 75, marginLeft: 11, marginTop: 5 }} />
         </Link>
 
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <>
-            <Link className="navLink" to="/login">
+          <Box sx={{paddingTop: 3}}>
+            {/* <Link color="inherit" to="/login">
               Login / Register
-            </Link>
-            <Link className="navLink" to="/about">
+            </Link> */}
+            <Link  to="/about" underline="none" color="info" >
               About
             </Link>
-          </>
+          </Box>
         )}
 
         {/* If a user is logged in, show these links */}

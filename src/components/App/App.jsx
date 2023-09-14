@@ -61,6 +61,7 @@ function App() {
         main: '#566e3d'
       },
       contrastThreshold: 4.5,
+      tonalOffset: 0.5,
     },
   });
 
@@ -80,8 +81,8 @@ function App() {
     <ThemeProvider theme={theme}>
     <Router>
       <div>
-        <Nav />
-        <BottomNavigationBar />
+        {/* <Nav />
+        <BottomNavigationBar /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -104,6 +105,8 @@ function App() {
             exact
             path="/main"
           >
+                    <Nav />
+        <BottomNavigationBar />
             <Homepage />
           </ProtectedRoute>
 
@@ -112,6 +115,8 @@ function App() {
             exact
             path="/update"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <UpdatePage />
           </ProtectedRoute>
 
@@ -120,6 +125,8 @@ function App() {
             exact
             path="/info"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <InfoPage />
           </ProtectedRoute>
 
@@ -128,6 +135,8 @@ function App() {
             exact
             path="/addclip"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <AddClipPage />
           </ProtectedRoute>
 
@@ -136,6 +145,8 @@ function App() {
             exact
             path="/modifyclip"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <ModifyClipPage />
           </ProtectedRoute>
 
@@ -144,6 +155,8 @@ function App() {
             exact
             path="/makephrase"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <MakePhrasePage />
           </ProtectedRoute>
 
@@ -152,6 +165,8 @@ function App() {
             exact
             path="/joinproject"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <JoinProjectPage />
           </ProtectedRoute>
 
@@ -160,6 +175,8 @@ function App() {
             exact
             path="/makeproject"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <MakeProjectPage />
           </ProtectedRoute>
 
@@ -168,6 +185,8 @@ function App() {
             exact
             path="/modifyclip"
           >
+                                <Nav />
+        <BottomNavigationBar />
             <ModifyClipPage />
           </ProtectedRoute>
 
