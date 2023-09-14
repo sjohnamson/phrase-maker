@@ -19,9 +19,9 @@ export default function MakePhrasePage() {
     }
 
     return (
-        <Box> <section className="clips">
-            <MakePhraseClipCard xs={4} sm={3} md={2} />
-        </section>
+        <Box className="clips" sx={{width: '95%', margin: 'auto'}}>
+            <MakePhraseClipCard xs={6} sm={6} md={6} />
+       
 
             <Button
                 className="btn btn-primary"

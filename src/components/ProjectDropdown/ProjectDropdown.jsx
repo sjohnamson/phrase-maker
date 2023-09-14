@@ -66,6 +66,7 @@ export default function ProjectDropdown() {
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
+        
         >
             <List>
             <ListItemButton>
@@ -75,8 +76,8 @@ export default function ProjectDropdown() {
                     onKeyDown={toggleDrawer(anchor, false)}
                 >
 
-                    <ListItemIcon>
-                        <Diversity3Icon />
+                    <ListItemIcon >
+                        <Diversity3Icon color='info'/>
                     </ListItemIcon>
                     <ListItemText primary={userInfo.current_project} />
 
@@ -140,7 +141,7 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <JoinFullIcon />
+                            <JoinFullIcon color='secondary'/>
                         </ListItemIcon>
                         <ListItemText primary='Join project' />
                     </ListItemButton>
@@ -186,10 +187,10 @@ export default function ProjectDropdown() {
 
     return (
 
-        <div>
+        <Box sx={{pt: 2}}>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>
+                    <Button color='info' onClick={toggleDrawer(anchor, true)}>
                         <Diversity3Icon fontSize='large'/>
                     </Button>
                     <Drawer
@@ -201,6 +202,6 @@ export default function ProjectDropdown() {
                     </Drawer>
                 </React.Fragment>
             ))}
-        </div>
+        </Box>
     )
 }

@@ -6,6 +6,7 @@ import MakePhraseCardContent from './MakePhraseCardContent/MakePhraseCardContent
 // Material UI imports
 import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { AdvancedVideo } from '@cloudinary/react';
 
 
 export default function ClipCard({ xs, sm, md }) {
@@ -25,7 +26,7 @@ export default function ClipCard({ xs, sm, md }) {
 
                         <Card sx={{ maxWidth: 600 }}>
                             <CardActionArea onClick={() => { }}>
-                                <VideoPlayer public_id={clip.public_id} width={500} height={300} />
+                                <VideoPlayer public_id={clip.public_id} width={190} height={100}/>
                                 <MakePhraseCardContent clip={clip} />
                             </CardActionArea>
                             <MakePhraseCardActions clip={clip} />

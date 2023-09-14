@@ -9,9 +9,9 @@ export default function MainPageCardContent({ clip }) {
                 <Typography gutterBottom variant="h5" component="div">
                     {clip.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                {/* <Typography variant="body2" color="text.secondary">
                     {clip.description}
-                </Typography>
+                </Typography> */}
             </CardContent>
         </>
     );

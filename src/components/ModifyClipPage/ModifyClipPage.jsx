@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { AdvancedVideo } from '@cloudinary/react';
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { concatenate } from "@cloudinary/url-gen/actions/videoEdit";

@@ -12,7 +12,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+// page imports
 import AboutPage from '../AboutPage/AboutPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -25,12 +25,10 @@ import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
 import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
 import ModifyClipPage from '../ModifyClipPage/ModifyClipPage.jsx';
 import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
-
-import './App.css';
 import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
-
-
-
+// style imports
+import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +39,45 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  // changes to the material ui color palette
+  let theme = createTheme({
+    palette: {
+      primary: {
+        main: '#d5a021'
+      },
+      secondary: {
+        main: '#ceeada',
+      },
+      error: {
+        main: '#ff312e',
+      },
+      warning: {
+        main: '#d81e5b',
+      },
+      info: {
+        main: '#2D3047',
+      }, 
+      success: {
+        main: '#566e3d'
+      },
+      contrastThreshold: 4.5,
+    },
+  });
+
+  theme = createTheme(theme, {
+    // Custom colors created with augmentColor 
+    palette: {
+      pink: theme.palette.augmentColor({
+        color: {
+          main: '#F8c7cc',
+        },
+        name: 'pink',
+      }),
+    },
+  });
+
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -185,6 +221,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
