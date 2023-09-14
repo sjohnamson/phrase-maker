@@ -8,33 +8,48 @@ cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
-  });
+});
 
 // posts new phrases into cloudinary and the database 
 router.post("/", rejectUnauthenticated, async (req, res) => {
-// assign variables to phrase and user info from post
-    const phraseTitle = req.body.title; 
-    const phraseDescription = req.body.description;
+    // assign variables to phrase and user info from post
+    const phraseTitle = req.body.newPhraseTitle;
+    const phraseDescription = req.body.newPhraseDescription;
+    console.log('title and desc', req.body)
     const userID = req.user.id
 
     const connection = await pool.connect()
     try {
         await connection.query('BEGIN');
-// send phrase URL to cloudinary
+        // send phrase URL to cloudinary
         const result = await cloudinary.uploader.upload(req.body.phraseURL, {
-            resource_type: 'video', 
+            resource_type: 'video',
         })
-// set phraseID with result from cloudinary
+        // set phraseID with result from cloudinary
         const phraseID = result.public_id;
-// select user's current project
-const sqlCurrentProject = `
-SELECT current_project
-WHERE id = $1
-`
+        // select user's current project title
+        const sqlCurrentProject = `
+            SELECT current_project
+            FROM "user"
+            WHERE id = $1
+            ;`
+        const reply = await connection.query(sqlCurrentProject, [userID])
+        const currentTitle = reply.rows[0].current_project;
+        console.log('currentTitle', currentTitle)
+        // get project id using title
+        const sqlCurrentID = `
+            SELECT id
+            FROM project
+            WHERE title = $1
+            ;`
+        const response = await connection.query(sqlCurrentID, [currentTitle])
+        const currentID = response.rows[0].id;
+        console.log('currentID', currentID)
+        // insert new phrase
         const sqlAddPhrase = `
-        INSERT INTO phrase ("public_id", "title", "description") 
-        VALUES ($1, $2, $3);`
-        await connection.query(sqlAddPhrase, [phraseID, phraseTitle, phraseDescription]);
+        INSERT INTO phrase ("public_id", "title", "description", "project_id") 
+        VALUES ($1, $2, $3, $4);`
+        await connection.query(sqlAddPhrase, [phraseID, phraseTitle, phraseDescription, currentID]);
 
         await connection.query('COMMIT');
         res.sendStatus(200);

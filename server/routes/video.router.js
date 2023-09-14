@@ -81,15 +81,14 @@ router.delete("/:id", rejectUnauthenticated, cloudinaryUpload.single("video"), a
       DELETE FROM clip 
       WHERE id = $1 ;
       `
-    // Save the result so we can get the returned value
     await connection.query(sqlDeleteClip, clipId);
-    // Get the id from the result - will have 1 row with the id 
+  
     const sqlDeleteTags = `
       DELETE FROM clip_tag 
       WHERE clip_id = $1
       `
-    // Save the result so we can get the returned value
     await connection.query(sqlDeleteTags, clipId);
+    
     await connection.query('COMMIT');
     res.sendStatus(200);
   } catch (error) {
@@ -98,7 +97,6 @@ router.delete("/:id", rejectUnauthenticated, cloudinaryUpload.single("video"), a
     res.sendStatus(500);
   } finally {
     connection.release()
-
   }
 });
 
