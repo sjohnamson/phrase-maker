@@ -31,7 +31,7 @@ export default function BottomNavigationBar() {
         <BottomNavigationAction
           label="Clips"
           value={value}
-          onClick={() => navigate('/main')}
+          onClick={() => navigate('/home')}
           icon={<MovieCreationIcon />}
         />
         <BottomNavigationAction
