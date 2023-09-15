@@ -20,7 +20,8 @@ const handleUpdate = () => {
         <Button
             onClick={() => handleUpdate()}
             size="small"
-            color="primary"
+            variant='outlined'
+            color="success"
             type="submit"
         >
             Update

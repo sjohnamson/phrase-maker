@@ -24,7 +24,9 @@ export default function BtnModifyClip({ clip }) {
             <Button
                 onClick={() => handleAddToPhrase(clip)}
                 size="small"
-                color="primary">
+                color="primary"
+                variant="outlined"
+                >
                 Add clip to phrase
             </Button>
 

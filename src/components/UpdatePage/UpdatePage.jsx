@@ -59,7 +59,7 @@ export default function UpdatePage() {
     return (
         <div>
             <Box>
-                <h3>React File Upload</h3>
+                <h3>Update your clip information</h3>
                 <div className="form-group">
                     <TextField
                         required
@@ -73,7 +73,7 @@ export default function UpdatePage() {
                         onChange={(event) => handleDescriptionChange(event)}
                     />
                 </div>
-                <Stack spacing={3} sx={{ width: 500 }}>
+                {/* <Stack spacing={3} sx={{ width: 500 }}>
                     <Autocomplete
                         multiple
                         id="tags-filled"
@@ -98,12 +98,13 @@ export default function UpdatePage() {
                             />
                         )}
                     />
-                </Stack>
+                </Stack> */}
                 <div className="form-group">
                     <Button
                         onClick={handleUpdate}
                         size="small"
-                        color="primary"
+                        color="success"
+                        variant='outlined'
                         type="submit"
                     >
                         Update

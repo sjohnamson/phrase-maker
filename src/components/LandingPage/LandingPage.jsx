@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 // styling imports
 import './LandingPage.css';
-import { Typography, Button, Fade, Slide } from '@mui/material';
+import { Box, Typography, Button, Fade, Slide } from '@mui/material';
 
 
 // CUSTOM COMPONENTS
@@ -25,36 +25,36 @@ function LandingPage() {
 
   useEffect(() => {
     // sets the delay for the items that transition in on load
-    const delayMaker = setTimeout(() => {
-      setShowMaker(true);
-    }, 1000);
+    // const delayMaker = setTimeout(() => {
+    //   setShowMaker(true);
+    // }, 1000);
  
 
     const delayWelcome = setTimeout(() => {
       setShowWelcome(true);
-    }, 2000);
+    }, 1250);
 
     const delayRegister = setTimeout(() => {
       setShowRegister(true);
-    }, 3000);
+    }, 1750);
 
     const delayJoin = setTimeout(() => {
       setShowJoin(true);
-    }, 4000);
+    }, 2250);
 
     const delayShare = setTimeout(() => {
       setShowShare(true);
-    }, 5000);
+    }, 2750);
     
     const delaySequence = setTimeout(() => {
       setShowSequence(true);
-    }, 6000);
+    }, 3250);
 
     const delayRepeat = setTimeout(() => {
       setShowRepeat(true);
-    }, 7000);
+    }, 3750);
 
-    return () => clearTimeout(delayMaker);
+    // return () => clearTimeout(delayMaker);
 
   }, []);
 
@@ -65,24 +65,25 @@ function LandingPage() {
   return (
     <div className="container">
       {/* slide sets the phrase and maker images to slide in on load */}
-      <Slide direction="right" in={true} timeout={1500} >
+      <Slide direction="right" in={true} timeout={{enter: 1250}} >
         <img src={PhraseHalf} alt="Sliding PHRASE/" style={{ height: 60 }} />
-      </Slide>
-      <Slide direction="left" in={showMaker} timeout={{enter: 1500}} >
+      </Slide >
+      <Slide direction="left" in={true} timeout={{enter: 1250}} >
         <img src={MakerHalf} alt="Sliding /MAKER" style={{ height: 60 }} />
       </Slide>
       {/* fade sets the app directions to fade in one at a time on load */}
-      <Fade in={showWelcome} timeout={{enter: 1500}}><Typography>Welcome to Phrase Maker! </Typography></Fade>
-      <Fade in={showRegister} timeout={{enter: 1500}}><Typography>Register </Typography></Fade>
-      <Fade in={showJoin} timeout={{enter: 1500}}><Typography>Join a project or create a new project. </Typography></Fade>
-      <Fade in={showShare} timeout={{enter: 1500}}><Typography>Share your video clips </Typography></Fade>
-      <Fade in={showSequence} timeout={{enter: 1500}}><Typography>Sequence clips into phrases.</Typography></Fade>
-      <Fade in={showRepeat} timeout={{enter: 1500}}><Typography>Repeat and enjoy!</Typography></Fade>
-
+     <Box>
+      <Fade in={showWelcome} timeout={{enter: 2500}}><Typography>Welcome to Phrase Maker! </Typography></Fade>
+      <Fade in={showRegister} timeout={{enter: 2500}}><Typography>Register </Typography></Fade>
+      <Fade in={showJoin} timeout={{enter: 2500}}><Typography>Join a project or create a new project. </Typography></Fade>
+      <Fade in={showShare} timeout={{enter: 2500}}><Typography>Share your video clips </Typography></Fade>
+      <Fade in={showSequence} timeout={{enter: 2500}}><Typography>Sequence clips into phrases.</Typography></Fade>
+      <Fade in={showRepeat} timeout={{enter: 2500}}><Typography>Repeat and enjoy!</Typography></Fade>
+      </Box> 
           <RegisterForm />
 
             <h4>Already a Member?</h4>
-            <Button  onClick={onLogin}>
+            <Button  variant="contained" onClick={onLogin}>
               Login
             </Button>
     </div>

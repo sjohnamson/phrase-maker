@@ -20,6 +20,7 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
         const result = await connection.query(sqlAddProject, [newProject]);
         // Get the id from the result - will have 1 row with the id 
         const projectId = result.rows[0].id;
+        console.log('projectID', projectId)
         // create new row in user_project connecting user to project
         const sqlProjectUser = `
             INSERT INTO user_project ("user_id", "project_id")
