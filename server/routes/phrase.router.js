@@ -10,6 +10,24 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// retrieves phrase public_ids to display in PhraseCards
+router.get("/", (req, res) => {
+    const sqlQuery = `
+        SELECT phrase.id, phrase.title, phrase.description, phrase.public_id
+        FROM phrase
+        ;`
+  
+    pool.query(sqlQuery)
+      .then(result => {
+        // console.log('result in video get', result)
+        res.send(result.rows)
+      })
+      .catch(err => {
+        res.sendStatus(504)
+      })
+
+  });
+
 // posts new phrases into cloudinary and the database 
 router.post("/", rejectUnauthenticated, async (req, res) => {
     // assign variables to phrase and user info from post
@@ -61,8 +79,8 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
         connection.release()
 
     }
-
 });
+
 
 
 module.exports = router;

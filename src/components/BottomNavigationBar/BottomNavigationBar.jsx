@@ -1,25 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
-
 // material imports
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import TheatersIcon from '@mui/icons-material/Theaters';
-import zIndex from '@mui/material/styles/zIndex';
 
 export default function BottomNavigationBar() {
   const [value, setValue] = useState(0);
   const history = useHistory();
 
+  // navigate for the clips and phrases buttons
   const navigate = (link) => {
     history.push(link)
   }
+
   return (
     <Box sx={{ width: '100%'}}>
       <BottomNavigation
@@ -39,7 +37,7 @@ export default function BottomNavigationBar() {
         <BottomNavigationAction
           label="Add"
           value={value}
-          // onClick={}
+          onClick={() => navigate('/addclipphrase')}
           icon={<AddCircleOutlineIcon />}
         />
         <BottomNavigationAction
@@ -47,13 +45,7 @@ export default function BottomNavigationBar() {
           value={value}
           onClick={() => navigate('/phrases')}
           icon={<TheatersIcon />}
-        />
-        {/* <BottomNavigationAction
-          label="Projects"
-          value={value}
-          icon={<ProjectDropdown />}
-        /> */}
-      
+        />     
 
       </BottomNavigation>
     </Box>

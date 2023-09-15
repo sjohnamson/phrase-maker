@@ -6,12 +6,13 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 router.get("/", (req, res) => {
   const sqlQuery = `
-  SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
-  FROM clip
-  JOIN clip_tag
-  ON clip.id = clip_tag.clip_id
-  JOIN tag
-  ON clip_tag.tag_id = tag.id;`
+    SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
+    FROM clip
+    JOIN clip_tag
+    ON clip.id = clip_tag.clip_id
+    JOIN tag
+    ON clip_tag.tag_id = tag.id
+    ;`
 
   pool.query(sqlQuery)
     .then(result => {
@@ -21,8 +22,6 @@ router.get("/", (req, res) => {
     .catch(err => {
       res.sendStatus(504)
     })
-
-  console.log('in res get!)')
 });
 
 // Posts clips from AddVideoForm into cloudinary and the database
@@ -38,7 +37,8 @@ router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async 
     await connection.query('BEGIN');
     const sqlAddClip = `
       INSERT INTO clip ("path", "public_id", "title", "description") 
-      VALUES ($1, $2, $3, $4) RETURNING id;`
+      VALUES ($1, $2, $3, $4) RETURNING id
+      ;`
     // Save the result so we can get the returned value
     const result = await connection.query(sqlAddClip, clipInfo);
     // Get the id from the result - will have 1 row with the id 
@@ -46,14 +46,16 @@ router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async 
     const sqlAddTags = `
       INSERT INTO tag ("tag")
       SELECT unnest(ARRAY[$1]::TEXT[])
-      RETURNING id;`
+      RETURNING id
+      ;`
     // Save the result so we can get the returned value
     const response = await connection.query(sqlAddTags, clipTags);
     // Get the id from the result - will have 1 row with the id 
     const tagId = response.rows[0].id;
     const sqlAddIds = `
       INSERT INTO clip_tag (clip_id, tag_id)
-      VALUES ($1, $2);`
+      VALUES ($1, $2)
+      ;`
     await connection.query(sqlAddIds, [clipId, tagId]);
     await connection.query('COMMIT');
     res.sendStatus(200);
@@ -79,14 +81,14 @@ router.delete("/:id", rejectUnauthenticated, cloudinaryUpload.single("video"), a
     await connection.query('BEGIN');
     const sqlDeleteClip = `
       DELETE FROM clip 
-      WHERE id = $1 ;
-      `
+      WHERE id = $1 
+      ;`
     await connection.query(sqlDeleteClip, clipId);
   
     const sqlDeleteTags = `
       DELETE FROM clip_tag 
       WHERE clip_id = $1
-      `
+      ;`
     await connection.query(sqlDeleteTags, clipId);
     
     await connection.query('COMMIT');
@@ -111,7 +113,7 @@ router.put("/:id", rejectUnauthenticated, async (req, res) => {
       UPDATE clip
       SET title = $2, description = $3
       WHERE id = $1
-      `
+      ;`
     await connection.query(sqlUpdate, clipInfo)
     // const sqlDeleteTags = `
     //   DELETE FROM clip_tag 

@@ -6,13 +6,13 @@ import { CardActions} from '@mui/material';
 
 
 
-export default function MakePhraseCardActions({clip}) {
+export default function PhraseCardActions({phrase}) {
 
     return (
         <>
-            <CardActions>
+            {/* <CardActions>
                 <BtnModifyClip clip={clip} />
-            </CardActions>
+            </CardActions> */}
         </>
     );
 }

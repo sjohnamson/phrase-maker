@@ -1,13 +1,13 @@
 // Material UI imports
 import { CardContent, Typography } from '@mui/material';
 
-export default function MakePhraseCardContent({ clip }) {
+export default function PhraseCardContent({ phrase }) {
 
     return (
         <>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {clip.title}
+                    {phrase.title}
                 </Typography>
                 {/* <Typography variant="body2" color="text.secondary">
                     {clip.description}

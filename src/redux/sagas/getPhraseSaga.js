@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* getPhrases() {
     const phrases = yield axios.get('/api/phrase')
+    console.log('phrases in saga', phrases)
 
     yield put ({
         type: 'SET_PHRASES',
@@ -10,8 +11,8 @@ function* getPhrases() {
     })
 }
 
-function* getVideoSaga() {
+function* getPhraseListSaga() {
     yield takeLatest('GET_PHRASES', getPhrases)
 }
 
-export default getVideoSaga
+export default getPhraseListSaga

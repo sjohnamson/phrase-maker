@@ -98,7 +98,7 @@ export default function ModifyClipPage() {
                     type="submit"
                     onClick={() => savePhrase()}
                 >
-                    savePhrase
+                    Save phrase
                 </Button>
 
             </div>
