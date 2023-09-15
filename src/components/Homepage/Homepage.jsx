@@ -16,7 +16,6 @@ export default function Homepage() {
             <Box className="clips" sx={{width: '95%', margin: 'auto'}}>
                 <ClipCard xs={12} sm={6} md={4}/>
             </Box>
-            <Button onClick={() => goToAddClip()}>Add Clip</Button>
         </>
 
     )

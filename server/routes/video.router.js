@@ -27,20 +27,31 @@ router.get("/", (req, res) => {
 // Posts clips from AddVideoForm into cloudinary and the database
 router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
   console.log('sent to cloudinary: ', req.file)
-  console.log('in clip post req.body:', req.body)
+  console.log('in clip post req.user:', req.user)
 
   const clipInfo = [req.file.path, req.file.filename, req.body.title, req.body.description];
+  const currentProject = req.user.current_project;
   const clipTags = [req.body.tags];
 
   const connection = await pool.connect()
   try {
     await connection.query('BEGIN');
+
+    const sqlProjectId =`
+    SELECT project_id 
+    FROM project 
+    JOIN "user_project" 
+    ON project.id = "user_project".project_id
+    WHERE project.title = $1
+    ;`
+    const reply = await connection.query(sqlProjectId, [currentProject]);
+    const currentID = reply.rows[0].project_id;
     const sqlAddClip = `
-      INSERT INTO clip ("path", "public_id", "title", "description") 
-      VALUES ($1, $2, $3, $4) RETURNING id
+      INSERT INTO clip ("path", "public_id", "title", "description", "project_id") 
+      VALUES ($1, $2, $3, $4, $5) RETURNING id
       ;`
     // Save the result so we can get the returned value
-    const result = await connection.query(sqlAddClip, clipInfo);
+    const result = await connection.query(sqlAddClip, [clipInfo[0], clipInfo[1], clipInfo[2], clipInfo[3], currentID]);
     // Get the id from the result - will have 1 row with the id 
     const clipId = result.rows[0].id;
     const sqlAddTags = `
