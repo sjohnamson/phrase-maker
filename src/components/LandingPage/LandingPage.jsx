@@ -1,13 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+// styling imports
 import './LandingPage.css';
+import { Box, Typography, Button, Fade, Slide } from '@mui/material';
+import FlareIcon from '@mui/icons-material/Flare';
+
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import PhraseHalf from '../../images/PMPhrase.png';
+import MakerHalf from '../../images/PMMaker.png';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome');
   const history = useHistory();
+
+  // sets triggers for each of the items that will transition in on load
+  const [showMaker, setShowMaker] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showJoin, setShowJoin] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+  const [showSequence, setShowSequence] = useState(false);
+  const [showRepeat, setShowRepeat] = useState(false);
+
+  useEffect(() => {
+    // sets the delay for the items that transition in on load
+    // const delayMaker = setTimeout(() => {
+    //   setShowMaker(true);
+    // }, 1000);
+
+
+    const delayWelcome = setTimeout(() => {
+      setShowWelcome(true);
+    }, 1250);
+
+    const delayRegister = setTimeout(() => {
+      setShowRegister(true);
+    }, 1750);
+
+    const delayJoin = setTimeout(() => {
+      setShowJoin(true);
+    }, 2250);
+
+    const delayShare = setTimeout(() => {
+      setShowShare(true);
+    }, 2750);
+
+    const delaySequence = setTimeout(() => {
+      setShowSequence(true);
+    }, 3250);
+
+    const delayRepeat = setTimeout(() => {
+      setShowRepeat(true);
+    }, 3750);
+
+    // return () => clearTimeout(delayMaker);
+
+  }, []);
 
   const onLogin = (event) => {
     history.push('/login');
@@ -15,53 +65,70 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
+      <Box
+        sx={{
+          backgroundColor: 'secondary.main',
+          paddingTop: 3,
+          paddingBottom: 3,
+          marginTop: 3,
+          marginBottom: 4,
+          borderWidth: 1,
+          borderColor: 'info',
+          borderStyle: 'solid'
+        }}
+      >
+        {/* slide sets the phrase and maker images to slide in on load */}
+        <Slide direction="right" in={true} timeout={{ enter: 1250 }} >
+          <img src={PhraseHalf} alt="Sliding PHRASE/" style={{ height: 60, paddingLeft: 13 }} />
+        </Slide >
+        <Slide direction="left" in={true} timeout={{ enter: 1250 }} >
+          <img src={MakerHalf} alt="Sliding /MAKER" style={{ height: 60, paddingLeft: 75 }} />
+        </Slide>
+      </Box>
+      {/* fade sets the app directions to fade in one at a time on load */}
+      <Box>
+        <Fade in={showWelcome} timeout={{ enter: 2500 }}>
+          <Typography variant="h5" gutterBottom >
+            Welcome to Phrase Maker!
+          </Typography >
+        </Fade>
+        <Fade in={showRegister} timeout={{ enter: 2500 }}>
+          <Typography variant="subtitle1" gutterBottom >
+            <FlareIcon />
+             Register
+          </Typography>
+        </Fade>
+        <Fade in={showJoin} timeout={{ enter: 2500 }}>
+          <Typography variant="subtitle1" gutterBottom >
+          <FlareIcon />
+            Join a project or create a new project.
+          </Typography>
+        </Fade>
+        <Fade in={showShare} timeout={{ enter: 2500 }}>
+          <Typography variant="subtitle1" gutterBottom >
+          <FlareIcon />
+            Share your video clips
+          </Typography>
+        </Fade>
+        <Fade in={showSequence} timeout={{ enter: 2500 }}>
+          <Typography variant="subtitle1" gutterBottom >
+          <FlareIcon />
+            Sequence clips into phrases.
+          </Typography>
+        </Fade>
+        <Fade in={showRepeat} timeout={{ enter: 2500 }}>
+          <Typography variant="subtitle1" gutterBottom >
+          <FlareIcon />
+            Repeat and enjoy!
+          </Typography>
+        </Fade>
+      </Box>
+      <RegisterForm />
 
-      <div className="grid">
-        <div className="grid-col grid-col_8">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
-          </p>
-
-          <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
-
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
-        </div>
-        <div className="grid-col grid-col_4">
-          <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
-          </center>
-        </div>
-      </div>
+      <h4>Already a Member?</h4>
+      <Button variant="contained" onClick={onLogin}>
+        Login
+      </Button>
     </div>
   );
 }

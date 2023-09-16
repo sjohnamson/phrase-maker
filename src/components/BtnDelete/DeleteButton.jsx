@@ -16,7 +16,9 @@ export default function DeleteButton({ clip }) {
         <Button
             onClick={() => handleDelete()}
             size="small"
-            color="primary">
+            variant='outlined'
+            color="error"
+            >
             Delete
         </Button>
     )

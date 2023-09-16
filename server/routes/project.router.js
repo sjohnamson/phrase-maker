@@ -20,6 +20,7 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
         const result = await connection.query(sqlAddProject, [newProject]);
         // Get the id from the result - will have 1 row with the id 
         const projectId = result.rows[0].id;
+        console.log('projectID', projectId)
         // create new row in user_project connecting user to project
         const sqlProjectUser = `
             INSERT INTO user_project ("user_id", "project_id")
@@ -62,6 +63,13 @@ router.put("/:project", rejectUnauthenticated, async (req, res) => {
         ;`
         await connection.query(sqlJoinProject, [userId, joinProject]);
 
+        const sqlCurrentProject = `
+        UPDATE "user" 
+        SET current_project = $2
+        WHERE id = $1
+        ;`
+    await connection.query(sqlCurrentProject, [userId, joinProject]);
+
         await connection.query('COMMIT');
         res.sendStatus(200);
     } catch (error) {
@@ -102,7 +110,7 @@ router.put("/", rejectUnauthenticated, async (req, res) => {
     console.log('in project put', req.body)
 
     const userId = req.user.id;
-    const currentProject = req.body
+    const currentProject = req.body.title
 
     const sqlCurrentProject = `
         UPDATE "user" 

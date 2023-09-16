@@ -52,7 +52,7 @@ export default function AddVideoForm() {
           variant='filled'
         />
       </div>
-      <Stack spacing={3} sx={{ width: 300 }}>
+      {/* <Stack spacing={3} sx={{ width: 300 }}>
         <Autocomplete
           multiple
           id="tags-filled"
@@ -77,12 +77,13 @@ export default function AddVideoForm() {
             />
           )}
         />
-      </Stack>
+      </Stack> */}
       <div className="form-group">
         <Button
           className="btn btn-primary"
           type="submit"
           onClick={onSubmit}
+
         >
           Upload
         </Button>

@@ -7,6 +7,7 @@ import getVideoSaga from './getVideoSaga';
 import deleteVideoSaga from './deleteVideoSaga';
 import updateVideoSaga from './updateVideoSaga';
 import addPhraseSaga from './addPhraseSaga';
+import getPhraseListSaga from './getPhraseSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     deleteVideoSaga(),
     updateVideoSaga(),
     addPhraseSaga(),
+    getPhraseListSaga(),
   ]);
 }

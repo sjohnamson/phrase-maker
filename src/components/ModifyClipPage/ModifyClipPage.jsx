@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { AdvancedVideo } from '@cloudinary/react';
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { concatenate } from "@cloudinary/url-gen/actions/videoEdit";
@@ -26,12 +27,24 @@ export default function ModifyClipPage() {
     const [newPhrase, setNewPhrase] = useState()
 
     useEffect(() => {
-        console.log('current clip in effect', currentClip)
-        dispatch({
-            type: 'ADD_CLIP_TO_PHRASE',
-            payload: { currentClip }
-        })
-    }, [currentClip])
+        let clipsToAdd = processPhrase.splice(1);
+        console.log('clips to add', clipsToAdd)
+        let concatenatingPhrase = myVideo.resize(fill().width(400).height(250))
+        for (let vid of clipsToAdd) {
+            console.log('clip.clip.public_id', vid.clip.public_id)
+
+            concatenatingPhrase = concatenatingPhrase.videoEdit(
+                concatenate(
+                    Concatenate.videoSource(vid.clip.public_id)
+                        .transformation(new Transformation()
+                            .resize(fill().width(400).height(250)
+                            )
+                        )
+                )
+            );
+        }
+        setConcatenatedPhrase(concatenatingPhrase)
+    }, [])
 
     const cld = new Cloudinary({
         cloud: {
@@ -39,32 +52,15 @@ export default function ModifyClipPage() {
         }
     });
 
-    const myVideo = cld.video("DEV/cbtcvktirdg0p8vwsh0h");
-
-
-    const handleModify = async () => {
-        let concatenatingPhrase = myVideo.resize(fill().width(400).height(250))
-        for (let clip of processPhrase) {
-            console.log('clip.currentClip.public_id', clip.currentClip.public_id)
-
-            concatenatingPhrase = concatenatingPhrase.videoEdit(
-                concatenate(
-                    Concatenate.videoSource(clip.currentClip.public_id)
-                        .transformation(new Transformation()
-                        .resize(fill().width(400).height(250)
-                        )
-                        )
-                        )
-                        );
-        }
-        setConcatenatedPhrase(concatenatingPhrase)
-    }
+    const myVideo = cld.video(processPhrase[0].clip.public_id);
 
     const savePhrase = () => {
+        const phraseURL = concatenatedPhrase.toURL();
+        console.log('url:', phraseURL)
         const phraseToAdd = {
             newPhraseTitle,
             newPhraseDescription,
-            newPhrase,
+            phraseURL,
         }
         console.log('phrase to add', phraseToAdd)
 
@@ -100,16 +96,9 @@ export default function ModifyClipPage() {
                 <Button
                     className="btn btn-primary"
                     type="submit"
-                    onClick={() => handleModify()}
-                >
-                    Add clip to phrase
-                </Button>
-                <Button
-                    className="btn btn-primary"
-                    type="submit"
                     onClick={() => savePhrase()}
                 >
-                    savePhrase
+                    Save phrase
                 </Button>
 
             </div>

@@ -9,7 +9,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
   
-  // creates the storage object for the video POST request. 
+  // creates the storage object for a cloudinary POST request. 
     // folder sets folder on cloudinary that it's being posted to.
     // resource_type set to 'auto' for video files.
   const storage = new CloudinaryStorage({

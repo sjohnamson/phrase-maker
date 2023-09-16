@@ -2,7 +2,6 @@ import React from 'react';
 import { Cloudinary } from "cloudinary-core";
 import { useEffect, useRef } from 'react';
 import { useSelector } from "react-redux";
-import PhrasePlayer from '../VideoPlayer/PhrasePlayer';
 
 // This is one of our simplest components
 // It doesn't have local state

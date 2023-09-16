@@ -9,14 +9,17 @@ export default function () {
 
     const [newProject, setNewProject] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const onSubmit = (e) => {
         e.preventDefault();
         // PUT REQUEST to /api/video/:id
         axios.post(`/api/project`, {title: newProject})
             .then(response => {
+                dispatch({ type: 'FETCH_USER' })
                 // refresh will happen with useEffect on Homepage
                 history.push('/main'); // back to list
+
             })
             .catch(error => {
                 <Stack sx={{ width: '100%' }} spacing={2}>
