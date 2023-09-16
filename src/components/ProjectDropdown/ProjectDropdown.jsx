@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import LogOutButton from '../BtnLogOut/LogOutButton';
 // material imports
-import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -15,12 +14,12 @@ import JoinFullIcon from '@mui/icons-material/JoinFull';
 import InfoIcon from '@mui/icons-material/Info';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon} from '@mui/material';
+import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon } from '@mui/material';
 import { ExpandMore, ExpandLess, Logout, Settings } from '@mui/icons-material';
 // import { Link } from "react-router-dom";
 
 export default function ProjectDropdown() {
-
+    const dispatch = useDispatch();
     const userInfo = useSelector(store => store.user);
     const [projectList, setProjectList] = useState([]);
 
@@ -60,6 +59,9 @@ export default function ProjectDropdown() {
             .then(response => {
                 console.log('current set in dropdown:', response)
                 toggleDrawer(anchor, false);
+                dispatch({ type: 'GET_CLIPS' })
+                dispatch({ type: 'FETCH_USER' })
+
             })
             .catch(err => {
                 console.error('error in dropdown put:', err)
@@ -70,22 +72,22 @@ export default function ProjectDropdown() {
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
             role="presentation"
-        
+
         >
             <List>
-            <ListItemButton>
-                <ListItem
-                    disablePadding
-                    onClick={toggleDrawer(anchor, false)}
-                    onKeyDown={toggleDrawer(anchor, false)}
-                >
+                <ListItemButton>
+                    <ListItem
+                        disablePadding
+                        onClick={toggleDrawer(anchor, false)}
+                        onKeyDown={toggleDrawer(anchor, false)}
+                    >
 
-                    <ListItemIcon >
-                        <Diversity3Icon color='info'/>
-                    </ListItemIcon>
-                    <ListItemText primary={userInfo.current_project} sx={{color: 'info'}}/>
+                        <ListItemIcon >
+                            <Diversity3Icon color='info' />
+                        </ListItemIcon>
+                        <ListItemText primary={userInfo.current_project} sx={{ color: 'info' }} />
 
-                </ListItem>
+                    </ListItem>
                 </ListItemButton>
             </List>
             <List
@@ -145,7 +147,7 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <JoinFullIcon color='secondary'/>
+                            <JoinFullIcon color='secondary' />
                         </ListItemIcon>
                         <ListItemText primary='Join project' />
                     </ListItemButton>
@@ -189,7 +191,7 @@ export default function ProjectDropdown() {
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>
-                        <LogOutButton/>
+                        <LogOutButton />
                     </ListItemButton>
                 </ListItem>
 
@@ -201,11 +203,11 @@ export default function ProjectDropdown() {
 
     return (
 
-        <Box sx={{pt: 2}}>
+        <Box sx={{ pt: 2 }}>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button color='info' onClick={toggleDrawer(anchor, true)}>
-                        <Diversity3Icon fontSize='large'/>
+                        <Diversity3Icon fontSize='large' />
                     </Button>
                     <Drawer
                         anchor={anchor}

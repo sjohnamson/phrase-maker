@@ -8,18 +8,19 @@ import { AdvancedVideo } from '@cloudinary/react';
 import { fill } from "@cloudinary/url-gen/actions/resize";
 
 // Material UI imports
-import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { CardActionArea, Card} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 
 export default function ClipCard({ xs, sm, md }) {
     const dispatch = useDispatch();
     const clips = useSelector(store => store.clips)
+    const user = useSelector(store => store.user)
 
     useEffect(() => {
         dispatch({ type: 'GET_CLIPS' })
         
-    }, []);
+    }, [user.current_project]);
 
     const cld = new Cloudinary({
         cloud: {

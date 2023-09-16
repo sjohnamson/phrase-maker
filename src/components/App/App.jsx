@@ -18,6 +18,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import NoProjectPage from '../NoProjectPage/NoProjectPage';
 import Homepage from '../Homepage/Homepage';
 import UpdatePage from '../UpdatePage/UpdatePage';
 import AddClipPage from '../AddClipPage/AddClipPage';
@@ -220,11 +221,29 @@ function App() {
             >
               {user.id ?
                 // If the user is already logged in, 
-                // redirect to the /user page
+                // redirect to the /main page
                 <Redirect to="/main" />
                 :
                 // Otherwise, show the login page
                 <LoginPage />
+              }
+            </Route>
+
+            <Route
+              exact
+              path="/noproject"
+            >
+              {user.current_project ?
+                // If the user has a current project, 
+                // redirect to the /main page
+                <Redirect to="/main" />
+                :
+                // Otherwise, show the noprojectpage page
+                <>
+                <Nav />
+                <BottomNavigationBar />
+                <NoProjectPage />
+                </>
               }
             </Route>
 
