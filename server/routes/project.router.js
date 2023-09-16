@@ -63,6 +63,13 @@ router.put("/:project", rejectUnauthenticated, async (req, res) => {
         ;`
         await connection.query(sqlJoinProject, [userId, joinProject]);
 
+        const sqlCurrentProject = `
+        UPDATE "user" 
+        SET current_project = $2
+        WHERE id = $1
+        ;`
+    await connection.query(sqlCurrentProject, [userId, joinProject]);
+
         await connection.query('COMMIT');
         res.sendStatus(200);
     } catch (error) {

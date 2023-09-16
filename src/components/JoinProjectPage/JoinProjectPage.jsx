@@ -8,6 +8,8 @@ import { Button, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material
 export default function JoinProjectPage() {
     const [joinProject, setJoinProject] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
+
     
     const onSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +17,7 @@ export default function JoinProjectPage() {
         // PUT REQUEST to /api/project/:id to update current project
         axios.put(`/api/project/${joinProject}`)
             .then(response => {
-
+              dispatch({ type: 'FETCH_USER' })
                 // refresh will happen with useEffect on Homepage
                 history.push('/main'); // back to list
             })
