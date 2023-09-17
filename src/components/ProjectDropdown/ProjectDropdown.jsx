@@ -17,7 +17,8 @@ import JoinFullIcon from '@mui/icons-material/JoinFull';
 import InfoIcon from '@mui/icons-material/Info';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon } from '@mui/material';
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
+import { List, ListItemButton, Collapse, ListItemText, Divider, ListItemIcon, Typography, Stack } from '@mui/material';
 import { ExpandMore, ExpandLess, Logout, Settings } from '@mui/icons-material';
 // import { Link } from "react-router-dom";
 
@@ -111,7 +112,7 @@ export default function ProjectDropdown() {
                         <ListItemIcon >
                             <Diversity3Icon color='secondary' />
                         </ListItemIcon>
-                        <ListItemText primary={userInfo.current_project} sx={{ color: 'secondary' }} />
+                        <ListItemText primary={userInfo.current_project} sx={{ color: 'secondary.main' }} />
 
                     </ListItem>
                 </ListItemButton>
@@ -125,10 +126,10 @@ export default function ProjectDropdown() {
                 <ListItem disablePadding>
                     <ListItemButton onClick={handleListClick}>
                         <ListItemIcon>
-
+                            <ChangeCircleIcon sx={{ color: 'secondary.main' }} />
                         </ListItemIcon>
-                        <ListItemText primary='Change project' sx={{ color: 'secondary.main' }}/>
-                        {listOpen ? <ExpandLess sx={{ color: 'secondary.main' }}/> : <ExpandMore sx={{ color: 'secondary.main' }} />}
+                        <ListItemText primary='Change project' sx={{ color: 'secondary.main' }} />
+                        {listOpen ? <ExpandLess sx={{ color: 'secondary.main' }} /> : <ExpandMore sx={{ color: 'secondary.main' }} />}
                     </ListItemButton>
                 </ListItem>
             </List>
@@ -142,18 +143,15 @@ export default function ProjectDropdown() {
                     onKeyDown={toggleDrawer(anchor, false)}
                 >
 
-                    {projectList.map(project => {
+                    {projectList.map((project, index) => {
                         return (
                             < ListItemButton
                                 onClick={() => setCurrentProject(project, anchor)}
                                 sx={{ pl: 4 }}
-                                key={project.title}
+                                key={index}
 
                             >
-                                {/* <ListItemIcon>
-
-                                </ListItemIcon> */}
-                                <ListItemText primary={project.title} />
+                                <ListItemText primary={project.title} sx={{ color: 'secondary.main' }} />
                             </ListItemButton>
                         )
                     })}
@@ -171,9 +169,9 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <JoinFullIcon  sx={{ color: 'secondary.main' }}/>
+                            <JoinFullIcon sx={{ color: 'secondary.main' }} />
                         </ListItemIcon>
-                        <ListItemText primary='Join project' sx={{ color: 'secondary.main' }}/>
+                        <ListItemText primary='Join project' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
                     <Modal
                         open={openJoin}
@@ -198,9 +196,9 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <AddIcon sx={{ color: 'secondary.main' }}/>
+                            <AddIcon sx={{ color: 'secondary.main' }} />
                         </ListItemIcon>
-                        <ListItemText primary='Create new project' sx={{ color: 'secondary.main' }}/>
+                        <ListItemText primary='Create new project' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
                     <Modal
                         open={openMake}
@@ -224,7 +222,7 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <InfoIcon sx={{ color: 'secondary.main' }}/>
+                            <InfoIcon sx={{ color: 'secondary.main' }} />
                         </ListItemIcon>
                         <ListItemText primary='About Phrase Maker' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
@@ -238,7 +236,7 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <LogoutIcon sx={{ color: 'secondary.main' }}/>
+                            <LogoutIcon sx={{ color: 'secondary.main' }} />
                         </ListItemIcon>
                         <LogOutButton />
                     </ListItemButton>
@@ -250,6 +248,8 @@ export default function ProjectDropdown() {
     return (
 
         <Box sx={{ pt: 2 }}>
+            <Stack direction={'row'}>
+                   <Typography variant='button'>{userInfo.current_project}</Typography>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button color='info' onClick={toggleDrawer(anchor, true)}>
@@ -264,6 +264,7 @@ export default function ProjectDropdown() {
                     </Drawer>
                 </React.Fragment>
             ))}
+            </Stack>
         </Box>
     )
 }

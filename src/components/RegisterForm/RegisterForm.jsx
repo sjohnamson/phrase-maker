@@ -9,8 +9,7 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
-  const registerUser = (event) => {
-    event.preventDefault();
+  const registerUser = () => {
 
     dispatch({
       type: 'REGISTER',
@@ -78,7 +77,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <Button type="submit" name="submit" variant='contained' color='success'>
+        <Button type="submit" onClick={registerUser} name="submit" variant='contained' color='success'>
           Register
         </Button>
       

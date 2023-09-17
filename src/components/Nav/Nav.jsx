@@ -1,7 +1,7 @@
 import React from 'react';
 import PhraseLogo from '../../images/PMLogoNoSq.png'
 import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
-import { Box, Stack, Link } from '@mui/material';
+import { Box, Stack, Link, Typography } from '@mui/material';
 
 
 import './Nav.css';
@@ -12,10 +12,10 @@ function Nav() {
 
   return (
 
-    <Box sx={{ backgroundColor: 'pink.light' }} >
-      <Stack 
-      direction='row'
-      spacing={{ xs: 8, sm: 7, md: 9 }}
+    <Box sx={{ backgroundColor: 'pink.light', p: 2 }} >
+      <Stack
+        direction='row'
+        spacing={{ xs: 6, sm: 8, md: 10 }}
       >
 
         <Link to="/home">
@@ -25,11 +25,11 @@ function Nav() {
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Box sx={{paddingTop: 3}}>
+          <Box sx={{ paddingTop: 3 }}>
             {/* <Link color="inherit" to="/login">
               Login / Register
             </Link> */}
-            <Link  to="/about" underline="none" color="info" >
+            <Link to="/about" underline="none" color="info" >
               About
             </Link>
           </Box>
@@ -37,9 +37,10 @@ function Nav() {
 
         {/* If a user is logged in, show these links */}
         {user.id && (
-
-          <ProjectDropdown />
-
+          <>
+     
+            <ProjectDropdown />
+          </>
         )}
       </Stack>
     </Box>
