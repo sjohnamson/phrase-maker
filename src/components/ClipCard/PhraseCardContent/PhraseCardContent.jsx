@@ -4,15 +4,15 @@ import { CardContent, Typography } from '@mui/material';
 export default function PhraseCardContent({ phrase }) {
 
     return (
-        <>
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+       
+            <CardContent sx={{bgcolor: 'info.main'}}>
+                <Typography gutterBottom variant="h5"  color='secondary.light'>
                     {phrase.title}
                 </Typography>
-                {/* <Typography variant="body2" color="text.secondary">
-                    {clip.description}
-                </Typography> */}
+                <Typography variant="body2" color="secondary.light">
+                    {phrase.description}
+                </Typography>
             </CardContent>
-        </>
+        
     );
 }

@@ -5,7 +5,7 @@ export default function MainPageCardContent({ clip }) {
 
     return (
         <>
-            <CardContent>
+            <CardContent sx={{}}>
                 <Typography gutterBottom variant="h5" component="div">
                     {clip.title}
                 </Typography>
