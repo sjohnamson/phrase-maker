@@ -35,7 +35,7 @@ export default function BottomNavigationBar() {
           icon={<MovieCreationIcon color='info'/>}
         />
         <BottomNavigationAction
-          label="Add"
+          label="Add/Create"
           value={value}
           onClick={() => navigate('/addclipphrase')}
           icon={<AddCircleOutlineIcon color='info'/>}
