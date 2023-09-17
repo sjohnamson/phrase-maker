@@ -9,10 +9,10 @@ import { CardActions} from '@mui/material';
 export default function PhraseCardActions({phrase}) {
 
     return (
-        <>
-            {/* <CardActions>
-                <BtnModifyClip clip={clip} />
-            </CardActions> */}
-        </>
+  
+            <CardActions sx={{bgcolor: 'info.main'}}>
+                {/* <BtnModifyClip clip={clip} /> */}
+            </CardActions> 
+       
     );
 }

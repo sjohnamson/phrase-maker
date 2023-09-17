@@ -37,7 +37,7 @@ export default function ClipCard({ xs, sm, md }) {
                 return (<>
                     <Grid item key={index} xs={xs} sm={sm} md={md} >
 
-                        <Card sx={{ width: '100%', }}>
+                        <Card sx={{ width: '100%'}}>
                             <CardActionArea onClick={() => { }} sx={{}}>
                                 <AdvancedVideo cldVid={video} controls />
                                 <MainPageCardContent clip={clip} />
