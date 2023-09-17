@@ -32,19 +32,19 @@ export default function BottomNavigationBar() {
           label="Clips"
           value={value}
           onClick={() => navigate('/home')}
-          icon={<MovieCreationIcon />}
+          icon={<MovieCreationIcon color='info'/>}
         />
         <BottomNavigationAction
           label="Add"
           value={value}
           onClick={() => navigate('/addclipphrase')}
-          icon={<AddCircleOutlineIcon />}
+          icon={<AddCircleOutlineIcon color='info'/>}
         />
         <BottomNavigationAction
           label="Phrases"
           value={value}
           onClick={() => navigate('/phrases')}
-          icon={<TheatersIcon />}
+          icon={<TheatersIcon color='info'/>}
         />     
 
       </BottomNavigation>

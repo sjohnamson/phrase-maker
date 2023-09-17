@@ -98,9 +98,8 @@ export default function ProjectDropdown() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, height: '100%', bgcolor: 'info.main' }}
             role="presentation"
-
         >
             <List>
                 <ListItemButton>
@@ -109,17 +108,16 @@ export default function ProjectDropdown() {
                         onClick={toggleDrawer(anchor, false)}
                         onKeyDown={toggleDrawer(anchor, false)}
                     >
-
                         <ListItemIcon >
-                            <Diversity3Icon color='info' />
+                            <Diversity3Icon color='secondary' />
                         </ListItemIcon>
-                        <ListItemText primary={userInfo.current_project} sx={{ color: 'info' }} />
+                        <ListItemText primary={userInfo.current_project} sx={{ color: 'secondary' }} />
 
                     </ListItem>
                 </ListItemButton>
             </List>
             <List
-                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                sx={{ width: '100%', maxWidth: 360 }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
 
@@ -129,8 +127,8 @@ export default function ProjectDropdown() {
                         <ListItemIcon>
 
                         </ListItemIcon>
-                        <ListItemText primary='Change project' />
-                        {listOpen ? <ExpandLess /> : <ExpandMore />}
+                        <ListItemText primary='Change project' sx={{ color: 'secondary.main' }}/>
+                        {listOpen ? <ExpandLess sx={{ color: 'secondary.main' }}/> : <ExpandMore sx={{ color: 'secondary.main' }} />}
                     </ListItemButton>
                 </ListItem>
             </List>
@@ -163,11 +161,8 @@ export default function ProjectDropdown() {
             </Collapse>
 
             <Divider />
-            <List
-
-            >
+            <List>
                 <ListItem disablePadding>
-
                     <ListItemButton
                         onClick={handleOpenJoin}
                         // component={RouterLink}
@@ -176,9 +171,9 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <JoinFullIcon color='primary.main' />
+                            <JoinFullIcon  sx={{ color: 'secondary.main' }}/>
                         </ListItemIcon>
-                        <ListItemText primary='Join project' />
+                        <ListItemText primary='Join project' sx={{ color: 'secondary.main' }}/>
                     </ListItemButton>
                     <Modal
                         open={openJoin}
@@ -190,7 +185,6 @@ export default function ProjectDropdown() {
                             <JoinProjectPage
                                 onClick={toggleDrawer(anchor, false)}
                                 onKeyDown={toggleDrawer(anchor, false)} />
-
                         </Box>
                     </Modal>
                 </ListItem>
@@ -204,9 +198,9 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <AddIcon color='primary.main' />
+                            <AddIcon sx={{ color: 'secondary.main' }}/>
                         </ListItemIcon>
-                        <ListItemText primary='Create new project' />
+                        <ListItemText primary='Create new project' sx={{ color: 'secondary.main' }}/>
                     </ListItemButton>
                     <Modal
                         open={openMake}
@@ -218,7 +212,6 @@ export default function ProjectDropdown() {
                             <MakeProjectPage
                                 onClick={toggleDrawer(anchor, false)}
                                 onKeyDown={toggleDrawer(anchor, false)} />
-
                         </Box>
                     </Modal>
                 </ListItem>
@@ -231,9 +224,9 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <InfoIcon color='pink.dark' />
+                            <InfoIcon sx={{ color: 'secondary.main' }}/>
                         </ListItemIcon>
-                        <ListItemText primary='About Phrase Maker' />
+                        <ListItemText primary='About Phrase Maker' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
                 </ListItem>
 
@@ -245,15 +238,12 @@ export default function ProjectDropdown() {
                         underline="none"
                     >
                         <ListItemIcon>
-                            <LogoutIcon />
+                            <LogoutIcon sx={{ color: 'secondary.main' }}/>
                         </ListItemIcon>
                         <LogOutButton />
                     </ListItemButton>
                 </ListItem>
-
             </List>
-
-
         </Box >
     );
 

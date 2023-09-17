@@ -44,7 +44,7 @@ export default function JoinProjectPage() {
             type="submit"
             onClick={onSubmit}
           >
-            Upload
+            Join Project
           </Button>
         </div>
       </Box>

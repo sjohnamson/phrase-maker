@@ -70,7 +70,7 @@ function LandingPage() {
           backgroundColor: 'secondary.main',
           paddingTop: 3,
           paddingBottom: 3,
-          marginTop: 3,
+          marginTop: 1,
           marginBottom: 4,
           borderWidth: 1,
           borderColor: 'info',
@@ -88,36 +88,36 @@ function LandingPage() {
       {/* fade sets the app directions to fade in one at a time on load */}
       <Box>
         <Fade in={showWelcome} timeout={{ enter: 2500 }}>
-          <Typography variant="h5" gutterBottom >
+          <Typography variant="h5" gutterBottom sx={{color: 'info.main'}}>
             Welcome to Phrase Maker!
           </Typography >
         </Fade>
         <Fade in={showRegister} timeout={{ enter: 2500 }}>
-          <Typography variant="subtitle1" gutterBottom >
+          <Typography variant="subtitle1" gutterBottom sx={{color: 'info.main'}}>
             <FlareIcon />
              Register
           </Typography>
         </Fade>
         <Fade in={showJoin} timeout={{ enter: 2500 }}>
-          <Typography variant="subtitle1" gutterBottom >
+          <Typography variant="subtitle1" gutterBottom sx={{color: 'info.main'}}>
           <FlareIcon />
             Join a project or create a new project.
           </Typography>
         </Fade>
         <Fade in={showShare} timeout={{ enter: 2500 }}>
-          <Typography variant="subtitle1" gutterBottom >
+          <Typography variant="subtitle1" gutterBottom sx={{color: 'info.main'}}>
           <FlareIcon />
             Share your video clips
           </Typography>
         </Fade>
         <Fade in={showSequence} timeout={{ enter: 2500 }}>
-          <Typography variant="subtitle1" gutterBottom >
+          <Typography variant="subtitle1" gutterBottom sx={{color: 'info.main'}}>
           <FlareIcon />
             Sequence clips into phrases.
           </Typography>
         </Fade>
         <Fade in={showRepeat} timeout={{ enter: 2500 }}>
-          <Typography variant="subtitle1" gutterBottom >
+          <Typography variant="subtitle1" gutterBottom sx={{color: 'info.main'}}>
           <FlareIcon />
             Repeat and enjoy!
           </Typography>
@@ -125,8 +125,8 @@ function LandingPage() {
       </Box>
       <RegisterForm />
 
-      <h4>Already a Member?</h4>
-      <Button variant="contained" onClick={onLogin}>
+      <Typography sx={{m: 2, color: 'info.main'}}>Already a Member?</Typography>
+      <Button variant="contained" onClick={onLogin} sx={{ml: 2}}>
         Login
       </Button>
     </div>

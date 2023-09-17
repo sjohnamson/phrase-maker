@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Box, Typography, Stack } from '@mui/material';
 
 
 function RegisterForm() {
@@ -22,33 +22,37 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+    <Box onSubmit={registerUser} sx={{ bgcolor: 'info.light', p: 2 }}>
+      <Typography variant='h5' sx={{ pb: 2 }}>Register</Typography>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
+       <Stack spacing={2}>
       <div>
-        <label htmlFor="username">
-          <TextField
-            id="filled-basic"
-            label="Username"
-            variant="filled"
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          {/* <input
+       
+          <label htmlFor="username">
+
+            <TextField
+              id="filled-basic"
+              label="Username"
+              variant="filled"
+              type="text"
+              name="username"
+              value={username}
+              required
+              onChange={(event) => setUsername(event.target.value)}
+              sx={{ width: '100%', bgcolor: 'secondary.main' }}
+            />
+            {/* <input
             type="text"
             name="username"
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
           /> */}
-        </label>
+          </label>
       </div>
       <div>
         <label htmlFor="password">
@@ -61,6 +65,7 @@ function RegisterForm() {
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
+            sx={{ width: '100%', bgcolor: 'secondary.main' }}
           />
           {/* <input
             type="password"
@@ -69,12 +74,17 @@ function RegisterForm() {
             required
             onChange={(event) => setPassword(event.target.value)}
           /> */}
+
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
-    </form>
+        <Button type="submit" name="submit" variant='contained' color='success'>
+          Register
+        </Button>
+      
+    </div>
+    </Stack>
+    </Box >
   );
 }
 

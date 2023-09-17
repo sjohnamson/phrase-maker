@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 // material imports
-import { Button, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material';
+import { Button, Typography, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material';
 
 export default function AddVideoForm() {
   const history = useHistory();
@@ -27,8 +27,16 @@ export default function AddVideoForm() {
   }
 
   return (
-    <Box >
+    <Box sx={{m: 4}}>
+      <Typography variant='h5'>Add a clip to your project:</Typography>
       <div className="form-group">
+        <Stack spacing={2} sx={{pt: 3}}>
+      <TextField
+          onChange={e => setNewClipFile(e.target.files[0])}
+          type="file"
+          accept="video/*"
+          variant='filled'
+        />
         <TextField
           required
           label="Title"
@@ -36,6 +44,7 @@ export default function AddVideoForm() {
           value={newClipTitle}
           onChange={(event) => setNewClipTitle(event.target.value)} 
           variant='filled'
+          sx={{width: '100%'}}
           />
         <TextField
           required
@@ -44,13 +53,9 @@ export default function AddVideoForm() {
           value={newClipDescription}
           onChange={(event) => setNewClipDescription(event.target.value)}
           variant='filled'
+          sx={{width: '100%'}}
         />
-        <TextField
-          onChange={e => setNewClipFile(e.target.files[0])}
-          type="file"
-          accept="video/*"
-          variant='filled'
-        />
+</Stack>
       </div>
       {/* <Stack spacing={3} sx={{ width: 300 }}>
         <Autocomplete
@@ -83,9 +88,10 @@ export default function AddVideoForm() {
           className="btn btn-primary"
           type="submit"
           onClick={onSubmit}
-
+          variant='outlined'
+sx={{mt: 3}}
         >
-          Upload
+          Add Clip
         </Button>
       </div>
     </Box>
