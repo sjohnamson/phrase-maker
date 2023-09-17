@@ -36,6 +36,7 @@ export default function JoinProjectPage() {
             value={joinProject}
             onChange={(event) => setJoinProject(event.target.value)} 
             variant='filled'
+            sx={{width: '95%'}}
             />
           
           <Button
