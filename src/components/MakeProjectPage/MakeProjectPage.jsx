@@ -39,6 +39,7 @@ export default function () {
                     value={newProject}
                     onChange={(event) => setNewProject(event.target.value)}
                     variant='filled'
+                    sx={{width: '95%'}}
                 />
 
                 <Button
@@ -46,7 +47,7 @@ export default function () {
                     type="submit"
                     onClick={onSubmit}
                 >
-                    Upload
+                    Create Project
                 </Button>
             </div>
         </Box>

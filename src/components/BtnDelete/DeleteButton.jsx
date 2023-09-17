@@ -8,7 +8,7 @@ import { Button, Box, Typography, Stack, Divider } from '@mui/material';
 
 export default function DeleteButton({ clip }) {
     const dispatch = useDispatch();
-    // chenges state for the modal operation
+    // changes state for the modal operation
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);

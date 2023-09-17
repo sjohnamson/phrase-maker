@@ -36,6 +36,7 @@ export default function JoinProjectPage() {
             value={joinProject}
             onChange={(event) => setJoinProject(event.target.value)} 
             variant='filled'
+            sx={{width: '95%'}}
             />
           
           <Button
@@ -43,7 +44,7 @@ export default function JoinProjectPage() {
             type="submit"
             onClick={onSubmit}
           >
-            Upload
+            Join Project
           </Button>
         </div>
       </Box>

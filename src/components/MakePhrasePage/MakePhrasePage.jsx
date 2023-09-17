@@ -37,8 +37,10 @@ export default function MakePhrasePage() {
                 }}
             >
                 <Typography variant='h6' color='primary.main'>NEW PHRASE</Typography>
+                <Typography variant='subtitle1' color='primary.main'>Add clips to create a new phrase</Typography>
+                <Box sx={{borderColor: 'pink.main', borderStyle: 'solid', borderWidth: 1, p: 1, mt: 1}}>
                 {addedClips?.map((clip, index) => {
-                    console.log('clip in make phrase', clip)
+                    // console.log('clip in make phrase', clip)
                     return (
                         <Chip
                             label={clip.clip.title}
@@ -50,17 +52,19 @@ export default function MakePhrasePage() {
                     )
                 })
                 }
-            </Box>
-            <Button
+                </Box>
+                <Button
                 className="btn btn-primary"
                 type="submit"
                 onClick={handleWatchPhrase}
+                variant='outlined'
+                sx={{mt: 2, ml: 9}}
             >
                 Watch phrase
             </Button>
+            </Box>
             <Box className="clips" sx={{ width: '95%', margin: 'auto' }}>
                 <MakePhraseClipCard xs={6} sm={6} md={6} />
-
             </Box>
         </>
     )
