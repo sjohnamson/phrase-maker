@@ -21,16 +21,16 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <Box onSubmit={registerUser} sx={{ bgcolor: 'info.light', p: 2 }}>
+    <Box onSubmit={registerUser} sx={{ bgcolor: 'info.light', p: 2, m: 2 }}>
       <Typography variant='h5' sx={{ pb: 2 }}>Register</Typography>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
-       <Stack spacing={2}>
-      <div>
-       
+      <Stack spacing={2}>
+        <div>
+
           <label htmlFor="username">
 
             <TextField
@@ -52,21 +52,21 @@ function RegisterForm() {
             onChange={(event) => setUsername(event.target.value)}
           /> */}
           </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          <TextField
-            id="filled-basic"
-            label="Password"
-            variant="filled"
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-            sx={{ width: '100%', bgcolor: 'secondary.main' }}
-          />
-          {/* <input
+        </div>
+        <div>
+          <label htmlFor="password">
+            <TextField
+              id="filled-basic"
+              label="Password"
+              variant="filled"
+              type="password"
+              name="password"
+              value={password}
+              required
+              onChange={(event) => setPassword(event.target.value)}
+              sx={{ width: '100%', bgcolor: 'secondary.main' }}
+            />
+            {/* <input
             type="password"
             name="password"
             value={password}
@@ -74,15 +74,15 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           /> */}
 
-        </label>
-      </div>
-      <div>
-        <Button type="submit" onClick={registerUser} name="submit" variant='contained' color='success'>
-          Register
-        </Button>
-      
-    </div>
-    </Stack>
+          </label>
+        </div>
+        <div>
+          <Button type="submit" onClick={registerUser} name="submit" variant='contained' color='success'>
+            Register
+          </Button>
+
+        </div>
+      </Stack>
     </Box >
   );
 }

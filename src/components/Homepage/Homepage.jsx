@@ -19,7 +19,7 @@ export default function Homepage() {
             :
             // otherwise returns a message that there are no clips
             <Box sx={{ bgcolor: 'pink.main', mt: 10, m: 5, p: 5 }}>
-            <Typography variant='h6' sx={{color: 'info.main'}}>No clips in your project library. <Divider sx={1}/> Click Add/Create below to add a clip.</Typography>
+            <Typography variant='h6' sx={{color: 'info.main'}}>No clips in your project library. <Divider sx={{m: 1}}/> Click Add/Create below to add a clip.</Typography>
             </Box>
         
     )

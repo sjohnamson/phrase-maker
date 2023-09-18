@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
+import { Button, Typography} from '@mui/material';
 
 function RegisterPage() {
   const history = useHistory();
@@ -11,15 +12,17 @@ function RegisterPage() {
       <RegisterForm />
 
       <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
+        <Typography variant='subtitle1' sx={{ m: 2 }}>
+          Already a member?
+        </Typography>
+        <Button
+        variant='contained'
           onClick={() => {
             history.push('/login');
           }}
         >
           Login
-        </button>
+        </Button>
       </center>
     </div>
   );

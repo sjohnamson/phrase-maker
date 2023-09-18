@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { Button, TextField, Box, Typography, Stack } from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -8,8 +10,7 @@ function LoginForm() {
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
 
-  const login = (event) => {
-    event.preventDefault();
+  const login = () => {
 
     if (username && password) {
       dispatch({
@@ -25,41 +26,59 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <Box 
+    onSubmit={login} 
+    sx={{ bgcolor: 'info.light', p: 2, m: 2}}>
+      <Typography variant='h5' sx={{ pb: 2 }}>Login</Typography>
+
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
+      <Stack spacing={2}>
       <div>
         <label htmlFor="username">
-          Username:
-          <input
+          <TextField
+            id="filled-basic"
+            label="Username"
+            variant="filled"
             type="text"
             name="username"
-            required
             value={username}
+            required
             onChange={(event) => setUsername(event.target.value)}
+            sx={{ width: '100%', bgcolor: 'secondary.main' }}
           />
         </label>
       </div>
       <div>
         <label htmlFor="password">
-          Password:
-          <input
+          <TextField
+            id="filled-basic"
+            label="Password"
+            variant="filled"
             type="password"
             name="password"
-            required
             value={password}
+            required
             onChange={(event) => setPassword(event.target.value)}
+            sx={{ width: '100%', bgcolor: 'secondary.main' }}
           />
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button 
+        type="submit" 
+        onClick={login} 
+        name="submit" 
+        variant='contained' 
+        color='primary'>
+          LogIn        
+          </Button>
       </div>
-    </form>
+    </Stack>
+    </Box >
   );
 }
 
