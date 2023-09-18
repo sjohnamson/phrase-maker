@@ -1,39 +1,39 @@
+-- create a postgres database named:
+-- movement_phraser
 
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
     id serial PRIMARY KEY,
     username varchar(100),
-    password varchar(100)
+    password varchar(100),
+    current_project varchar(100) 
 );
 
 CREATE TABLE tag (
     id serial PRIMARY KEY,
-    tag varchar(30)
+    tag text 
 );
 
 CREATE TABLE clip (
     id serial PRIMARY KEY,
     title varchar(100),
+    public_id varchar(100),
     description varchar(1000),
     path varchar(150),
-    speed integer,
-    project_id integer REFERENCES project(id)
+    project_id integer REFERENCES project(id),
+    speed integer
 );
 
 CREATE TABLE phrase (
     id serial PRIMARY KEY,
     title varchar(100),
+    public_id varchar(100),
     description varchar(1000),
-    path varchar(150),
     project_id integer REFERENCES project(id)
 );
 
 CREATE TABLE project (
     id serial PRIMARY KEY,
-    title varchar(50)
+    title varchar(50) UNIQUE
 );
 
 CREATE TABLE user_project (
