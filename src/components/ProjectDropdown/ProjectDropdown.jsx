@@ -249,7 +249,7 @@ export default function ProjectDropdown() {
 
         <Box sx={{ pt: 2 }}>
             <Stack direction={'row'}>
-                   <Typography variant='button'>{userInfo.current_project}</Typography>
+                   <Typography variant='button' sx={{color: 'info.main', m: 2}} gutterBottom>{userInfo.current_project}</Typography>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button color='info' onClick={toggleDrawer(anchor, true)}>
