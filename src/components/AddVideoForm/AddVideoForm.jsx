@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 // material imports
-import { Button, Typography, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material';
+import { Button, Typography, TextField, Stack, Box } from '@mui/material';
 
 export default function AddVideoForm() {
   const history = useHistory();

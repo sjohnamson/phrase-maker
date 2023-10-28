@@ -65,8 +65,8 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
         console.log('currentID', currentID)
         // insert new phrase
         const sqlAddPhrase = `
-        INSERT INTO phrase ("public_id", "title", "description", "project_id") 
-        VALUES ($1, $2, $3, $4);`
+            INSERT INTO phrase ("public_id", "title", "description", "project_id") 
+            VALUES ($1, $2, $3, $4);`
         await connection.query(sqlAddPhrase, [phraseID, phraseTitle, phraseDescription, currentID]);
 
         await connection.query('COMMIT');

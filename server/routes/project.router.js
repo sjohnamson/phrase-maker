@@ -64,10 +64,10 @@ router.put("/:project", rejectUnauthenticated, async (req, res) => {
         await connection.query(sqlJoinProject, [userId, joinProject]);
 
         const sqlCurrentProject = `
-        UPDATE "user" 
-        SET current_project = $2
-        WHERE id = $1
-        ;`
+            UPDATE "user" 
+            SET current_project = $2
+            WHERE id = $1
+            ;`
     await connection.query(sqlCurrentProject, [userId, joinProject]);
 
         await connection.query('COMMIT');
@@ -87,14 +87,14 @@ router.get("/", rejectUnauthenticated, async (req, res) => {
     const userId = [req.user.id]
 
     const sqlUserProjects = `
-    SELECT project.title
-    FROM "user" 
-    JOIN "user_project"
-    ON "user".id = "user_project"."user_id"
-    JOIN project
-    ON "user_project".project_id = project.id
-    WHERE "user_project"."user_id" = $1
-    ;`
+        SELECT project.title
+        FROM "user" 
+        JOIN "user_project"
+        ON "user".id = "user_project"."user_id"
+        JOIN project
+        ON "user_project".project_id = project.id
+        WHERE "user_project"."user_id" = $1
+        ;`
 
     pool.query(sqlUserProjects, userId)
     .then(result => {

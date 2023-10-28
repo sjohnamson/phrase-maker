@@ -34,6 +34,7 @@ import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
 import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
 import PhrasePage from '../PhrasePage/PhrasePage';
 import AddClipPhrasePage from '../AddClipPhrasePage/AddClipPhrasePage';
+import materialPalette from '../MaterialPalette/MaterialPalette';
 // style imports
 import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -50,42 +51,7 @@ function App() {
   }, [dispatch]);
 
   // changes to the material ui color palette
-  let theme = createTheme({
-    palette: {
-      primary: {
-        main: '#d5a021'
-      },
-      secondary: {
-        main: '#ceeada',
-      },
-      error: {
-        main: '#ff312e',
-      },
-      warning: {
-        main: '#d81e5b',
-      },
-      info: {
-        main: '#2D3047',
-      },
-      success: {
-        main: '#566e3d'
-      },
-      contrastThreshold: 4.5,
-      tonalOffset: 0.5,
-    },
-  });
-
-  theme = createTheme(theme, {
-    // Custom colors created with augmentColor 
-    palette: {
-      pink: theme.palette.augmentColor({
-        color: {
-          main: '#F8c7cc',
-        },
-        name: 'pink',
-      }),
-    },
-  });
+  let theme = materialPalette();
 
   return (
     <ThemeProvider theme={theme}>
@@ -293,3 +259,6 @@ function App() {
 }
 
 export default App;
+
+
+
