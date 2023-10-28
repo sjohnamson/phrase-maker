@@ -8,7 +8,7 @@ import { AdvancedVideo } from '@cloudinary/react';
 import { fill } from "@cloudinary/url-gen/actions/resize";
 
 // Material UI imports
-import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { CardActionArea, Card} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 
@@ -31,7 +31,6 @@ export default function PhraseCard({ xs, sm, md }) {
 
         <Grid container spacing={2}>
             {phrases.map((phrase, index) => {
-                console.log('phrase.public_id', phrase.public_id)
                 const video = cld.video(phrase.public_id).resize(fill().width(400).height(250));
                 return (<>
                     <Grid item key={index} xs={xs} sm={sm} md={md} >

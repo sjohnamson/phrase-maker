@@ -10,7 +10,6 @@ const processPhrase = (state = [], action) => {
         case 'REMOVE_CLIP':
           return[
             ...state.filter(item => item.clip.id !== action.payload.clip.id)
-            
           ];
       default:
         return state;
