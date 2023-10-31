@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Button, Chip, Autocomplete, TextField, Stack, Box } from '@mui/material';
 
-export default function BtnAppendClip({ clip }) {
+export default function BtnTransformClip({ clip }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleAddToPhrase = () => {
+    const transformClip = () => {
         dispatch({
-            type: 'ADD_CLIP_TO_PHRASE',
+            type: 'TRANSFORM_CLIP',
             payload: { clip }
         })
         dispatch({
@@ -22,12 +22,12 @@ export default function BtnAppendClip({ clip }) {
     return (
         <Box>
             <Button
-                onClick={() => handleAddToPhrase(clip)}
+                onClick={() => transformClip(clip)}
                 size="small"
                 color="primary"
                 variant="outlined"
                 >
-                Add clip to phrase
+                Edit Clip
             </Button>
 
 
