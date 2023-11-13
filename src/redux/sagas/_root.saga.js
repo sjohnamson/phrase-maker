@@ -2,12 +2,11 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
-import addVideoSaga from './addVideoSaga';
-import getVideoSaga from './getVideoSaga';
-import deleteVideoSaga from './deleteVideoSaga';
+import getClipsSaga from './getClipsSaga';
 import updateVideoSaga from './updateVideoSaga';
 import addPhraseSaga from './addPhraseSaga';
 import getPhraseListSaga from './getPhraseSaga';
+import clipSaga from './clipSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,11 +20,10 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    addVideoSaga(),
-    getVideoSaga(),
-    deleteVideoSaga(),
+    getClipsSaga(),
     updateVideoSaga(),
     addPhraseSaga(),
     getPhraseListSaga(),
+    clipSaga(),
   ]);
 }

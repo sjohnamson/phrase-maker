@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import PhraseCardActions from './PhraseCardActions/PhraseCardActions';
 import PhraseCardContent from './PhraseCardContent/PhraseCardContent';
 import { Cloudinary } from "@cloudinary/url-gen";

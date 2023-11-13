@@ -15,7 +15,7 @@ cloudinary.config({
   const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: 'Movement Phraser',
+      folder: 'MovementPhraser',
       resource_type: 'auto',
     },
   });

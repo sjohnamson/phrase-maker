@@ -14,7 +14,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // page imports
@@ -37,8 +36,7 @@ import AddClipPhrasePage from '../AddClipPhrasePage/AddClipPhrasePage';
 import materialPalette from '../MaterialPalette/MaterialPalette';
 // style imports
 import './App.css';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {ThemeProvider } from '@mui/material/styles';
 
 
 function App() {
@@ -251,7 +249,6 @@ function App() {
               <h1>404</h1>
             </Route>
           </Switch>
-          <Footer />
         </div>
       </Router>
     </ThemeProvider>

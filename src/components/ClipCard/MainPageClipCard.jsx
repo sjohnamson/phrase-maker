@@ -32,7 +32,6 @@ export default function ClipCard({ xs, sm, md }) {
 
         <Grid container spacing={2}>
             {clips.map((clip, index) => {
-                console.log('clip.public_id', clip.public_id)
                 const video = cld.video(clip.public_id).resize(fill().width(400).height(250));
                 return (<>
                     <Grid item key={index} xs={xs} sm={sm} md={md} >

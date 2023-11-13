@@ -10,7 +10,7 @@ export default function BtnTransformClip({ clip }) {
     const transformClip = () => {
         dispatch({
             type: 'TRANSFORM_CLIP',
-            payload: { clip }
+            payload: clip
         })
         dispatch({
             type: 'SET_CURRENT',
