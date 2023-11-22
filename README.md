@@ -4,12 +4,16 @@ Phrase Maker is an app that allows users to upload and organize collections of s
 
 ## Screenshots
 
-![Screenshot1](/src/images/PM%20Screen1.png)
+![Screenshot1](/src/images/PM%20Screen1.png )
+
 ![Screenshot2](/src/images/PM%20Screen2.png)
 
+  <div style="display:flex; justify-content:space-between;">
+      <img src="/src/images/PM%20Screen1.png" style="width:49%;" alt= Screenshot1>
+      <img src="/src/images/PM%20Screen2.png" style="width:49%" alt= Screenshot2>
+  </div>
 
 ## Installation
-
 1. Create a database named `movement_phraser`,
 2. The queries in the `database.sql` file are set up to create all the necessary tables needed to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
 3. Open up your editor of choice and run an `npm install`

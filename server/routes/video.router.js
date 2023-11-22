@@ -22,7 +22,6 @@ router.get("/", async (req, res) => {
       WHERE project.title = $1
       ;`
     const reply = await connection.query(sqlProjectTitle, [userCurrent]);
-    console.log('reply', reply.rows[0].project_id)
     const projectID = reply.rows[0].project_id;
     const sqlQuery = `
       SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
@@ -49,8 +48,6 @@ router.get("/", async (req, res) => {
 
 // Posts clips from AddVideoForm into cloudinary and the database
 router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
-  console.log('sent to cloudinary: ', req.file)
-  console.log('in clip post req.user:', req.user)
 
   const clipInfo = [req.file.path, req.file.filename, req.body.title, req.body.description];
   const currentProject = req.user.current_project;
@@ -69,7 +66,6 @@ router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async 
       ;`
     const reply = await connection.query(sqlProjectId, [currentProject]);
     const currentID = reply.rows[0].project_id;
-    console.log('currentID,', currentID)
     const sqlAddClip = `
       INSERT INTO clip ("path", "public_id", "title", "description", "project_id") 
       VALUES ($1, $2, $3, $4, $5) RETURNING id
@@ -106,8 +102,6 @@ router.post("/", rejectUnauthenticated, cloudinaryUpload.single("video"), async 
 });
 
 router.delete("/:id", rejectUnauthenticated, cloudinaryUpload.single("video"), async (req, res) => {
-  console.log('sent to cloudinary to delete: ', req.file)
-  console.log('in clip post req.params:', req.params)
 
   const clipId = [req.params.id];
 
