@@ -9,8 +9,8 @@ Phrase Maker is an app that allows users to upload and organize collections of s
 ![Screenshot2](/src/images/PM%20Screen2.png)
 
   <div style="display:flex; justify-content:space-between;">
-      <img src="/src/images/PM%20Screen1.png" style="width:100; height:300" alt= Screenshot1>
-      <img src="/src/images/PM%20Screen2.png" style="width:49%" alt= Screenshot2>
+      <img src="/src/images/PM%20Screen1.png" style="width:52%;" alt= Screenshot1>
+      <img src="/src/images/PM%20Screen2.png" style="width:46%" alt= Screenshot2>
   </div>
 
 ## Installation
