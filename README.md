@@ -1,13 +1,9 @@
-![Phrase Maker](./src/images/PMLogoNoSq.png)
+
+ <img src="./src/images/PMLogoNoSq.png" style="height:50px;" alt= Phrase Maker>
 
 Phrase Maker is an app that allows users to upload and organize collections of short video clips into group projects. They can then place those clips into timelines to create longer video sequences. The app is aimed at choreographers and dancers using it to share and create movement material for dance creation processes, but could also be used by other groups who would like to share small video libraries.
 
 ## Screenshots
-
-![Screenshot1](/src/images/PM%20Screen1.png )
-
-![Screenshot2](/src/images/PM%20Screen2.png)
-
   <div style="display:flex; justify-content:space-between;">
       <img src="/src/images/PM%20Screen1.png" style="width:50%;" alt= Screenshot1>
       <img src="/src/images/PM%20Screen2.png" style="width:49%" alt= Screenshot2>
