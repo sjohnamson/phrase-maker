@@ -4,11 +4,11 @@ const cloudinary = require('cloudinary').v2;
 const pool = require('../modules/pool')
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// cloudinary.config({
+//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//     api_key: process.env.CLOUDINARY_API_KEY,
+//     api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
 
 // retrieves phrase public_ids to display in PhraseCards
 router.get("/", (req, res) => {
@@ -33,7 +33,6 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
     // assign variables to phrase and user info from post
     const phraseTitle = req.body.newPhraseTitle;
     const phraseDescription = req.body.newPhraseDescription;
-    console.log('title and desc', req.body)
     const userID = req.user.id
 
     const connection = await pool.connect()
@@ -53,7 +52,6 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
             ;`
         const reply = await connection.query(sqlCurrentProject, [userID])
         const currentTitle = reply.rows[0].current_project;
-        console.log('currentTitle', currentTitle)
         // get project id using title
         const sqlCurrentID = `
             SELECT id
@@ -62,7 +60,6 @@ router.post("/", rejectUnauthenticated, async (req, res) => {
             ;`
         const response = await connection.query(sqlCurrentID, [currentTitle])
         const currentID = response.rows[0].id;
-        console.log('currentID', currentID)
         // insert new phrase
         const sqlAddPhrase = `
             INSERT INTO phrase ("public_id", "title", "description", "project_id") 
