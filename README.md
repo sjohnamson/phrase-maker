@@ -16,11 +16,6 @@ Phrase Maker is an app that allows users to upload and organize collections of s
 4. Run `npm run server` in your terminal
 5. In another terminal run `npm run client` 
 6. The `npm run client` command will open up a new browser tab for you!
-    
-## Demo
-
-Insert gif or link to demo
-
 
 ## Features
 

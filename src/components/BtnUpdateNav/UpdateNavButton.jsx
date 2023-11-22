@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { Box, Button, Typography, Modal, Stack, TextField, Autocomplete, Chip } from '@mui/material';
+import { Button} from '@mui/material';
 
 export default function UpdateNavButton({ clip }) {
     const history = useHistory();

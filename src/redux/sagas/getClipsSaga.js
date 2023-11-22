@@ -10,8 +10,8 @@ function* getClips() {
     })
 }
 
-function* getVideoSaga() {
+function* getClipsSaga() {
     yield takeLatest('GET_CLIPS', getClips)
 }
 
-export default getVideoSaga
+export default getClipsSaga

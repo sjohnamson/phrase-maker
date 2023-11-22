@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-import { Box, Button, Stack, TextField, Autocomplete, Chip } from '@mui/material';
+import { Box, Button, TextField} from '@mui/material';
 
 
 export default function UpdatePage() {
