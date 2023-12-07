@@ -50,7 +50,6 @@ function* deleteClipSaga(action) {
 
 function* transformClipSaga(action) {
     try {
-        console.log('in delete clip saga', action.payload)
         const clipId = action.payload.id;
 
         yield axios({

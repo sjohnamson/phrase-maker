@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import MainPageCardActions from './MainPageCardActions/MainPageCardAction';
 import MainPageCardContent from './MainPageCardContent/MainPageCardContent';
 import { Cloudinary } from "@cloudinary/url-gen";
