@@ -22,7 +22,6 @@ router.get("/", async (req, res) => {
       WHERE project.title = $1
       ;`
     const reply = await connection.query(sqlProjectTitle, [userCurrent]);
-    console.log('reply', reply.rows[0].project_id)
     const projectID = reply.rows[0].project_id;
     const sqlQuery = `
       SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag

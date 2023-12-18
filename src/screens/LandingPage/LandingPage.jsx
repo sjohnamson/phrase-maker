@@ -7,7 +7,7 @@ import FlareIcon from '@mui/icons-material/Flare';
 
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import PhraseHalf from '../../images/PMPhrase.png';
 import MakerHalf from '../../images/PMMaker.png';
 
