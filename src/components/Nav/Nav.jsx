@@ -1,5 +1,5 @@
 import React from 'react';
-import PhraseLogo from '../../images/PMLogoNoSq.png'
+import PhraseLogo from '../../images/PMLogo1.png'
 import ProjectDropdown from '../ProjectDropdown/ProjectDropdown';
 import { Box, Stack, Link} from '@mui/material';
 

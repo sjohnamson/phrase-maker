@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, Stack } from '@mui/material';
-import PhraseLogo from '../../images/PMLogoNoSq.png'
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';

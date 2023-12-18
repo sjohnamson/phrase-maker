@@ -4,10 +4,10 @@ function materialPalette() {
     let theme = createTheme({
       palette: {
         primary: {
-          main: '#d5a021'
+          main: '#DF9216'
         },
         secondary: {
-          main: '#ceeada',
+          main: '#F1F9F5',
         },
         error: {
           main: '#ff312e',
@@ -19,7 +19,7 @@ function materialPalette() {
           main: '#2D3047',
         },
         success: {
-          main: '#566e3d'
+          main: '#50858B'
         },
         contrastThreshold: 4.5,
         tonalOffset: 0.5,
@@ -31,7 +31,7 @@ function materialPalette() {
       palette: {
         pink: theme.palette.augmentColor({
           color: {
-            main: '#F8c7cc',
+            main: '#E08DAC',
           },
           name: 'pink',
         }),
