@@ -1,6 +1,6 @@
 // Material UI imports
 import React from 'react'; 
-import BtnModifyClip from '../../Btn ModifyClip/BtnModifyClip';
+import BtnModifyClip from '../../BtnAppendClip/BtnAppendClip';
 
 import { CardActions} from '@mui/material';
 

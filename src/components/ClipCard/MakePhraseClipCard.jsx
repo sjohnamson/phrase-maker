@@ -4,9 +4,8 @@ import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import MakePhraseCardActions from './MakePhraseCardActions/MakePhraseCardActions'
 import MakePhraseCardContent from './MakePhraseCardContent/MakePhraseCardContent'
 // Material UI imports
-import { Button, CardActionArea, CardActions, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { CardActionArea, Card} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { AdvancedVideo } from '@cloudinary/react';
 
 
 export default function ClipCard({ xs, sm, md }) {

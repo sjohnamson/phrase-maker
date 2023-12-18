@@ -3,7 +3,6 @@ import axios from 'axios';
 
 function* updateClipSaga(action) {
     try {
-        console.log('in update clip saga', action.payload)
         const clipUpdate = {
             clipId: action.payload.id,
             clipTitle: action.payload.newClipTitle,

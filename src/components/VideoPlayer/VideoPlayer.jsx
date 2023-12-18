@@ -1,5 +1,6 @@
 
 import { useRef } from 'react';
+import { fill } from "@cloudinary/url-gen/actions/resize";
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 

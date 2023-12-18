@@ -17,11 +17,6 @@ export default function ClipCard({ xs, sm, md }) {
     const clips = useSelector(store => store.clips)
     const user = useSelector(store => store.user)
 
-    useEffect(() => {
-        dispatch({ type: 'GET_CLIPS' })
-        
-    }, [user.current_project]);
-
     const cld = new Cloudinary({
         cloud: {
             cloudName: 'dkabdionr'
@@ -32,7 +27,6 @@ export default function ClipCard({ xs, sm, md }) {
 
         <Grid container spacing={2}>
             {clips.map((clip, index) => {
-                console.log('clip.public_id', clip.public_id)
                 const video = cld.video(clip.public_id).resize(fill().width(400).height(250));
                 return (<>
                     <Grid item key={index} xs={xs} sm={sm} md={md} >

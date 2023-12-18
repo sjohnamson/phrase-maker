@@ -1,12 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // component imports
 import ClipCard from "../../components/ClipCard/MainPageClipCard";
 // material imports
 import { Box, Typography, Divider } from "@mui/material";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 export default function Homepage() {
-  const clips = useSelector((store) => store.clips);
+  const dispatch = useDispatch();
+  const clips = useSelector(store => store.clips)
+  const user = useSelector(store => store.user)
+
+  useEffect(() => {
+    dispatch({ type: 'GET_CLIPS' })
+    
+}, [user.current_project]);
 
   return (
     // if there are clips

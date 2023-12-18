@@ -14,7 +14,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // page imports
@@ -32,11 +31,10 @@ import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
 import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
 import PhrasePage from '../PhrasePage/PhrasePage';
 import AddClipPhrasePage from '../AddClipPhrasePage/AddClipPhrasePage';
-import materialPalette from '../MaterialPalette/MaterialPalette';
+import materialPalette from '../../Themes/MaterialPalette/MaterialPalette.js';
 // style imports
 import './App.css';
-import { ThemeProvider } from '@mui/material/styles';
-
+import {ThemeProvider } from '@mui/material/styles';
 
 
 function App() {
@@ -230,7 +228,6 @@ function App() {
               <h1>404</h1>
             </Route>
           </Switch>
-          <Footer />
         </div>
       </Router>
     </ThemeProvider>

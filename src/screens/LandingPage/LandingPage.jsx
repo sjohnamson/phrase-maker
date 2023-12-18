@@ -26,9 +26,9 @@ function LandingPage() {
 
   useEffect(() => {
     // sets the delay for the items that transition in on load
-    // const delayMaker = setTimeout(() => {
-    //   setShowMaker(true);
-    // }, 1000);
+    const delayMaker = setTimeout(() => {
+      setShowMaker(true);
+    }, 1000);
 
 
     const delayWelcome = setTimeout(() => {

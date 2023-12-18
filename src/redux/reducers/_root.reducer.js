@@ -19,7 +19,6 @@ const rootReducer = combineReducers({
   currentClip,
   phrases,
   processPhrase,
-
 });
 
 export default rootReducer;
