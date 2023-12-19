@@ -20,9 +20,10 @@ const handleUpdate = () => {
         <Button
             onClick={() => handleUpdate()}
             size="small"
-            variant='filled'
+            variant="contained"
             color="success"
             type="submit"
+            sx={{color: "secondary.light"}}
         >
             Update
         </Button>
