@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import LogOutButton from '../BtnLogOut/LogOutButton';
 import JoinProjectPage from '../JoinProjectPage/JoinProjectPage'
-import MakeProjectPage from '../MakeProjectPage/MakeProjectPage'
+import MakeProjectPage from '../../screens/MakeProjectPage/MakeProjectPage'
 // material imports
 import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';

@@ -15,7 +15,7 @@ else {
     pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
-        database: 'movement_phraser',   // 	💥 Change this to the name of your database!
+        database: 'movement_phraser',   
     });
 }
 

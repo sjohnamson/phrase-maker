@@ -44,13 +44,7 @@ function RegisterForm() {
               onChange={(event) => setUsername(event.target.value)}
               sx={{ width: '100%', bgcolor: 'secondary.main' }}
             />
-            {/* <input
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          /> */}
+            
           </label>
         </div>
         <div>
@@ -66,13 +60,6 @@ function RegisterForm() {
               onChange={(event) => setPassword(event.target.value)}
               sx={{ width: '100%', bgcolor: 'secondary.main' }}
             />
-            {/* <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          /> */}
 
           </label>
         </div>

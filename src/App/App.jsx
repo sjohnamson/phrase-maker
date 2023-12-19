@@ -13,27 +13,25 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import Nav from '../Nav/Nav';
+import Nav from '../components/Nav/Nav.jsx';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute.jsx';
 // page imports
-import AboutPage from '../AboutPage/AboutPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import NoProjectPage from '../NoProjectPage/NoProjectPage';
-import Homepage from '../Homepage/Homepage';
-import UpdatePage from '../UpdatePage/UpdatePage';
-import AddClipPage from '../AddClipPage/AddClipPage';
-import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
-import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
-import ModifyClipPage from '../ModifyClipPage/ModifyClipPage.jsx';
-import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
-import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
-import PhrasePage from '../PhrasePage/PhrasePage';
-import AddClipPhrasePage from '../AddClipPhrasePage/AddClipPhrasePage';
-import materialPalette from '../MaterialPalette/MaterialPalette';
+import LandingPage from '../screens/LandingPage/LandingPage.jsx';
+import LoginPage from '../screens/LoginPage/LoginPage.jsx';
+import RegisterPage from '../screens/RegisterPage/RegisterPage.jsx';
+import NoProjectPage from '../screens/NoProjectPage/NoProjectPage.jsx';
+import Homepage from '../screens/Homepage/Homepage.jsx';
+import UpdatePage from '../screens/UpdatePage/UpdatePage.jsx';
+import AddClipPage from '../screens/AddClipPage/AddClipPage.jsx';
+import JoinProjectPage from '../components/JoinProjectPage/JoinProjectPage.jsx';
+import MakeProjectPage from '../screens/MakeProjectPage/MakeProjectPage.jsx';
+import ModifyClipPage from '../screens/ModifyClipPage/ModifyClipPage.jsx';
+import BottomNavigationBar from '../components/BottomNavigationBar/BottomNavigationBar.jsx';
+import MakePhrasePage from '../screens/MakePhrasePage/MakePhrasePage.jsx';
+import PhrasePage from '../screens/PhrasePage/PhrasePage.jsx';
+import AddClipPhrasePage from '../screens/AddClipPhrasePage/AddClipPhrasePage.jsx';
+import materialPalette from '../Themes/MaterialPalette/MaterialPalette.js';
 // style imports
 import './App.css';
 import {ThemeProvider } from '@mui/material/styles';
@@ -60,15 +58,6 @@ function App() {
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
-
-            {/* Visiting localhost:3000/about will show the about page. */}
-            <Route
-              // shows AboutPage at all times (logged in or not)
-              exact
-              path="/about"
-            >
-              <AboutPage />
-            </Route>
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -112,16 +101,6 @@ function App() {
               <Nav />
               <BottomNavigationBar />
               <UpdatePage />
-            </ProtectedRoute>
-
-            <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
-              exact
-              path="/info"
-            >
-              <Nav />
-              <BottomNavigationBar />
-              <InfoPage />
             </ProtectedRoute>
 
             <ProtectedRoute

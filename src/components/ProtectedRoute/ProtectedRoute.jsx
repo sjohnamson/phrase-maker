@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import LoginPage from '../LoginPage/LoginPage';
-import NoProjectPage from '../NoProjectPage/NoProjectPage';
+import LoginPage from '../../screens/LoginPage/LoginPage';
+import NoProjectPage from '../../screens/NoProjectPage/NoProjectPage';
 import { useSelector } from 'react-redux';
 import Nav from '../Nav/Nav';
 import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';

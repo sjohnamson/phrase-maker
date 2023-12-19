@@ -1,14 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useSelector } from 'react-redux';
 // material imports
-import { Typography, Divider, Box } from '@mui/material';
-import PhraseCard from '../ClipCard/PhraseCard';
+import { Box } from '@mui/material';
+import PhraseCard from '../../components/ClipCard/PhraseCard';
 
 
 export default function PhrasePage() {
     const history = useHistory();
-    const phrases = useSelector(store => store.phrases)
 
     const goToAddClip = () => {
         history.push('./addclip')

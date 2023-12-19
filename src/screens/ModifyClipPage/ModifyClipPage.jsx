@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { AdvancedVideo } from '@cloudinary/react';
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { concatenate } from "@cloudinary/url-gen/actions/videoEdit";

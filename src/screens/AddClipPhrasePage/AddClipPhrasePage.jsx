@@ -1,4 +1,4 @@
-import AddVideoForm from '../AddVideoForm/AddVideoForm'
+import AddVideoForm from '../../components/AddVideoForm/AddVideoForm'
 import { Button, Typography, Box, Stack } from '@mui/material'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 

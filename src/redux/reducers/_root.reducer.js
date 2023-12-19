@@ -9,6 +9,7 @@ import processPhrase from './cliptophrase.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // This is imported in index.js as rootSaga'
+
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in

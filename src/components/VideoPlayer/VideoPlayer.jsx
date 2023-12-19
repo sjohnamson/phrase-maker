@@ -6,17 +6,8 @@ import { Cloudinary } from '@cloudinary/url-gen';
 
 
 export default function VideoPlayer({ width, height, public_id, title }) {
-    const cloudinaryRef = useRef();
     const videoRef = useRef();
 
-    // useEffect(() => {
-    //     if (cloudinaryRef.current) return;
-
-    //     cloudinaryRef.current = window.cloudinary;
-    //     cloudinaryRef.current.videoPlayer(videoRef.current, {
-    //         cloud_name: 'dkabdionr',
-    //     })
-    // }, []);
     const cld = new Cloudinary({
         cloud: {
             cloudName: 'dkabdionr'
