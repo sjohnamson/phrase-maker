@@ -13,25 +13,25 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import Nav from '../Nav/Nav';
+import Nav from '../components/Nav/Nav.jsx';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute.jsx';
 // page imports
-import LandingPage from '../../screens/LandingPage/LandingPage.jsx';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import NoProjectPage from '../NoProjectPage/NoProjectPage';
-import Homepage from '../../screens/Homepage/Homepage.jsx';
-import UpdatePage from '../UpdatePage/UpdatePage';
-import AddClipPage from '../AddClipPage/AddClipPage';
-import JoinProjectPage from '../JoinProjectPage/JoinProjectPage';
-import MakeProjectPage from '../MakeProjectPage/MakeProjectPage';
-import ModifyClipPage from '../ModifyClipPage/ModifyClipPage.jsx';
-import BottomNavigationBar from '../BottomNavigationBar/BottomNavigationBar';
-import MakePhrasePage from '../MakePhrasePage/MakePhrasePage';
-import PhrasePage from '../PhrasePage/PhrasePage';
-import AddClipPhrasePage from '../AddClipPhrasePage/AddClipPhrasePage';
-import materialPalette from '../../Themes/MaterialPalette/MaterialPalette.js';
+import LandingPage from '../screens/LandingPage/LandingPage.jsx';
+import LoginPage from '../screens/LoginPage/LoginPage.jsx';
+import RegisterPage from '../screens/RegisterPage/RegisterPage.jsx';
+import NoProjectPage from '../screens/NoProjectPage/NoProjectPage.jsx';
+import Homepage from '../screens/Homepage/Homepage.jsx';
+import UpdatePage from '../screens/UpdatePage/UpdatePage.jsx';
+import AddClipPage from '../screens/AddClipPage/AddClipPage.jsx';
+import JoinProjectPage from '../components/JoinProjectPage/JoinProjectPage.jsx';
+import MakeProjectPage from '../screens/MakeProjectPage/MakeProjectPage.jsx';
+import ModifyClipPage from '../screens/ModifyClipPage/ModifyClipPage.jsx';
+import BottomNavigationBar from '../components/BottomNavigationBar/BottomNavigationBar.jsx';
+import MakePhrasePage from '../screens/MakePhrasePage/MakePhrasePage.jsx';
+import PhrasePage from '../screens/PhrasePage/PhrasePage.jsx';
+import AddClipPhrasePage from '../screens/AddClipPhrasePage/AddClipPhrasePage.jsx';
+import materialPalette from '../Themes/MaterialPalette/MaterialPalette.js';
 // style imports
 import './App.css';
 import {ThemeProvider } from '@mui/material/styles';

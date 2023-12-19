@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import { Button, Box, Typography, Chip } from '@mui/material';
-import MakePhraseClipCard from '../ClipCard/MakePhraseClipCard'
+import MakePhraseClipCard from '../../screens/ModifyClipPage/ModifyClipPage'
 
 
 export default function MakePhrasePage() {

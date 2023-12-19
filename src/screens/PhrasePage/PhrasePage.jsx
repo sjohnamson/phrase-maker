@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 // material imports
 import { Box } from '@mui/material';
-import PhraseCard from '../ClipCard/PhraseCard';
+import PhraseCard from '../../components/ClipCard/PhraseCard';
 
 
 export default function PhrasePage() {

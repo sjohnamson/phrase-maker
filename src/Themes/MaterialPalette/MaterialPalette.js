@@ -16,7 +16,7 @@ function materialPalette() {
           main: '#d81e5b',
         },
         info: {
-          main: '#2D3047',
+          main: '#28293E',
         },
         success: {
           main: '#50858B'
