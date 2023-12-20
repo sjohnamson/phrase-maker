@@ -16,7 +16,7 @@ function RegisterPage() {
           Already a member?
         </Typography>
         <Button
-        variant='contained'
+        variant='text'
           onClick={() => {
             history.push('/login');
           }}

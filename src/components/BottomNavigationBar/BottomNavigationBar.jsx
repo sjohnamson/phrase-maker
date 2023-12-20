@@ -22,7 +22,7 @@ export default function BottomNavigationBar() {
     <Paper elevation={2} sx={{ width: '100%'}}>
       <BottomNavigation
         showLabels={true}
-        sx={{height: 80, width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'pink.light'}}
+        sx={{height: 80, width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'pink.light', zIndex: 2}}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}

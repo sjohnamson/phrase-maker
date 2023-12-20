@@ -9,7 +9,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "pink.light", p: 0.5 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "pink.light",  }}>
       <Toolbar sx={{  
         display: "flex",
           direction: "row",
@@ -20,7 +20,7 @@ function Nav() {
             <img
               src={PhraseLogo}
               alt="Phrase Maker"
-              style={{ width: '40%', marginLeft: 11, marginTop: 5 }}
+              style={{ width: '40%', marginTop: 3 }}
             />
           </Link>
 

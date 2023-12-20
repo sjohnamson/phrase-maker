@@ -15,7 +15,7 @@ function LoginPage() {
           Haven't created an account yet?
         </Typography>
         <Button
-        variant='contained'
+        variant='text'
         color='success'
           onClick={() => {
             history.push('/registration');
