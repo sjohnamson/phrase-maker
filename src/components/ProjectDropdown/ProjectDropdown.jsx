@@ -83,7 +83,6 @@ export default function ProjectDropdown() {
 
     // changes user's current project to clicked project
     const setCurrentProject = (newCurrent, anchor) => {
-        console.log('current set in dropdown:', newCurrent)
         axios.put('/api/project', newCurrent)
             .then(response => {
                 console.log('current set in dropdown:', response)
@@ -99,10 +98,11 @@ export default function ProjectDropdown() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, height: '100%', bgcolor: 'info.main' }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, height: '100%', bgcolor: 'secondary.dark' }}
             role="presentation"
         >
             <List>
+                {/* Displays current project */}
                 <ListItemButton>
                     <ListItem
                         disablePadding
@@ -158,7 +158,7 @@ export default function ProjectDropdown() {
                 </List>
             </Collapse>
 
-            <Divider />
+            <Divider color='white' />
             <List>
                 <ListItem disablePadding>
                     <ListItemButton
@@ -213,8 +213,8 @@ export default function ProjectDropdown() {
                         </Box>
                     </Modal>
                 </ListItem>
-                <Divider />
-                <ListItem disablePadding>
+                <Divider color='white'  />
+                {/* <ListItem disablePadding>
                     <ListItemButton
                         component={RouterLink}
                         to="/about"
@@ -226,7 +226,7 @@ export default function ProjectDropdown() {
                         </ListItemIcon>
                         <ListItemText primary='About Phrase Maker' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
-                </ListItem>
+                </ListItem> */}
 
                 <ListItem disablePadding>
                     <ListItemButton

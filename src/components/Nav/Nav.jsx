@@ -9,16 +9,18 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <>
-      <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: "pink.light", p: 0.5 }}>
-        <Toolbar>
-        <Stack direction="row" spacing={{ xs: 6, sm: 8, md: 10 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "pink.light", p: 0.5 }}>
+      <Toolbar sx={{  
+        display: "flex",
+          direction: "row",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}>
           <Link to="/home">
             <img
               src={PhraseLogo}
               alt="Phrase Maker"
-              style={{ height: 60, marginLeft: 11, marginTop: 5 }}
+              style={{ width: '40%', marginLeft: 11, marginTop: 5 }}
             />
           </Link>
 
@@ -41,10 +43,9 @@ function Nav() {
               <ProjectDropdown />
             </>
           )}
-        </Stack>
-        </Toolbar>
-      </AppBar>
-    </>
+     
+      </Toolbar>
+    </AppBar>
   );
 }
 
