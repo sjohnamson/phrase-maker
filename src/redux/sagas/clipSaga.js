@@ -1,6 +1,15 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+function* getClips() {
+    const clips = yield axios.get('/api/video')
+
+    yield put ({
+        type: 'SET_CLIPS',
+        payload: clips.data
+    })
+}
+
 function* addClipSaga(action) {
     try {
         const headers = {
@@ -50,7 +59,6 @@ function* deleteClipSaga(action) {
 
 function* transformClipSaga(action) {
     try {
-        console.log('in delete clip saga', action.payload)
         const clipId = action.payload.id;
 
         yield axios({
@@ -70,6 +78,7 @@ function* transformClipSaga(action) {
 
 
 function* clipSaga() {
+    yield takeLatest('GET_CLIPS', getClips),
     yield takeLatest('ADD_CLIP', addClipSaga);
     yield takeLatest('DELETE_CLIP', deleteClipSaga);
     yield takeLatest('TRANSFORM_CLIP', transformClipSaga);

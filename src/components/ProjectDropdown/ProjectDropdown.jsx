@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import LogOutButton from '../BtnLogOut/LogOutButton';
 import JoinProjectPage from '../JoinProjectPage/JoinProjectPage'
-import MakeProjectPage from '../MakeProjectPage/MakeProjectPage'
+import MakeProjectPage from '../../screens/MakeProjectPage/MakeProjectPage'
 // material imports
 import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
@@ -83,7 +83,6 @@ export default function ProjectDropdown() {
 
     // changes user's current project to clicked project
     const setCurrentProject = (newCurrent, anchor) => {
-        console.log('current set in dropdown:', newCurrent)
         axios.put('/api/project', newCurrent)
             .then(response => {
                 console.log('current set in dropdown:', response)
@@ -99,10 +98,11 @@ export default function ProjectDropdown() {
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, height: '100%', bgcolor: 'info.main' }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, height: '100%', bgcolor: 'secondary.dark' }}
             role="presentation"
         >
             <List>
+                {/* Displays current project */}
                 <ListItemButton>
                     <ListItem
                         disablePadding
@@ -158,7 +158,7 @@ export default function ProjectDropdown() {
                 </List>
             </Collapse>
 
-            <Divider />
+            <Divider color='white' />
             <List>
                 <ListItem disablePadding>
                     <ListItemButton
@@ -213,8 +213,8 @@ export default function ProjectDropdown() {
                         </Box>
                     </Modal>
                 </ListItem>
-                <Divider />
-                <ListItem disablePadding>
+                <Divider color='white'  />
+                {/* <ListItem disablePadding>
                     <ListItemButton
                         component={RouterLink}
                         to="/about"
@@ -226,7 +226,7 @@ export default function ProjectDropdown() {
                         </ListItemIcon>
                         <ListItemText primary='About Phrase Maker' sx={{ color: 'secondary.main' }} />
                     </ListItemButton>
-                </ListItem>
+                </ListItem> */}
 
                 <ListItem disablePadding>
                     <ListItemButton
@@ -247,9 +247,9 @@ export default function ProjectDropdown() {
 
     return (
 
-        <Box sx={{ pt: 2 }}>
+        <Box >
             <Stack direction={'row'}>
-                   <Typography variant='button' sx={{color: 'info.main', m: 2}} gutterBottom>{userInfo.current_project}</Typography>
+                   <Typography variant='button' sx={{color: 'info.main', m: 1}} gutterBottom>{userInfo.current_project}</Typography>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button color='info' onClick={toggleDrawer(anchor, true)}>

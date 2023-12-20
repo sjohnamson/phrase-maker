@@ -2,7 +2,7 @@
   "name": "prime-solo-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5001",
   "engines": {
     "node": "18.x"
   },
@@ -46,6 +46,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "nodemon": "^2.0.4"
   },
   "browserslist": {

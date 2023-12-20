@@ -11,7 +11,7 @@ export default function MakePhraseCardActions({clip}) {
     return (
         <>
             <CardActions>
-                <BtnModifyClip clip={clip} />
+                {/* <BtnModifyClip clip={clip} /> */}
             </CardActions>
         </>
     );

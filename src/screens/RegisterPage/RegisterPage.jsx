@@ -1,31 +1,31 @@
 import React from 'react';
-import LoginForm from '../LoginForm/LoginForm';
+
 import { useHistory } from 'react-router-dom';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import { Button, Typography} from '@mui/material';
 
-function LoginPage() {
+function RegisterPage() {
   const history = useHistory();
 
   return (
     <div>
-      <LoginForm />
+      <RegisterForm />
 
       <center>
-      <Typography variant='subtitle1' sx={{ m: 2 }}>
-          Haven't created an account yet?
+        <Typography variant='subtitle1' sx={{ m: 2 }}>
+          Already a member?
         </Typography>
         <Button
-        variant='contained'
-        color='success'
+        variant='text'
           onClick={() => {
-            history.push('/registration');
+            history.push('/login');
           }}
         >
-          Register
+          Login
         </Button>
       </center>
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

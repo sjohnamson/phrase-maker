@@ -20,7 +20,6 @@ export default function AddVideoForm() {
       newClipFile,
       newClipTags,
     }
-    console.log('newclip in onsubmit:', newClip)
     dispatch({ type: 'ADD_CLIP', payload: newClip })
     history.push('/main')
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import MainPageCardActions from './MainPageCardActions/MainPageCardAction';
 import MainPageCardContent from './MainPageCardContent/MainPageCardContent';
 import { Cloudinary } from "@cloudinary/url-gen";
@@ -16,11 +15,6 @@ export default function ClipCard({ xs, sm, md }) {
     const dispatch = useDispatch();
     const clips = useSelector(store => store.clips)
     const user = useSelector(store => store.user)
-
-    useEffect(() => {
-        dispatch({ type: 'GET_CLIPS' })
-        
-    }, [user.current_project]);
 
     const cld = new Cloudinary({
         cloud: {
