@@ -42,7 +42,7 @@ function RegisterForm() {
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
-            sx={{ width: "100%", bgcolor: "secondary.main" }}
+            sx={{ width: "100%", bgcolor: "secondary.main", borderRadius: 2   }}
           />
 
           <TextField
