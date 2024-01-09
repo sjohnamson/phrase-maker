@@ -18,7 +18,6 @@ function LoginPage() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      sx={{}}
     >
       <LoginForm />
       <Typography variant="subtitle1" sx={{ m: 2 }}>

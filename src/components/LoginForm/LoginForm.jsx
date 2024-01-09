@@ -29,19 +29,25 @@ function LoginForm() {
       <Box
         component="form"
         onSubmit={login}
-        sx={{ bgcolor: "info.light", pt: 10, pb: 15, m: 2, minWidth: "350px", borderRadius: 5}}
+        sx={{
+          bgcolor: "info.light",
+          pt: 10,
+          pb: 15,
+          m: 2,
+          minWidth: "350px",
+          borderRadius: 5,
+        }}
       >
- 
-        <Stack alignItems='center' spacing={2}>
-        <Typography variant="h5" sx={{ pb: 2 }}>
-          Login
-        </Typography>
+        <Stack alignItems="center" spacing={2}>
+          <Typography variant="h5" sx={{ pb: 2 }}>
+            Login
+          </Typography>
 
-        {errors.loginMessage && (
-          <h3 className="alert" role="alert">
-            {errors.loginMessage}
-          </h3>
-        )}
+          {errors.loginMessage && (
+            <h3 className="alert" role="alert">
+              {errors.loginMessage}
+            </h3>
+          )}
           <TextField
             required
             id="outline-required"
@@ -52,12 +58,12 @@ function LoginForm() {
             onChange={(event) => setUsername(event.target.value)}
           />
           <TextField
+            required
             id="outline-required"
             label="Password"
             type="password"
             name="password"
             value={password}
-            required
             onChange={(event) => setPassword(event.target.value)}
           />
           <Button
