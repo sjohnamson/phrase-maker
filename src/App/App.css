@@ -5,8 +5,9 @@ body,
 }
 
 body {
+
   margin: 0px;
-  background-color: #e6f4ec;
+  background-color: #F1F9F5;
 }
 
 img {
@@ -19,6 +20,7 @@ Container
 -------------------------------------------------------------------------------- */
 
 .container {
+  max-width: 600px;
   padding: 20px;
 }
 
