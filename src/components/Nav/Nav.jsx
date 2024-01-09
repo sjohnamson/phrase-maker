@@ -20,7 +20,7 @@ function Nav() {
             <img
               src={PhraseLogo}
               alt="Phrase Maker"
-              style={{ width: '40%', marginTop: 3 }}
+              style={{ width: '70%', marginTop: 5, marginLeft: 10 }}
             />
           </Link>
 
