@@ -5,7 +5,8 @@ body,
 }
 
 body {
-
+  display: flex;
+  justify-content: center;
   margin: 0px;
   background-color: #F1F9F5;
 }
@@ -22,6 +23,7 @@ Container
 .container {
   padding-bottom: 85px;
   max-width: 600px;
+  
 }
 
 
