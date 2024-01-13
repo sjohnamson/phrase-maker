@@ -52,7 +52,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div>
+        <div className='container'>
           {/* <Nav />
         <BottomNavigationBar /> */}
           <Switch>
