@@ -22,8 +22,16 @@ function RegisterForm() {
     <Box display="flex" justifyContent="center" alignItems="center">
       <Box
         onSubmit={registerUser}
-        sx={{ bgcolor: "info.light", p: 2, m: 2, width: "60%" }}
+        sx={{
+          bgcolor: "info.light",
+          pt: 10,
+          pb: 15,
+          m: 2,
+          minWidth: "350px",
+          borderRadius: 5,
+        }}
       >
+                <Stack alignItems="center" spacing={2}>
         <Typography variant="h5" sx={{ pb: 2 }}>
           Register
         </Typography>
@@ -32,29 +40,26 @@ function RegisterForm() {
             {errors.registrationMessage}
           </h3>
         )}
-        <Stack spacing={2}>
           <TextField
-            id="filled-basic"
-            label="Username"
-            variant="filled"
-            type="text"
-            name="username"
-            value={username}
             required
+            id="outline-required"
+            label="Username"
+            type="username"
+            name="username"
+            color="success"
+            value={username}
             onChange={(event) => setUsername(event.target.value)}
-            sx={{ width: "100%", bgcolor: "secondary.main", borderRadius: 2   }}
           />
 
           <TextField
-            id="filled-basic"
+            required
+            id="outline-required"
             label="Password"
-            variant="filled"
             type="password"
             name="password"
+            color="success"
             value={password}
-            required
             onChange={(event) => setPassword(event.target.value)}
-            sx={{ width: "100%", bgcolor: "secondary.main", borderRadius: 2  }}
           />
 
           <Button
@@ -63,7 +68,7 @@ function RegisterForm() {
             name="submit"
             variant="contained"
             color="success"
-            sx={{ color: "secondary.light", borderRadius: 2  }}
+            sx={{ color: "secondary.light"}}
           >
             Register
           </Button>
