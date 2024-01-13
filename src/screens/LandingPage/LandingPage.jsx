@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // styling imports
-import "./LandingPage.css";
 import { Box, Typography, Button, Fade, Slide, Stack } from "@mui/material";
 import FlareIcon from "@mui/icons-material/Flare";
 
@@ -61,7 +60,11 @@ function LandingPage() {
   };
 
   return (
-    <div className="container">
+    <Box 
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    >
       <Box
         display="flex"
         justifyContent="center"
@@ -166,7 +169,7 @@ function LandingPage() {
           Login
         </Button>
       </Box>
-    </div>
+      </Box>
   );
 }
 
