@@ -60,11 +60,7 @@ function LandingPage() {
   };
 
   return (
-    <Box 
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    >
+      <>
       <Box
         display="flex"
         justifyContent="center"
@@ -169,7 +165,7 @@ function LandingPage() {
           Login
         </Button>
       </Box>
-      </Box>
+      </>
   );
 }
 
