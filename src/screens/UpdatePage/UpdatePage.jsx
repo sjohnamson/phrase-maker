@@ -57,10 +57,8 @@ export default function UpdatePage() {
     }
 
     return (
-        <div>
             <Box>
                 <h3>Update your clip information</h3>
-                <div className="form-group">
                     <TextField
                         required
                         placeholder="Title"
@@ -72,34 +70,6 @@ export default function UpdatePage() {
                         value={updateClip.description}
                         onChange={(event) => handleDescriptionChange(event)}
                     />
-                </div>
-                {/* <Stack spacing={3} sx={{ width: 500 }}>
-                    <Autocomplete
-                        multiple
-                        id="tags-filled"
-                        value={[updateClip.tag]}
-                        onChange={(event) => {
-                            handleTagChange(event);
-                        }}
-                        options={[updateClip.tag]}
-                        defaultValue={[updateClip.tag]}
-                        freeSolo
-                        renderTags={(value, getTagProps) =>
-                            value.map((option, index) => (
-                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                            ))
-                        }
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                variant="filled"
-                                label="Tags"
-                                placeholder="add a new tag"
-                            />
-                        )}
-                    />
-                </Stack> */}
-                <div className="form-group">
                     <Button
                         onClick={handleUpdate}
                         size="small"
@@ -109,9 +79,7 @@ export default function UpdatePage() {
                     >
                         Update
                     </Button>
-                </div>
             </Box>
-        </div>
 
     );
 

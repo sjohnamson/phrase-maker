@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import ClipCard from "../../components/ClipCard/MainPageClipCard";
 // material imports
 import { Box, Typography, Divider } from "@mui/material";
-import { Cloudinary } from "@cloudinary/url-gen";
 
 export default function Homepage() {
   const dispatch = useDispatch();
