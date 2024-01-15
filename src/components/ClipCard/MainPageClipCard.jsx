@@ -28,7 +28,7 @@ export default function ClipCard({ xs, sm, md }) {
             {clips.map((clip, index) => {
                 const video = cld.video(clip.public_id).resize(fill().width(400).height(250));
                 return (<>
-                    <Grid item key={index} xs={xs} sm={sm} md={md} >
+                    <Grid item key={clip.id} xs={xs} sm={sm} md={md} >
 
                         <Card sx={{ width: '100%'}}>
                             <CardActionArea onClick={() => { }} sx={{}}>
