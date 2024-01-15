@@ -1,9 +1,8 @@
 import React from "react";
 import PhraseLogo from "../../images/PMLogo1.png";
 import ProjectDropdown from "../ProjectDropdown/ProjectDropdown";
-import { Box, Stack, Link, AppBar, Toolbar } from "@mui/material";
+import { Box, Link, AppBar, Toolbar } from "@mui/material";
 import { useSelector } from "react-redux";
-import CssBaseline from "@mui/material/CssBaseline";
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -20,7 +19,7 @@ function Nav() {
             <img
               src={PhraseLogo}
               alt="Phrase Maker"
-              style={{ width: '70%', marginTop: 5, marginLeft: 10 }}
+              style={{ width: '60%', marginTop: 5, marginLeft: 10 }}
             />
           </Link>
 
