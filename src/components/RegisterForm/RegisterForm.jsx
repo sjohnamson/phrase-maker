@@ -42,7 +42,7 @@ function RegisterForm() {
           )}
           <TextField
             required
-            id="outline-required"
+            id="outline-required-2"
             label="Username"
             type="username"
             name="username"

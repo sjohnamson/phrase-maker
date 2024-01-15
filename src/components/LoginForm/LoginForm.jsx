@@ -50,7 +50,7 @@ function LoginForm() {
           )}
           <TextField
             required
-            id="outline-required"
+            id="outline-required-1"
             label="Username"
             type="username"
             name="username"
