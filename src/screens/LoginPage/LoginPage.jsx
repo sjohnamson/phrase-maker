@@ -15,6 +15,7 @@ function LoginPage() {
       justifyContent="center"
       alignItems="center"
       height="100vh"
+      marginTop={5}
     >
       <Box
         display="flex"

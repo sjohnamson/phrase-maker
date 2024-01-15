@@ -4,11 +4,6 @@ const cloudinary = require('cloudinary').v2;
 const pool = require('../modules/pool')
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-// cloudinary.config({
-//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//     api_key: process.env.CLOUDINARY_API_KEY,
-//     api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
 
 // retrieves phrase public_ids to display in PhraseCards
 router.get("/", (req, res) => {

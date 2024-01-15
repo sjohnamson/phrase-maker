@@ -31,15 +31,15 @@ function RegisterForm() {
           borderRadius: 5,
         }}
       >
-                <Stack alignItems="center" spacing={2}>
-        <Typography variant="h5" sx={{ pb: 2 }}>
-          Register
-        </Typography>
-        {errors.registrationMessage && (
-          <h3 className="alert" role="alert">
-            {errors.registrationMessage}
-          </h3>
-        )}
+        <Stack alignItems="center" spacing={2}>
+          <Typography variant="h5" sx={{ pb: 2 }}>
+            Register
+          </Typography>
+          {errors.registrationMessage && (
+            <h3 className="alert" role="alert">
+              {errors.registrationMessage}
+            </h3>
+          )}
           <TextField
             required
             id="outline-required"
@@ -68,7 +68,7 @@ function RegisterForm() {
             name="submit"
             variant="contained"
             color="success"
-            sx={{ color: "secondary.light"}}
+            sx={{ color: "secondary.light" }}
           >
             Register
           </Button>

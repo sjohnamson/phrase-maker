@@ -32,7 +32,7 @@ export default function PhraseCard({ xs, sm, md }) {
             {phrases.map((phrase, index) => {
                 const video = cld.video(phrase.public_id).resize(fill().width(400).height(250));
                 return (<>
-                    <Grid item key={index} xs={xs} sm={sm} md={md} >
+                    <Grid item key={phrase.id} xs={xs} sm={sm} md={md} >
 
                         <Card sx={{ width: '100%', }}>
                             <CardActionArea onClick={() => { }} sx={{}}>

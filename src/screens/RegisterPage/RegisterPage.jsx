@@ -16,6 +16,7 @@ function RegisterPage() {
       justifyContent="center"
       alignItems="center"
       height="100vh"
+      marginTop={5}
     >
       <Box
         display="flex"
@@ -23,7 +24,7 @@ function RegisterPage() {
         alignItems="center"
         sx={{
           backgroundColor: "secondary.main",
-          paddingTop: 3,
+          paddingTop: 5,
           paddingBottom: 3,
           marginTop: 1,
           marginBottom: 4,
