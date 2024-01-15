@@ -24,6 +24,12 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://phrase-maker.onrender.com');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+ });
+
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/video', videoRouter);
