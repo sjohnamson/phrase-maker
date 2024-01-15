@@ -2,7 +2,7 @@
     "name": "phrase-maker",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://phrase-maker.onrender.com",
+    "proxy": "http://phrase-maker-server.onrender.com",
     "engines": {
         "node": "18.x"
     },
