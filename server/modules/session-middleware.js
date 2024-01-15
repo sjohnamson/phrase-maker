@@ -4,15 +4,15 @@ const warnings = require('../constants/warnings');
 
 const serverSessionSecret = () => {
   if (
-    !process.env.REACT_APP_SERVER_SESSION_SECRET ||
-    process.env.REACT_APP_SERVER_SESSION_SECRET.length < 8 ||
-    process.env.REACT_APP_SERVER_SESSION_SECRET === warnings.exampleBadSecret
+    !process.env.SERVER_SESSION_SECRET ||
+    process.env.SERVER_SESSION_SECRET.length < 8 ||
+    process.env.SERVER_SESSION_SECRET === warnings.exampleBadSecret
   ) {
     // Warning if user doesn't have a good secret
     console.log(warnings.badSecret);
   }
 
-  return process.env.REACT_APP_SERVER_SESSION_SECRET;
+  return process.env.SERVER_SESSION_SECRET;
 };
 
 module.exports = cookieSession({
