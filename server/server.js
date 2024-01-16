@@ -25,7 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://phrase-maker-c6febef70be6.herokuapp.com');
+  res.header('Access-Control-Allow-Origin', 'https://sheltered-temple-46228-f810114f637e.herokuapp.com');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
  });
