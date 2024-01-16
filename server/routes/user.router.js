@@ -7,7 +7,7 @@ const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
-
+console.log("in user.router")
 // Handles Ajax request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
   console.log("in user get", req.body)
