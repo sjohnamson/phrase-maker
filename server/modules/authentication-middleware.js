@@ -1,5 +1,4 @@
 const rejectUnauthenticated = (req, res, next) => {
-  console.log("in authentication-middleware", req.isAuthenticated)
   // check if logged in
   if (req.isAuthenticated()) {
     // They were authenticated! User may do the next thing

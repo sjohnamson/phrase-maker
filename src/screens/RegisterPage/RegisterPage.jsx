@@ -13,10 +13,9 @@ function RegisterPage() {
     <Box
       display="flex"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="flex-start"
       alignItems="center"
       height="100vh"
-      marginTop={5}
     >
       <Box
         display="flex"
