@@ -96,7 +96,7 @@ function LandingPage() {
       <Stack display="flex" justifyContent="center" alignItems="center">
         <Fade in={showWelcome} timeout={{ enter: 2500 }}>
           <Typography variant="h5" gutterBottom sx={{ color: "info.main" }}>
-            Welcome to Phrase Maker!
+            Welcome to Phrase Maker!!!
           </Typography>
         </Fade>
         <Fade in={showRegister} timeout={{ enter: 2500 }}>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 // worker Saga: will be fired on "REGISTER" actions
 function* registerUser(action) {
-  console.log("in registration saga", action)
   
   try {
     // clear any existing error on the registration page
