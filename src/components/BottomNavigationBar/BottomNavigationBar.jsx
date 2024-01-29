@@ -35,7 +35,7 @@ export default function BottomNavigationBar() {
           }}
         >
           <BottomNavigationAction
-            label="Clips"
+            label="clips"
             value={value}
             onClick={() => navigate("/home")}
             icon={<MovieCreationIcon color="info" />}

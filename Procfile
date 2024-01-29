@@ -1,1 +1,1 @@
-web: node server/server.js
+web: npm-run-all --parallel "start:* client"
