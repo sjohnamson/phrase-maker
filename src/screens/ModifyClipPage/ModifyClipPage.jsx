@@ -23,18 +23,16 @@ export default function ModifyClipPage() {
     const [newPhraseDescription, setNewPhraseDescription] = useState('');
     const [concatenatedPhrase, setConcatenatedPhrase] = useState()
 
-    const [newPhrase, setNewPhrase] = useState()
-
     useEffect(() => {
+        // Splice processPhrase so first clip is not included and doesn't get repeated in final phrase.
         let clipsToAdd = processPhrase.splice(1);
-        console.log('clips to add', clipsToAdd)
         let concatenatingPhrase = myVideo.resize(fill().width(400).height(250))
         for (let vid of clipsToAdd) {
-            console.log('clip.clip.public_id', vid.clip.public_id)
-
+            // Loop through and concantenate clips onto the phrase
             concatenatingPhrase = concatenatingPhrase.videoEdit(
                 concatenate(
                     Concatenate.videoSource(vid.clip.public_id)
+                    // transform and resize each clip so they are all uniform
                         .transformation(new Transformation()
                             .resize(fill().width(400).height(250)
                             )
@@ -61,7 +59,6 @@ export default function ModifyClipPage() {
             newPhraseDescription,
             phraseURL,
         }
-        console.log('phrase to add', phraseToAdd)
 
         dispatch({ type: 'ADD_PHRASE', payload: phraseToAdd });
 

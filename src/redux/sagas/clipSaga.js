@@ -17,12 +17,17 @@ function* addClipSaga(action) {
         }
         const videoForm = new FormData();
 
-        videoForm.append('video', action.payload.newClipFile);
-        videoForm.append('title', action.payload.newClipTitle);
-        videoForm.append('description', action.payload.newClipDescription);
-        videoForm.append('tags', [action.payload.newClipTags])
+        videoForm.append('video', action.payload.newFile);
+        videoForm.append('title', action.payload.newTitle);
+        videoForm.append('description', action.payload.newDescription);
+        videoForm.append('creator', action.payload.newCreator);
+        videoForm.append('beats', action.payload.newBeats);
+        videoForm.append('ulb', action.payload.newULB);
+        videoForm.append('aco', action.payload.newAbstract);
+        videoForm.append('unison', [action.payload.newUnison]);
+        videoForm.append('tags', [action.payload.newClipTags]);
+        
 
-    
         yield axios({
             method: 'POST',
             url: '/api/video', 

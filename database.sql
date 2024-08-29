@@ -8,6 +8,11 @@ CREATE TABLE "user" (
     current_project varchar(100) 
 );
 
+CREATE TABLE project (
+    id serial PRIMARY KEY,
+    title varchar(50) UNIQUE
+);
+
 CREATE TABLE tag (
     id serial PRIMARY KEY,
     tag text 
@@ -18,6 +23,11 @@ CREATE TABLE clip (
     title varchar(100),
     public_id varchar(100),
     description varchar(1000),
+    creator varchar(50),
+    upperlowerboth varchar(50),
+    abstractconcreteobject varchar(50),
+    unison boolean,
+    beats integer,
     path varchar(150),
     project_id integer REFERENCES project(id),
     speed integer
@@ -29,11 +39,6 @@ CREATE TABLE phrase (
     public_id varchar(100),
     description varchar(1000),
     project_id integer REFERENCES project(id)
-);
-
-CREATE TABLE project (
-    id serial PRIMARY KEY,
-    title varchar(50) UNIQUE
 );
 
 CREATE TABLE user_project (
