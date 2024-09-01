@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
     const reply = await connection.query(sqlProjectTitle, [userCurrent]);
     const projectID = reply.rows[0].project_id;
     const sqlQuery = `
-      SELECT clip.id, clip.title, clip.description, clip.public_id, tag.tag
+      SELECT clip.id, clip.title, clip.description, clip.creator, clip.abstractconcreteobject, clip.upperlowerboth, clip.unison, clip.beats, clip.public_id, tag.tag
       FROM clip
       JOIN clip_tag
       ON clip.id = clip_tag.clip_id
@@ -36,7 +36,6 @@ router.get("/", async (req, res) => {
       ;`;
     // Save the result so we can get the returned value
     const result = await connection.query(sqlQuery, [projectID]);
-
     await connection.query("COMMIT");
     res.send(result.rows);
   } catch (error) {
@@ -63,7 +62,7 @@ router.post(
       req.body.beats,
       req.body.ulb,
       req.body.aco,
-      req.body.unison
+      req.body.unison,
     ];
     const currentProject = req.user.current_project;
     const clipTags = [req.body.tags];
@@ -162,14 +161,31 @@ router.delete(
 
 // PUT route to make changes to title, descripotion and tags of clip
 router.put("/:id", rejectUnauthenticated, async (req, res) => {
-  const clipInfo = [req.params.id, req.body.title, req.body.description];
+  const clipInfo = [
+    req.params.id,
+    req.body.title,
+    req.body.description,
+    req.body.creator,
+    req.body.abstractconcreteobject,
+    req.body.upperlowerboth,
+    req.body.unison,
+    req.body.beats,
+  ];
+  console.log("clip in put", clipInfo);
 
   const connection = await pool.connect();
   try {
     await connection.query("BEGIN");
     const sqlUpdate = `
       UPDATE clip
-      SET title = $2, description = $3
+      SET 
+      title = $2, 
+      description = $3, 
+      creator = $4, 
+      abstractconcreteobject = $5, 
+      upperlowerboth = $6, 
+      unison = $7, 
+      beats = $8,
       WHERE id = $1
       ;`;
     await connection.query(sqlUpdate, clipInfo);

@@ -67,15 +67,15 @@ export default function AddVideoForm() {
               variant="filled"
               sx={{ width: "100%" }}
             />
-            {/* <TextField
+            <TextField
           required
           label="Description"
           placeholder='add a description or notes'
-          value={newClipDescription}
-          onChange={(event) => setNewClipDescription(event.target.value)}
+          value={newDescription}
+          onChange={(event) => setNewDescription(event.target.value)}
           variant='filled'
           sx={{width: '100%'}}
-        /> */}
+        />
 
             <FormLabel id="demo-row-radio-buttons-group-label">
               Creator

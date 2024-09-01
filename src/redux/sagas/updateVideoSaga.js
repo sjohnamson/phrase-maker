@@ -5,8 +5,13 @@ function* updateClipSaga(action) {
     try {
         const clipUpdate = {
             clipId: action.payload.id,
-            clipTitle: action.payload.newClipTitle,
-            clipDescription: action.payload.newClipDescription,
+            clipTitle: action.payload.newTitle,
+            clipDescription: action.payload.newDescription,
+            clipCreator: action.payload.newCreator,
+            clipBeats: action.payload.newBeats,
+            clipULB: action.payload.newULB,
+            clipACO: action.payload.newAbstract,
+            clipUnison: action.payload.newUnison,
             clipTags: [action.payload.newClipTags]
         }
 
