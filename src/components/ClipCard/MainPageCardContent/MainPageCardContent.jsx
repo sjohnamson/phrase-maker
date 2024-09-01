@@ -12,6 +12,21 @@ export default function MainPageCardContent({ clip }) {
                 <Typography variant="body2" color="text.secondary">
                     {clip.description}
                 </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {clip.creator}
+                </Typography>  
+                <Typography variant="body2" color="text.secondary">
+                    {clip.abstractconcreteobject}
+                </Typography>               
+                <Typography variant="body2" color="text.secondary">
+                    {clip.upperlowerboth}
+                </Typography>                
+                <Typography variant="body2" color="text.secondary">
+                    {clip.beats}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {clip.unison}
+                </Typography>
             </CardContent>
         </>
     );

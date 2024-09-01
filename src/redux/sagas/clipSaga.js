@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getClips() {
     const clips = yield axios.get('/api/video')
-
+console.log('clips in getclips', clips)
     yield put ({
         type: 'SET_CLIPS',
         payload: clips.data
@@ -24,7 +24,7 @@ function* addClipSaga(action) {
         videoForm.append('beats', action.payload.newBeats);
         videoForm.append('ulb', action.payload.newULB);
         videoForm.append('aco', action.payload.newAbstract);
-        videoForm.append('unison', [action.payload.newUnison]);
+        videoForm.append('unison', action.payload.newUnison);
         videoForm.append('tags', [action.payload.newClipTags]);
         
 
