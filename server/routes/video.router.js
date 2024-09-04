@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const cloudinary = require("cloudinary").v2;
 const cloudinaryUpload = require("../modules/cloudinary-config");
 const pool = require("../modules/pool");
 const {
@@ -66,6 +67,7 @@ router.post(
     ];
     const currentProject = req.user.current_project;
     const clipTags = [req.body.tags];
+    console.log('in post', clipInfo)
 
     const connection = await pool.connect();
     try {
@@ -126,26 +128,31 @@ router.post(
 );
 
 router.delete(
-  "/:id",
+  "/delete/:id",
   rejectUnauthenticated,
-  cloudinaryUpload.single("video"),
   async (req, res) => {
-    const clipId = [req.params.id];
-
+    const clipId = [parseInt(req.params.id, 10)];
+    const { public_id: cloudinaryPublicId } = req.body;
+    console.log("in delete:", clipId, cloudinaryPublicId);
     const connection = await pool.connect();
     try {
+      if (cloudinaryPublicId) {
+        await cloudinary.uploader.destroy(cloudinaryPublicId);
+      }
+
       await connection.query("BEGIN");
-      const sqlDeleteClip = `
-      DELETE FROM clip 
-      WHERE id = $1 
-      ;`;
-      await connection.query(sqlDeleteClip, clipId);
 
       const sqlDeleteTags = `
       DELETE FROM clip_tag 
       WHERE clip_id = $1
       ;`;
       await connection.query(sqlDeleteTags, clipId);
+
+      const sqlDeleteClip = `
+      DELETE FROM clip 
+      WHERE id = $1 
+      ;`;
+      await connection.query(sqlDeleteClip, clipId);
 
       await connection.query("COMMIT");
       res.sendStatus(200);
@@ -185,7 +192,7 @@ router.put("/:id", rejectUnauthenticated, async (req, res) => {
       abstractconcreteobject = $5, 
       upperlowerboth = $6, 
       unison = $7, 
-      beats = $8,
+      beats = $8
       WHERE id = $1
       ;`;
     await connection.query(sqlUpdate, clipInfo);

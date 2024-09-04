@@ -17,6 +17,7 @@ export default function DeleteButton({ clip }) {
     const handleDelete = () => {
         console.log('in handle delete', clip)
         dispatch({ type: 'DELETE_CLIP', payload: clip })
+        handleClose();
     }
 
     // style the modal

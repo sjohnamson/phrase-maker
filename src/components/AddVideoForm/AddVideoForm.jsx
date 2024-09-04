@@ -106,17 +106,17 @@ export default function AddVideoForm() {
               onChange={(event) => setNewAbstract(event.target.value)}
             >
               <FormControlLabel
-                value="abstract"
+                value="Abstract"
                 control={<Radio />}
                 label="Abstract"
               />
               <FormControlLabel
-                value="concrete"
+                value="Concrete"
                 control={<Radio />}
                 label="Concrete"
               />
               <FormControlLabel
-                value="object"
+                value="Object"
                 control={<Radio />}
                 label="Object"
               />
@@ -132,16 +132,16 @@ export default function AddVideoForm() {
               onChange={(event) => setNewULB(event.target.value)}
             >
               <FormControlLabel
-                value="upper"
+                value="Upper"
                 control={<Radio />}
                 label="Upper"
               />
               <FormControlLabel
-                value="lower"
+                value="Lower"
                 control={<Radio />}
                 label="Lower"
               />
-              <FormControlLabel value="both" control={<Radio />} label="Both" />
+              <FormControlLabel value="Both" control={<Radio />} label="Both" />
             </RadioGroup>
             <FormLabel id="demo-row-radio-buttons-group-label">Beats</FormLabel>
             <RadioGroup
