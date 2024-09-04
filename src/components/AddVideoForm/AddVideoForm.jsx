@@ -68,7 +68,6 @@ export default function AddVideoForm() {
               sx={{ width: "100%" }}
             />
             <TextField
-          required
           label="Description"
           placeholder='add a description or notes'
           value={newDescription}
