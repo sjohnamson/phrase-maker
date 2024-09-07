@@ -1,6 +1,6 @@
 const clipsFilter = (state = [], action) => {
     switch (action.type) {
-      case 'SET_CLPS_FILTER':
+      case 'SET_CLIPS_FILTER':
         return action.payload;
       default:
         return state;

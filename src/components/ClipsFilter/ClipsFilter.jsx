@@ -1,24 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch } from "react-redux";
-import { Typography, FormControl, FormControlLabel, FormGroup, Switch } from "@mui/material";
+import { Typography, FormControlLabel, FormGroup, Switch } from "@mui/material";
 
-const dispatch = useDispatch();
 
-const [cardFilter, setCardFilter] = useState({
+export default function ClipsFilter() {
+  const dispatch = useDispatch();
+
+  const [clipsFilter, setClipsFilter] = useState({
     sam: true,
     erin: true,
     jeffrey: true,
 });
 
-const handleViewChange = (event) => {
-    setCardFilter({
-        ...cardFilter,
+useEffect (() => {
+  console.log('clipsFilter', clipsFilter)
+  dispatch({ type: 'SET_CLIPS_FILTER', payload: clipsFilter });
+})
+
+const handleFilterChange = (event) => {
+    setClipsFilter({
+        ...clipsFilter,
         [event.target.name]: event.target.checked,
     });
-    dispatch({ type: 'SET_CLIPS_FILTER', payload: cardFilter });
+    dispatch({ type: 'SET_CLIPS_FILTER', payload: clipsFilter });
 };
-
-export default function ClipsFilter() {
 
 return (
   <>
@@ -29,32 +34,32 @@ return (
       <FormControlLabel
         control={
           <Switch
-            checked={cardFilter.sam}
-            onChange={handleViewChange}
-            name="Sam"
+            checked={clipsFilter.sam}
+            onChange={handleFilterChange}
+            name="sam"
           />
         }
-        label={<Typography variant="body2">Requests</Typography>}
+        label={<Typography variant="body2">Sam</Typography>}
       />
       <FormControlLabel
         control={
           <Switch
-            checked={cardFilter.erin}
-            onChange={handleViewChange}
-            name="Erin"
+            checked={clipsFilter.erin}
+            onChange={handleFilterChange}
+            name="erin"
           />
         }
-        label={<Typography variant="body2">Shares</Typography>}
+        label={<Typography variant="body2">Erin</Typography>}
       />
       <FormControlLabel
         control={
           <Switch
-            checked={cardFilter.jeffrey}
-            onChange={handleViewChange}
-            name="Jeffrey"
+            checked={clipsFilter.jeffrey}
+            onChange={handleFilterChange}
+            name="jeffrey"
           />
         }
-        label={<Typography variant="body2">Offers</Typography>}
+        label={<Typography variant="body2">Jeffrey</Typography>}
       />
     </FormGroup>
   </>

@@ -12,7 +12,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 export default function ClipCards({ xs, sm, md }) {
   const clips = useSelector((store) => store.clips);
-  const clipsFilter = useSelector((store) => store.ClipsFilter);
+  const clipsFilter = useSelector((store) => store.clipsFilter);
 
   const cld = new Cloudinary({
     cloud: {
