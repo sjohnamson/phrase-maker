@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // component imports
-import ClipCard from "../../components/ClipCard/MainPageClipCard";
+import ClipCards from "../../components/ClipCard/MainPageClipCard";
 // material imports
 import { Box, Typography, Divider } from "@mui/material";
 
@@ -21,7 +21,7 @@ export default function Homepage() {
     clips[0] ? (
       // returns clipcards with clips from project library.
       <Box className="clips" sx={{ width: "95%", margin: "auto" }}>
-        <ClipCard xs={12} sm={6} md={4} />
+        <ClipCards xs={12} sm={6} md={4} />
       </Box>
     ) : (
       // otherwise returns a message that there are no clips

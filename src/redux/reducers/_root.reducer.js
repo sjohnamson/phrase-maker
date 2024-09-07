@@ -5,7 +5,8 @@ import clips from './clips.reducer';
 import updateClip from './edit.reducer';
 import currentClip from './clip.reducer';
 import phrases from './phrase.reducer';
-import processPhrase from './cliptophrase.reducer';
+import processPhrase from './clip-to-phrase.reducer';
+import clipsFilter from './clips-filter.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // This is imported in index.js as rootSaga'
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   currentClip,
   phrases,
   processPhrase,
+  clipsFilter,
 });
 
 export default rootReducer;

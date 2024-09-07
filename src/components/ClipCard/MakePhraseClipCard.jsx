@@ -8,6 +8,7 @@ import { CardActionArea, Card} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 
+
 export default function ClipCard({ xs, sm, md }) {
     const dispatch = useDispatch();
     const clips = useSelector(store => store.clips)
