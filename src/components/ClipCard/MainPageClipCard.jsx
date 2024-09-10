@@ -25,7 +25,7 @@ export default function ClipCards({ xs, sm, md }) {
       {clips.map((clip, index) => {
         const video = cld
           .video(clip.public_id)
-          .resize(fill().width(400).height(250));
+          .resize(fill().width(250).height(400));
         return (
           // checks to see if activity should be displayed based on toggle switches
           ((clip.creator === "Sam" && clipsFilter.sam) ||
