@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 
 export default function AddVideoForm() {
-  const user = useSelector(store => store.user)
-  console.log('user', user)
+  const user = useSelector((store) => store.user);
+  console.log("user", user);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ export default function AddVideoForm() {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newCreator, setNewCreator] = useState(user.username);
-  const [newBeats, setNewBeats] = useState("");
-  const [newULB, setNewULB] = useState("");
-  const [newAbstract, setNewAbstract] = useState("");
+  const [newBeats, setNewBeats] = useState(1);
+  const [newULB, setNewULB] = useState("Upper");
+  const [newAbstract, setNewAbstract] = useState("Abstract");
   const [newUnison, setNewUnison] = useState(false);
 
   const onSubmit = async () => {
@@ -41,7 +41,7 @@ export default function AddVideoForm() {
       newAbstract,
       newUnison,
     };
-    console.log('new clip', newClip)
+    console.log("new clip", newClip);
     dispatch({ type: "ADD_CLIP", payload: newClip });
     history.push("/main");
   };
@@ -59,7 +59,6 @@ export default function AddVideoForm() {
               variant="filled"
             />
             <TextField
-              required
               label="Title"
               placeholder="add a title for your clip"
               value={newTitle}
@@ -68,13 +67,13 @@ export default function AddVideoForm() {
               sx={{ width: "100%" }}
             />
             <TextField
-          label="Description"
-          placeholder='add a description or notes'
-          value={newDescription}
-          onChange={(event) => setNewDescription(event.target.value)}
-          variant='filled'
-          sx={{width: '100%'}}
-        />
+              label="Description"
+              placeholder="add a description or notes"
+              value={newDescription}
+              onChange={(event) => setNewDescription(event.target.value)}
+              variant="filled"
+              sx={{ width: "100%" }}
+            />
 
             <FormLabel id="demo-row-radio-buttons-group-label">
               Creator
