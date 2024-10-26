@@ -31,7 +31,7 @@ export default function ClipCards({ xs, sm, md }) {
           ((clip.creator === "Sam" && clipsFilter.sam) ||
             (clip.creator === "Erin" && clipsFilter.erin) ||
             (clip.creator === "Jeffrey" && clipsFilter.jeffrey)) && (
-            <Grid item key={clip.id}>
+            <Grid item key={clip.id} xs={xs} sm={sm} md={md} >
               <Card
                 sx={{ width: "100%", display: "flex", flexDirection: "column", padding: "5px" }}
               >
