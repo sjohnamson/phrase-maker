@@ -24,7 +24,7 @@ export default function Homepage() {
       // returns clipcards with clips from project library.
       <Box className="clips" sx={{ width: "95%", margin: "auto" }}>
         <ClipsFilter />
-        <ClipCards xs={12} sm={6} md={4} />
+        <ClipCards xs={6} sm={4} md={3} />
       </Box>
     ) : (
       // otherwise returns a message that there are no clips

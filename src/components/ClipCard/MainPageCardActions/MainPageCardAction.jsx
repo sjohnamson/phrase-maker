@@ -12,12 +12,12 @@ export default function MainPageCardActions({ clip }) {
         <>
             <CardActions >
                 <Stack
-                    direction="row"
-                    spacing={4}
+                    direction="column"
+                    spacing={2}
                     justifyContent="flex-end"
                     alignItems="center"
                     divider={<Divider orientation="vertical" flexItem />}
-                    sx={{ width: '100%', mr: 2, mb: 1 }}
+                    sx={{ width: '100%', mr: 2, mb: 0 }}
                 >
                     <DeleteButton clip={clip} />
                     <UpdateNavButton clip={clip} />
