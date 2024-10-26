@@ -21,7 +21,7 @@ export default function AddVideoForm() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const [newFile, setNewFile] = useState("");
+  const [newFiles, setNewFiles] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newCreator, setNewCreator] = useState(user.username);
@@ -30,33 +30,53 @@ export default function AddVideoForm() {
   const [newAbstract, setNewAbstract] = useState("Abstract");
   const [newUnison, setNewUnison] = useState(false);
 
-  const onSubmit = async () => {
-    const newClip = {
+  const onSubmit = () => {
+    console.log("newfiles:", newFiles)
+    const filesArray = [...newFiles];
+    console.log(filesArray)
+    filesArray.forEach((file) => {
+      const newClip = {
       newTitle,
       newDescription,
-      newFile,
+      newFile: file,
       newCreator,
       newBeats,
       newULB,
       newAbstract,
       newUnison,
     };
-    console.log("new clip", newClip);
+    console.log('newFile', newClip.newFile)
     dispatch({ type: "ADD_CLIP", payload: newClip });
-    history.push("/main");
+    })
+  history.push("/main");
   };
 
   return (
-    <Box sx={{ m: 4 }}>
+    <Box
+      sx={{
+        m: 4,
+        width: {
+          xs: "90%",
+          sm: "90%",
+          md: "60%",
+        },
+        margin: "0 auto",
+      }}
+    >
       <Typography variant="h5">Add a clip to your project:</Typography>
       <div className="form-group">
-        <Stack spacing={2} sx={{ pt: 3 }}>
+        <Stack spacing={1} sx={{ pt: 3 }}>
           <FormControl>
             <TextField
-              onChange={(e) => setNewFile(e.target.files[0])}
+              onChange={(e) => setNewFiles(e.target.files)}
               type="file"
               accept="video/*"
               variant="filled"
+              InputProps={{
+                inputProps: {
+                  multiple: true, // Allow multiple files
+                },
+              }}
             />
             <TextField
               label="Title"
