@@ -41,7 +41,7 @@ export default function ClipCards({ xs, sm, md }) {
                   <CardActionArea onClick={() => {}}>
                     <AdvancedVideo cldVid={video} controls />
                   </CardActionArea>
-                  <MainPageCardActions clip={clip} />
+                  <MainPageCardActions clip={clip} number={index}/>
                 </CardContent>
                 <MainPageCardContent clip={clip} />
               </Card>
