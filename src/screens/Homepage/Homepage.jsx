@@ -12,19 +12,12 @@ export default function Homepage() {
   const dispatch = useDispatch();
   const clips = useSelector((store) => store.clips);
   const user = useSelector((store) => store.user);
+  const hasMore = useSelector((state) => state.clips.hasMore);
 
-  const [page, setPage] = useState(1);  
-  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch({ type: 'GET_CLIPS', payload: { page, limit: 20 } })
-    .then((response) => {
-      if (response.length < 20) {
-        setHasMore(false);  
-      } else {
-        setPage(page + 1);  
-      }
-    });
+    dispatch({ type: "GET_CLIPS", payload: { page, limit: 20 } });
     dispatch({
       type: "SET_CLIPS_FILTER",
       payload: { sam: true, erin: true, jeffrey: true },
@@ -32,19 +25,15 @@ export default function Homepage() {
   }, [user.current_project]);
 
   const fetchClips = () => {
-      dispatch({ type: 'GET_CLIPS', payload: { page, limit: 20 } })
-        .then((response) => {
-          if (response.length < 20) {
-            setHasMore(false);  
-          } else {
-            setPage(page + 1);  
-          }
-        });
-    };
+    dispatch({ type: "GET_CLIPS", payload: { page, limit: 20 } });
+    if (hasMore) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <InfiniteScroll
-      dataLength={clips.length} 
+      dataLength={clips.length}
       hasMore={hasMore}
       next={fetchClips}
       loader={<h4>Loading...</h4>}

@@ -1,12 +1,20 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-function* getClips() {
-  const clips = yield axios.get("/api/video");
+function* getClips(action) {
+  const { page, limit } = action.payload;
+  const clips = yield call(axios.get, `/api/video?page=${page}&limit=${limit}`);
+  
   yield put({
     type: "SET_CLIPS",
     payload: clips.data,
   });
+  if (clips.data.length < limit) {
+    yield put({ type: "SET_HAS_MORE", payload: false });
+  } else {
+    yield put({ type: "SET_HAS_MORE", payload: true });
+  }
+
 }
 
 function* addClipSaga(action) {
