@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // component imports
 import ClipCards from "../../components/ClipCard/MainPageClipCard";
@@ -13,8 +13,18 @@ export default function Homepage() {
   const clips = useSelector((store) => store.clips);
   const user = useSelector((store) => store.user);
 
+  const [page, setPage] = useState(1);  
+  const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
-    dispatch({ type: "GET_CLIPS" });
+    dispatch({ type: 'GET_CLIPS', payload: { page, limit: 20 } })
+    .then((response) => {
+      if (response.length < 20) {
+        setHasMore(false);  
+      } else {
+        setPage(page + 1);  
+      }
+    });
     dispatch({
       type: "SET_CLIPS_FILTER",
       payload: { sam: true, erin: true, jeffrey: true },
@@ -22,15 +32,21 @@ export default function Homepage() {
   }, [user.current_project]);
 
   const fetchClips = () => {
-    // Dispatch action to fetch the next batch of clips
-    dispatch({ type: "GET_MORE_CLIPS" });
-  };
+      dispatch({ type: 'GET_CLIPS', payload: { page, limit: 20 } })
+        .then((response) => {
+          if (response.length < 20) {
+            setHasMore(false);  
+          } else {
+            setPage(page + 1);  
+          }
+        });
+    };
 
   return (
     <InfiniteScroll
       dataLength={clips.length} 
+      hasMore={hasMore}
       next={fetchClips}
-      hasMore={true}
       loader={<h4>Loading...</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>

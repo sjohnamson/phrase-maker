@@ -3,7 +3,6 @@ import axios from "axios";
 
 function* getClips() {
   const clips = yield axios.get("/api/video");
-  console.log("clips in getclips", clips);
   yield put({
     type: "SET_CLIPS",
     payload: clips.data,
