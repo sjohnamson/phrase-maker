@@ -9,6 +9,9 @@ const {
 
 router.get("/", async (req, res) => {
   const userCurrent = req.user.current_project;
+  // const page = parseInt(req.query.page) || 1
+  // const limit = 20; 
+  // const offset = (page - 1) * limit;
 
   const connection = await pool.connect();
 
@@ -34,6 +37,7 @@ router.get("/", async (req, res) => {
       JOIN tag
       ON clip_tag.tag_id = tag.id
       WHERE project_id = $1
+      ORDER BY clip.id DESC
       ;`;
     // Save the result so we can get the returned value
     const result = await connection.query(sqlQuery, [projectID]);
