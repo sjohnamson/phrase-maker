@@ -11,14 +11,18 @@ import { Box, CardActionArea, Card, CardContent } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 export default function ClipCards({ xs, sm, md }) {
-  const clips = useSelector((store) => store.clips);
+  const clips = useSelector((store) => store.clips.clips);
   const clipsFilter = useSelector((store) => store.clipsFilter);
-
+  console.log("ClipCards received clips:", clips);
   const cld = new Cloudinary({
     cloud: {
       cloudName: "dkabdionr",
     },
   });
+
+  if (!clips || clips.length === 0) {
+    return <div>Loading clips...</div>;
+  }
 
   return (
     <Grid container spacing={2}>

@@ -3,18 +3,12 @@ import axios from "axios";
 
 function* getClips(action) {
   const { page, limit } = action.payload;
-  const clips = yield call(axios.get, `/api/video?page=${page}&limit=${limit}`);
-  
+  const response = yield call(axios.get, `/api/video?page=${page}&limit=${limit}`);
+  console.log('in getclips saga', response)
   yield put({
     type: "SET_CLIPS",
-    payload: clips.data,
+    payload: response.data,
   });
-  if (clips.data.length < limit) {
-    yield put({ type: "SET_HAS_MORE", payload: false });
-  } else {
-    yield put({ type: "SET_HAS_MORE", payload: true });
-  }
-
 }
 
 function* addClipSaga(action) {

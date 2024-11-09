@@ -9,8 +9,8 @@ const {
 
 router.get("/", async (req, res) => {
   const userCurrent = req.user.current_project;
-  const page = parseInt(req.query.page) || 1
-  const limit = 20; 
+  const page = parseInt(req.query.page) || 1;
+  const limit = 20;
   const offset = (page - 1) * limit;
 
   const connection = await pool.connect();
@@ -19,16 +19,31 @@ router.get("/", async (req, res) => {
     await connection.query("BEGIN");
 
     const sqlProjectTitle = `
-      SELECT project_id 
-      FROM "user" 
-      JOIN "user_project" 
+      SELECT project_id
+      FROM "user"
+      JOIN "user_project"
       ON "user".id = "user_project"."user_id"
       JOIN project
       ON "user_project".project_id = project.id
-      WHERE project.title = $1
-      ;`;
+      WHERE project.title = $1;
+    `;
     const reply = await connection.query(sqlProjectTitle, [userCurrent]);
     const projectID = reply.rows[0].project_id;
+
+    // Get the count of all rows matching the query
+    const sqlCountQuery = `
+      SELECT COUNT(*) AS total
+      FROM clip
+      JOIN clip_tag
+      ON clip.id = clip_tag.clip_id
+      JOIN tag
+      ON clip_tag.tag_id = tag.id
+      WHERE project_id = $1;
+    `;
+    const countResult = await connection.query(sqlCountQuery, [projectID]);
+    const totalRows = parseInt(countResult.rows[0].total);
+
+    // Get the paginated data
     const sqlQuery = `
       SELECT clip.id, clip.title, clip.description, clip.creator, clip.abstractconcreteobject, clip.upperlowerboth, clip.unison, clip.beats, clip.public_id, tag.tag
       FROM clip
@@ -38,15 +53,22 @@ router.get("/", async (req, res) => {
       ON clip_tag.tag_id = tag.id
       WHERE project_id = $1
       ORDER BY clip.id DESC
-      LIMIT $2 OFFSET $3
-      ;`;
-    // Save the result so we can get the returned value
+      LIMIT $2 OFFSET $3;
+    `;
     const result = await connection.query(sqlQuery, [projectID, limit, offset]);
+
     await connection.query("COMMIT");
-    res.send(result.rows);
+
+    // Return both the data and the total row count
+    res.json({
+      clips: result.rows,
+      totalRows: totalRows,
+      totalPages: Math.ceil(totalRows / limit),
+      currentPage: page
+    });
   } catch (error) {
     await connection.query("ROLLBACK");
-    console.log(`Transaction Error - Rolling back new account`, error);
+    console.log(`Transaction Error - Rolling back`, error);
     res.sendStatus(500);
   } finally {
     connection.release();
